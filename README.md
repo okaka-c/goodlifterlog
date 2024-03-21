@@ -140,3 +140,6 @@ X,インスタグラムでの告知。ジムで告知させてもらう。
 | インフラ | Render |
 | Web API | LINE Messaging API |
 | その他 | AWS S3 (動画投稿機能追加時に使用検討） |
+
+### ■ 画面遷移図
+[Figma: 画面遷移図](https://www.figma.com/file/pGxlFmkWvjxv384P6Ymi9x/Good-Lifter-log?type=design&node-id=0%3A1&mode=design&t=7WateIMFCpHj8mR9-1)
