@@ -143,3 +143,132 @@ X,インスタグラムでの告知。ジムで告知させてもらう。
 
 ### ■ 画面遷移図
 [Figma: 画面遷移図](https://www.figma.com/file/pGxlFmkWvjxv384P6Ymi9x/Good-Lifter-log?type=design&node-id=0%3A1&mode=design&t=7WateIMFCpHj8mR9-1)
+
+### ■ ER図
+
+```mermaid
+
+ 
+erDiagram
+    Users ||--|| Profiles : "1対1"
+    Users ||--o{ Competitions : "1対多"
+    Competitions ||--|| Competition_records : "1対1"
+    Users ||--o{ Template_names : "1対多"
+    Template_names ||--|| Template_categories : "1対1"
+    Template_categories ||--o{ Template_items : "1対多"
+    Users ||--o{ Itemlist_names : "1対多"
+    Itemlist_names ||--o{ Competitions : "1対多"
+    Itemlist_names ||--o{ Itemlist_categories : "1対多"
+    Itemlist_categories ||--o{ Itemlist_items : "1対多"
+    
+    Users {
+        int id PK "ID"
+        string email "メールアドレス"
+        string crypted_password "暗号化されたパスワード"
+        string salt "ソルト"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+    Profiles {
+        int id PK "ID"
+        int user_id FK "ユーザーID"
+        string name "名前"
+        int gender "性別"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+    Competitions {
+        int id PK "ID"
+        int user_id FK "ユーザーID"
+        int Itemlist_name_id FK "アイテムリスト名ID"
+        string competition_name "大会名"
+        string location "開催場所名"
+        datetime competition_date "開催日"
+        int type_of_competition "大会種別(公式/非公式)"
+        int gearcategory_type "競技種別(クラシック/エクイップ)"
+        int competition_category "競技種別(3種か1種か)"
+        int age_group "年齢別区分"
+        int weight_class "体重別区分"
+        int participation_status "出場予定か済みかステータス"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+   Competition_records {
+        int id PK "ID"
+        int competition_id FK "大会情報ID"
+        float weight "検量体重"
+        float squat_first_attempt "スクワット第1試技"
+        float squat_second_attempt "スクワット第2試技"
+        float squat_third_attempt "スクワット第3試技"
+        float benchpress_first_attempt "ベンチプレス第1試技"
+        float benchpress_second_attempt "ベンチプレス第2試技"
+        float benchpress_third_attempt "ベンチプレス第3試技"
+        float deadlift_first_attempt "デッドリフト第1試技"
+        float deadlift_second_attempt "デッドリフト第2試技"
+        float deadlift_third_attempt "デッドリフト第3試技"
+        int squat_first_attempt_result "スクワット第1試技判定結果"
+        int squat_second_attempt_result "スクワット第2試技判定結果"
+        int squat_third_attempt_result "スクワット第3試技判定結果"
+        int benchpress_first_attempt_result "ベンチプレス第1試技判定結果"
+        int benchpress_second_attempt_result "ベンチプレス第2試技判定結果"
+        int benchpress_third_attempt_result "ベンチプレス第3試技判定結果"
+        int deadlift_first_attempt_result "デッドリフト第1試技判定結果"
+        int deadlift_second_attempt_result "デッドリフト第2試技判定結果"
+        int deadlift_third_attempt_result "デッドリフト第3試技判定結果"
+        text comments "反省点コメント"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+    Template_names {
+        int id PK "ID"
+        int user_id FK "ユーザーID"
+        string template_name "テンプレート名"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+    Template_categories {
+        int id PK "ID"
+        int template_name_id FK "テンプレートID"
+        string template_category_name "テンプレートカテゴリ名"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+    Template_items {
+        int id PK "ID"
+        int template_category_id FK "テンプレートカテゴリID"
+        string template_category_item "テンプレートカテゴリ用アイテム名"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+    Itemlist_names {
+        int id PK "ID"
+        int user_id FK "ユーザーID"
+        string Itemlist_name "持ち物リスト名"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+    Itemlist_categories {
+        int id PK "ID"
+        int Itemlist_name_id FK "アイテムリスト名ID"
+        string Itemlist_category_name "アイテムリストカテゴリ名"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+    Itemlist_items {
+        int id PK "ID"
+        int Itemlist_category_id FK "アイテムリストカテゴリID"
+        string Itemlist_category_item "アイテムリストカテゴリ用アイテム名"
+        datetime created_at "作成日時"
+        datetime updated_at "更新日時"
+    }
+
+```
