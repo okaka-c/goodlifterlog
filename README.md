@@ -150,18 +150,18 @@ X,インスタグラムでの告知。ジムで告知させてもらう。
 
  
 erDiagram
-    Users ||--|| Profiles : "1対1"
-    Users ||--o{ Competitions : "1対多"
-    Competitions ||--|| Competition_records : "1対1"
-    Users ||--o{ Template_names : "1対多"
-    Template_names ||--|| Template_categories : "1対1"
-    Template_categories ||--o{ Template_items : "1対多"
-    Users ||--o{ Itemlist_names : "1対多"
-    Itemlist_names ||--o{ Competitions : "1対多"
-    Itemlist_names ||--o{ Itemlist_categories : "1対多"
-    Itemlist_categories ||--o{ Itemlist_items : "1対多"
+    users ||--|| profiles : "1対1"
+    users ||--o{ competitions : "1対多"
+    competitions ||--|| competition_records : "1対1"
+    users ||--o{ template_names : "1対多"
+    template_names ||--|| template_categories : "1対1"
+    template_categories ||--o{ template_items : "1対多"
+    users ||--o{ itemlist_names : "1対多"
+    itemlist_names ||--o{ competitions : "1対多"
+    itemlist_names ||--o{ itemlist_categories : "1対多"
+    itemlist_categories ||--o{ itemlist_items : "1対多"
     
-    Users {
+    users {
         int id PK "ID"
         string email "メールアドレス"
         string crypted_password "暗号化されたパスワード"
@@ -170,7 +170,7 @@ erDiagram
         datetime updated_at "更新日時"
     }
 
-    Profiles {
+    profiles {
         int id PK "ID"
         int user_id FK "ユーザーID"
         string name "名前"
@@ -179,16 +179,16 @@ erDiagram
         datetime updated_at "更新日時"
     }
 
-    Competitions {
+    competitions {
         int id PK "ID"
         int user_id FK "ユーザーID"
-        int Itemlist_name_id FK "アイテムリスト名ID"
-        string competition_name "大会名"
+        int itemlist_name_id FK "アイテムリスト名ID"
+        string name "大会名"
         string location "開催場所名"
-        datetime competition_date "開催日"
-        int type_of_competition "大会種別(公式/非公式)"
+        date date "開催日"
+        int type "大会種別(公式/非公式)"
         int gearcategory_type "競技種別(クラシック/エクイップ)"
-        int competition_category "競技種別(3種か1種か)"
+        int category "競技種別(3種か1種か)"
         int age_group "年齢別区分"
         int weight_class "体重別区分"
         int participation_status "出場予定か済みかステータス"
@@ -196,7 +196,7 @@ erDiagram
         datetime updated_at "更新日時"
     }
 
-   Competition_records {
+   competition_records {
         int id PK "ID"
         int competition_id FK "大会情報ID"
         float weight "検量体重"
@@ -218,55 +218,55 @@ erDiagram
         int deadlift_first_attempt_result "デッドリフト第1試技判定結果"
         int deadlift_second_attempt_result "デッドリフト第2試技判定結果"
         int deadlift_third_attempt_result "デッドリフト第3試技判定結果"
-        text comments "反省点コメント"
+        text comment "反省点コメント"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
     }
 
-    Template_names {
+    template_names {
         int id PK "ID"
         int user_id FK "ユーザーID"
-        string template_name "テンプレート名"
+        string name "テンプレート名"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
     }
 
-    Template_categories {
+    template_categories {
         int id PK "ID"
         int template_name_id FK "テンプレートID"
-        string template_category_name "テンプレートカテゴリ名"
+        string name "テンプレートカテゴリ名"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
     }
 
-    Template_items {
+    template_items {
         int id PK "ID"
         int template_category_id FK "テンプレートカテゴリID"
-        string template_category_item "テンプレートカテゴリ用アイテム名"
+        string name "テンプレートカテゴリ用アイテム名"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
     }
 
-    Itemlist_names {
+    itemlist_names {
         int id PK "ID"
         int user_id FK "ユーザーID"
-        string Itemlist_name "持ち物リスト名"
+        string name "持ち物リスト名"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
     }
 
-    Itemlist_categories {
+    itemlist_categories {
         int id PK "ID"
-        int Itemlist_name_id FK "アイテムリスト名ID"
-        string Itemlist_category_name "アイテムリストカテゴリ名"
+        int itemlist_name_id FK "アイテムリスト名ID"
+        string name "アイテムリストカテゴリ名"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
     }
 
-    Itemlist_items {
+    itemlist_items {
         int id PK "ID"
-        int Itemlist_category_id FK "アイテムリストカテゴリID"
-        string Itemlist_category_item "アイテムリストカテゴリ用アイテム名"
+        int itemlist_category_id FK "アイテムリストカテゴリID"
+        string name "アイテムリストカテゴリ用アイテム名"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
     }
