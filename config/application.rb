@@ -28,7 +28,5 @@ module App
       g.helper false
       g.test_framework nil
     end
-    
-    config.hosts << "good-lifter-log.onrender.com"
   end
 end
