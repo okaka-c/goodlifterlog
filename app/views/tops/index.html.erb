@@ -5,3 +5,14 @@
 <button class="bg-gray-900 hover:bg-gray-800 text-white rounded px-4 py-2">tailwind</button>
 
 <button class="btn btn-primary">daisyUI</button>
+
+<h1>users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+  <p>
+    <strong>Name:</strong>
+    <%= user.name %>
+  </p>
+  <% end %>
+</div>
