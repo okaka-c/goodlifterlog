@@ -1,0 +1,23 @@
+<div class="navbar bg-base-100">
+  <div class="flex-1">
+    <%= link_to "good lifter log", root_path, class:"btn btn-ghost text-xl" %>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li><%= link_to "プロフィール", '#',  class:"btn btn-neutral" %></li>
+      <li>
+        <details>
+          <summary>
+            Parent
+          </summary>
+          <ul class="p-2 bg-base-100 rounded-t-none">
+            <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %></li>
+            <li><a>お問い合わせ</a></li>
+            <li><a>利用規約</a></li>
+            <li><a>プライバシーポリシー</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>
