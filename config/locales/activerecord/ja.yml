@@ -1,0 +1,11 @@
+ja:
+  # acrivrecord用のロケールファイル
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        email: メールアドレス
+        name: ニックネーム
+        password: パスワード
+        password_confirmation: パスワード確認
