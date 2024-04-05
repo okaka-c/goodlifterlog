@@ -1,0 +1,28 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 会員登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+  header:
+    login: ログイン
+    logout: ログアウト
+    profile: プロフィール
+    to_register_page: 会員登録
+  information:
+    contact_us: お問い合わせ
+    terms_of_use: 利用規約
+    privacy_policy: プライバシーポリシー

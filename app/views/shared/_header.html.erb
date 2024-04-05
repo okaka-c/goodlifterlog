@@ -4,17 +4,17 @@
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
-      <li><%= link_to "プロフィール", '#',  class:"btn btn-neutral" %></li>
+      <li><%= link_to t('header.profile'), '#',  class:"btn btn-neutral" %></li>
       <li>
         <details>
           <summary>
             Parent
           </summary>
           <ul class="p-2 bg-base-100 rounded-t-none">
-            <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %></li>
-            <li><a>お問い合わせ</a></li>
-            <li><a>利用規約</a></li>
-            <li><a>プライバシーポリシー</a></li>
+            <li><%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete } %></li>
+            <li><a><%= link_to t('information.contact_us'), '#' %></a></li>
+            <li><a><%= link_to t('information.terms_of_use'), '#' %></a></li>
+            <li><a><%= link_to t('information.privacy_policy'), '#' %></a></li>
           </ul>
         </details>
       </li>
