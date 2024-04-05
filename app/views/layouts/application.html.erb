@@ -11,12 +11,20 @@
   </head>
 
   <body>
+    <!-- ヘッダー -->
     <% if logged_in? %>
       <%= render "shared/header" %>
     <% else %>
       <%= render "shared/before_login_header" %>
     <% end %>
+    <!-- ヘッダー -->
     <%= yield %>
-    <%= render "shared/footer" %>
+    <!-- フッターとボトムナビゲーション -->
+    <% if logged_in? %>
+      <%= render "shared/bottom_navbar" %>
+    <% else %>
+      <%= render "shared/footer" %>
+    <% end %>
+    <!-- フッターとボトムナビゲーション -->
   </body>
 </html>
