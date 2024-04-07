@@ -9,3 +9,13 @@ ja:
         name: ニックネーム
         password: パスワード
         password_confirmation: パスワード確認
+      competition:
+        name: "大会名"
+        venue: "会場名"
+        date: "開催日"
+        competition_type: "大会種別"
+        gearcategory_type: "ギア種別"
+        category: "競技種別"
+        age_group: "年齢別区分"
+        weight_class: "階級別区分"
+        participation_status: "参加状況"
