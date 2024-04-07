@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_06_083513) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_07_032003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_06_083513) do
     t.string "name", null: false
     t.string "venue"
     t.date "date", null: false
-    t.integer "type", default: 0, null: false
+    t.integer "competition_type", default: 0, null: false
     t.integer "gearcategory_type", default: 0, null: false
     t.integer "category", default: 0, null: false
     t.integer "age_group", default: 0, null: false
