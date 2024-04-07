@@ -50,5 +50,5 @@ class Competition < ApplicationRecord
     women_junior_47kg: 19
   }
   # 出場予定: 出場済、出場予定。本リリース後の大会出場予定記録で使う定義
-  enum participation_status: { scheduled: 0, participated: 1 }
+  enum participation_status: { participated: 0, scheduled: 1 }
 end
