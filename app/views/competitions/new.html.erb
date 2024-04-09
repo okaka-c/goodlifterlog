@@ -1,0 +1,65 @@
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+      <!-- ここからform_withを使う形に修正 -->
+      <%= form_with model: @competition do |f| %>
+        <label class="form-control mb-6">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'input input-bordered input-xs w-full max-w-xs', placeholder:"大会名", required: true %>
+        </label>
+        <label class="form-control mb-6">
+          <%= f.label :venue %>
+          <%= f.text_field :venue, class: 'input input-bordered input-xs w-full max-w-xs', placeholder:"会場名", required: true %>
+        </label>
+        <label class="form-control mb-6">
+          <%= f.label :date %>
+          <%= f.date_field :date, class: 'input input-bordered input-xs w-full max-w-xs', placeholder:"開催日", required: true %>
+        </label>
+        <!-- ここからセレクトボックス -->
+        <!-- 大会種別 -->
+        <label class="form-control mb-6">
+          <%= f.label :competition_type %>
+          <%= f.select :competition_type,
+          Competition.competition_types_i18n.invert.map { |key, value| [key, Competition.competition_types[value]] },
+          {include_blank: '大会種別'},
+          { class: 'select select-bordered w-full max-w-xs', required: true } %>
+        </label>
+        <!-- ギアカテゴリ -->
+        <label class="form-control mb-6">
+          <%= f.label :gearcategory_type %>
+          <%= f.select :gearcategory_type,
+          Competition.gearcategory_types_i18n.invert.map { |key, value| [key, Competition.gearcategory_types[value]] },
+          {include_blank: 'ノーギアかフルギアか'},
+          { class: 'select select-bordered w-full max-w-xs', required: true } %>
+        </label>
+        <!-- 競技種別 -->
+        <label class="form-control mb-6">
+          <%= f.label :category %>
+          <%= f.select :category,
+          Competition.categories_i18n.invert.map { |key, value| [key, Competition.categories[value]] },
+          {include_blank: '競技種別'},
+          { class: 'select select-bordered w-full max-w-xs', required: true } %>
+        </label>
+        <!-- 年齢別区分 -->
+        <label class="form-control mb-6">
+          <%= f.label :age_group %>
+          <%= f.select :age_group,
+          Competition.age_groups_i18n.invert.map { |key, value| [key, Competition.age_groups[value]] },
+          {include_blank: '年齢別区分'},
+          { class: 'select select-bordered w-full max-w-xs', required: true } %>
+        </label>
+        <!-- 体重区分 -->
+        <label class="form-control mb-6">
+          <%= f.label :weight_class %>
+          <%= f.select :weight_class,
+          Competition.weight_classes_i18n.invert.map { |key, value| [key, Competition.weight_classes[value]] },
+          {include_blank: '体重区分'},
+          { class: 'select select-bordered w-full max-w-xs', required: true } %>
+        </label>
+        <!-- ここまでセレクトボックス -->
+        <div class="form-control mt-6">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+      <!-- ここまでform_withを使う形に修正 -->
+  </div>
+</div>
