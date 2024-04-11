@@ -19,7 +19,7 @@
         <label class="form-control mb-6">
           <%= f.label :competition_type %>
           <%= f.select :competition_type,
-          Competition.competition_types_i18n.invert.map { |key, value| [key, Competition.competition_types[value]] },
+          Competition.competition_types_i18n.invert.map { |key, value| [key, value] },
           {include_blank: '大会種別'},
           { class: 'select select-bordered w-full max-w-xs', required: true } %>
         </label>
@@ -27,7 +27,7 @@
         <label class="form-control mb-6">
           <%= f.label :gearcategory_type %>
           <%= f.select :gearcategory_type,
-          Competition.gearcategory_types_i18n.invert.map { |key, value| [key, Competition.gearcategory_types[value]] },
+          Competition.gearcategory_types_i18n.invert.map { |key, value| [key, value] },
           {include_blank: 'ノーギアかフルギアか'},
           { class: 'select select-bordered w-full max-w-xs', required: true } %>
         </label>
@@ -35,7 +35,7 @@
         <label class="form-control mb-6">
           <%= f.label :category %>
           <%= f.select :category,
-          Competition.categories_i18n.invert.map { |key, value| [key, Competition.categories[value]] },
+          Competition.categories_i18n.invert.map { |key, value| [key, value] },
           {include_blank: '競技種別'},
           { class: 'select select-bordered w-full max-w-xs', required: true } %>
         </label>
@@ -43,7 +43,7 @@
         <label class="form-control mb-6">
           <%= f.label :age_group %>
           <%= f.select :age_group,
-          Competition.age_groups_i18n.invert.map { |key, value| [key, Competition.age_groups[value]] },
+          Competition.age_groups_i18n.invert.map { |key, value| [key, value] },
           {include_blank: '年齢別区分'},
           { class: 'select select-bordered w-full max-w-xs', required: true } %>
         </label>
@@ -51,7 +51,7 @@
         <label class="form-control mb-6">
           <%= f.label :weight_class %>
           <%= f.select :weight_class,
-          Competition.weight_classes_i18n.invert.map { |key, value| [key, Competition.weight_classes[value]] },
+          Competition.weight_classes_i18n.invert.map { |key, value| [key, value] },
           {include_blank: '体重区分'},
           { class: 'select select-bordered w-full max-w-xs', required: true } %>
         </label>
