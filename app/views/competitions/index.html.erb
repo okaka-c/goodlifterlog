@@ -1,7 +1,17 @@
 <div class="min-h-screen bg-base-200">
   <h1>Competitions#index</h1>
   <p>ログイン成功！</p>
-  <button class="btn btn-primary">
-    <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
-  </button>
+ <!-- 大会結果一覧 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @competitions.present? %>
+          <%= render @competitions %>
+        <% else %>
+          <p>存在しません</p>
+        <% end %>
+       </div>
+    </div>
+  </div>
+
 </div>
