@@ -32,7 +32,7 @@
     <label class="form-control mb-6">
         <%= f.label :category %>
         <%= f.select :category,
-        Competition.categories_i18n.invert.map { |key, value| [key, value] },
+        options_for_select(Competition::CATEGORIES, f.object.category),
         {include_blank: '競技種別'},
         { class: 'select select-bordered w-full max-w-xs', required: true } %>
     </label>
@@ -40,7 +40,7 @@
     <label class="form-control mb-6">
         <%= f.label :age_group %>
         <%= f.select :age_group,
-        Competition.age_groups_i18n.invert.map { |key, value| [key, value] },
+        options_for_select(Competition::AGE_GROUPS, f.object.age_group),
         {include_blank: '年齢別区分'},
         { class: 'select select-bordered w-full max-w-xs', required: true } %>
     </label>
@@ -48,7 +48,7 @@
     <label class="form-control mb-6">
         <%= f.label :weight_class %>
         <%= f.select :weight_class,
-        Competition.weight_classes_i18n.invert.map { |key, value| [key, value] },
+        grouped_options_for_select(Competition::WEIGHT_CLASSES, f.object.weight_class),
         {include_blank: '体重区分'},
         { class: 'select select-bordered w-full max-w-xs', required: true } %>
     </label>
