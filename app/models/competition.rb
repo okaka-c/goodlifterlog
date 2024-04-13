@@ -14,41 +14,20 @@ class Competition < ApplicationRecord
   # enum定義
   enum competition_type: { official: 0, unofficial: 1 } # 大会種別：公式大会、非公式大会
   enum gearcategory_type: { raw: 0, equipped: 1 } # ギア有無: ギア無し(raw), ギア有(equipped)
-  enum category: { powerlifting: 0, single_bench_press: 1 } # 競技主別: パワーリフティング,シングルベンチ
-  # 年齢区分
-  enum age_group: {
-    open: 0,
-    sub_junior: 1,
-    junior: 2,
-    masters_1: 3,
-    masters_2: 4,
-    masters_3: 5,
-    masters_4: 6,
-    masters_5: 7
-  }
-  # 階級区分
-  enum weight_class: {
-    men_59kg: 0,
-    men_66kg: 1,
-    men_74kg: 2,
-    men_83kg: 3,
-    men_93kg: 4,
-    men_105kg: 5,
-    men_120kg: 6,
-    men_120kg_plus: 7,
-    men_junior_53kg: 8,
-    men_junior_59kg: 9,
-    women_47kg: 10,
-    women_52kg: 11,
-    women_57kg: 12,
-    women_63kg: 13,
-    women_69kg: 14,
-    women_76kg: 15,
-    women_84kg: 16,
-    women_84kg_plus: 17,
-    women_junior_43kg: 18,
-    women_junior_47kg: 19
-  }
-  # 出場予定: 出場済、出場予定。本リリース後の大会出場予定記録で使う定義
-  enum participation_status: { participated: 0, scheduled: 1 }
+  enum participation_status: { participated: 0, scheduled: 1 } # 出場予定: 出場済、出場予定。本リリース後の大会出場予定記録で使う定義
+
+  # 定数定義
+  CATEGORIES = [ 'パワーリフティング','シングルベンチプレス' ].freeze
+  AGE_GROUPS = [ '一般', 'サブジュニア', 'ジュニア', 'マスターズ1', 'マスターズ2', 'マスターズ3', 'マスターズ4', 'マスターズ5' ].freeze
+  WEIGHT_CLASSES = {
+    '男子' => [
+      '男子59㎏級', '男子66㎏級', '男子74㎏級', '男子83㎏級', '男子93㎏級', '男子105㎏級',
+      '男子120㎏級', '男子120㎏超級', '男子53㎏級(サブジュニア・ジュニア)', '男子59㎏級(サブジュニア・ジュニア)'
+    ],
+    '女子' => [
+      '女子47㎏級', '女子52㎏級', '女子57㎏級', '女子63㎏級', '女子69㎏級', '女子76㎏級',
+      '女子84㎏級', '女子84㎏超級', '女子43㎏級(サブジュニア・ジュニア)', '女子47㎏級(サブジュニア・ジュニア)'
+    ]
+  }.freeze
+
 end
