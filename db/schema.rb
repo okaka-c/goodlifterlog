@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_14_051755) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_14_070228) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_051755) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["competition_id"], name: "index_competition_records_on_competition_id"
+    t.index ["competition_id"], name: "index_competition_records_on_competition_id", unique: true
   end
 
   create_table "competitions", force: :cascade do |t|
