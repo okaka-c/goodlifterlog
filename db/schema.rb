@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_13_013918) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_14_051755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "competition_records", force: :cascade do |t|
+    t.bigint "competition_id", null: false
+    t.float "weight", null: false
+    t.float "squat_first_attempt"
+    t.float "squat_second_attempt"
+    t.float "squat_third_attempt"
+    t.float "benchpress_first_attempt"
+    t.float "benchpress_second_attempt"
+    t.float "benchpress_third_attempt"
+    t.float "deadlift_first_attempt"
+    t.float "deadlift_second_attempt"
+    t.float "deadlift_third_attempt"
+    t.integer "squat_first_attempt_result", default: 0
+    t.integer "squat_second_attempt_result", default: 0
+    t.integer "squat_third_attempt_result", default: 0
+    t.integer "benchpress_first_attempt_result", default: 0
+    t.integer "benchpress_second_attempt_result", default: 0
+    t.integer "benchpress_third_attempt_result", default: 0
+    t.integer "deadlift_first_attempt_result", default: 0
+    t.integer "deadlift_second_attempt_result", default: 0
+    t.integer "deadlift_third_attempt_result", default: 0
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_competition_records_on_competition_id"
+  end
 
   create_table "competitions", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -39,5 +66,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_13_013918) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "competition_records", "competitions"
   add_foreign_key "competitions", "users"
 end
