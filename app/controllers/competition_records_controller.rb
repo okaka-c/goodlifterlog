@@ -1,0 +1,2 @@
+class CompetitionRecordsController < ApplicationController
+end
