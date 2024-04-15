@@ -35,6 +35,9 @@
     <strong>Participation_status:</strong>
     <%= @competition.participation_status_i18n %>
   </p>
+  <button class="btn btn-primary">
+    <%= link_to "大会結果記録", new_competition_competition_record_path(@competition) %>
+  </button>
   <p>
     <strong>---------------</strong>
   </p>
