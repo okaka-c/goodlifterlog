@@ -1,14 +1,14 @@
 class CompetitionRecordsController < ApplicationController
   def new
-    @competition_records = CompetitionRecord.new
+    @competition_record = CompetitionRecord.new
     @competition = Competition.find(params[:competition_id])
   end
 
   def create
-    @competition_records = CompetitionRecord.new(competition_record_params)
+    @competition_record = CompetitionRecord.new(competition_record_params)
     @competition = Competition.find(params[:competition_id])
-    if @competition_records.save
-      redirect_to competitions_path
+    if @competition_record.save
+      redirect_to competition_path(@competition)
     else
       render :new, status: :unprocessable_entity
     end

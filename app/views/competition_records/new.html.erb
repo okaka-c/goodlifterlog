@@ -1,7 +1,7 @@
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse">
       <!-- ここからform_withを使う形に修正 -->
-    <%= form_with model: @competition_records, url: competition_competition_records_path(@competition)  do |f| %>
+    <%= form_with model: @competition_record, url: competition_competition_records_path(@competition)  do |f| %>
     <label class="form-control mb-6">
         <%= f.label :weight %>
         <%= f.text_field :weight, class: 'input input-bordered input-xs w-full max-w-xs', placeholder:"検量体重", required: true %>
