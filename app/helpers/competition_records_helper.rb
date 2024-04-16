@@ -1,0 +1,2 @@
+module CompetitionRecordsHelper
+end

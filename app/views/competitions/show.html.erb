@@ -1,0 +1,49 @@
+<div id="<%= dom_id @competition %>">
+  <p>
+    <strong>Name:</strong>
+    <%= @competition.name %>
+  </p>
+  <p>
+    <strong>Venue:</strong>
+    <%= @competition.venue %>
+  </p>
+  <p>
+    <strong>Date:</strong>
+    <%= @competition.date %>
+  </p>
+  <p>
+    <strong>competition_type:</strong>
+    <%= @competition.competition_type_i18n %>
+  </p>
+  <p>
+    <strong>Gearcategory_type:</strong>
+    <%= @competition.gearcategory_type_i18n %>
+  </p>
+  <p>
+    <strong>Category:</strong>
+    <%= @competition.category %>
+  </p>
+  <p>
+    <strong>Age_group:</strong>
+    <%= @competition.age_group %>
+  </p>
+  <p>
+    <strong>Weight_class:</strong>
+    <%= @competition.weight_class %>
+  </p>
+  <p>
+    <strong>Participation_status:</strong>
+    <%= @competition.participation_status_i18n %>
+  </p>
+  <button class="btn btn-primary">
+    <%= link_to "大会結果記録", new_competition_competition_record_path(@competition) %>
+  </button>
+  <p>
+    <strong>---------------</strong>
+  </p>
+  <% if CompetitionRecord.exists?(competition_id: @competition.id) %>
+	  <%= render 'competition_records/competition_record', competition_record: @competition_record %>
+  <% else %>
+    <p>大会結果記録はまだ未登録です</p>
+  <% end %>
+</div>

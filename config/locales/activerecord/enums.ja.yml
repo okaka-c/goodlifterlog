@@ -10,3 +10,43 @@ ja:
       participation_status:
         participated: "出場済"
         scheduled: "出場予定"
+    competition_record:
+      # スクワット判定結果
+      squat_first_attempt_result:
+        not_attempted: "未試行"
+        success: "成功"
+        failure: "失敗"
+      squat_second_attempt_result:
+        not_attempted: "未試行"
+        success: "成功"
+        failure: "失敗"
+      squat_third_attempt_result:
+        not_attempted: "未試行"
+        success: "成功"
+        failure: "失敗"
+      # ベンチプレス判定結果
+      benchpress_first_attempt_result:
+        not_attempted: "未試行"
+        success: "成功"
+        failure: "失敗"
+      benchpress_second_attempt_result:
+        not_attempted: "未試行"
+        success: "成功"
+        failure: "失敗"
+      benchpress_third_attempt_result:
+        not_attempted: "未試行"
+        success: "成功"
+        failure: "失敗"
+      # デッドリフト判定結果
+      deadlift_first_attempt_result:
+        not_attempted: "未試行"
+        success: "成功"
+        failure: "失敗"
+      deadlift_second_attempt_result:
+        not_attempted: "未試行"
+        success: "成功"
+        failure: "失敗"
+      deadlift_third_attempt_result:
+        not_attempted: "未試行"
+        success: "成功"
+        failure: "失敗"

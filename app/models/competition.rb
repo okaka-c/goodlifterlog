@@ -1,5 +1,6 @@
 class Competition < ApplicationRecord
   belongs_to :user
+  has_one :competition_record, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :venue, length: { maximum: 255 }

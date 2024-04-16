@@ -16,6 +16,11 @@ class CompetitionsController < ApplicationController
     end
   end
 
+  def show
+    @competition = Competition.find(params[:id])
+    @competition_record = @competition.competition_record
+  end
+
 private
 
   def competition_params
