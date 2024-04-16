@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_14_070228) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_16_104608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,15 +26,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_070228) do
     t.float "deadlift_first_attempt"
     t.float "deadlift_second_attempt"
     t.float "deadlift_third_attempt"
-    t.integer "squat_first_attempt_result", default: 0
-    t.integer "squat_second_attempt_result", default: 0
-    t.integer "squat_third_attempt_result", default: 0
-    t.integer "benchpress_first_attempt_result", default: 0
-    t.integer "benchpress_second_attempt_result", default: 0
-    t.integer "benchpress_third_attempt_result", default: 0
-    t.integer "deadlift_first_attempt_result", default: 0
-    t.integer "deadlift_second_attempt_result", default: 0
-    t.integer "deadlift_third_attempt_result", default: 0
+    t.integer "squat_first_attempt_result", default: 0, null: false
+    t.integer "squat_second_attempt_result", default: 0, null: false
+    t.integer "squat_third_attempt_result", default: 0, null: false
+    t.integer "benchpress_first_attempt_result", default: 0, null: false
+    t.integer "benchpress_second_attempt_result", default: 0, null: false
+    t.integer "benchpress_third_attempt_result", default: 0, null: false
+    t.integer "deadlift_first_attempt_result", default: 0, null: false
+    t.integer "deadlift_second_attempt_result", default: 0, null: false
+    t.integer "deadlift_third_attempt_result", default: 0, null: false
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
