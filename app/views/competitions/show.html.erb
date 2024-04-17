@@ -41,6 +41,9 @@
   <button class="btn btn-primary">
     <%= link_to "編集", edit_competition_path(@competition) %>
   </button>
+  <button class="btn btn-primary">
+    <li><%= link_to "削除", competition_path(@competition), data: {turbo_method: :delete, turbo_confirm: "削除しますか？"} %></li>
+  </button>
   <p>
     <strong>---------------</strong>
   </p>

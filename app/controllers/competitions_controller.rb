@@ -34,6 +34,12 @@ class CompetitionsController < ApplicationController
     end
   end
 
+  def destroy
+    competition = current_user.competitions.find(params[:id])
+    competition.destroy!
+    redirect_to competitions_path
+  end  
+
 private
 
   def competition_params
