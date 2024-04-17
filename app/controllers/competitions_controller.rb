@@ -21,6 +21,19 @@ class CompetitionsController < ApplicationController
     @competition_record = @competition.competition_record
   end
 
+  def edit
+    @competition = current_user.competitions.find(params[:id])
+  end
+
+  def update
+    @competition = current_user.competitions.find(params[:id])
+    if @competition.update(competition_params)
+      redirect_to competition_path(@competition)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
 private
 
   def competition_params
