@@ -18,7 +18,7 @@ class CompetitionRecordsController < ApplicationController
     @competition_record = CompetitionRecord.find(params[:id])
     @competition = @competition_record.competition
   end
-  
+
   def update
     @competition_record = CompetitionRecord.find(params[:id])
     @competition = @competition_record.competition
@@ -29,6 +29,12 @@ class CompetitionRecordsController < ApplicationController
     end
   end
 
+  def destroy
+    competition = Competition.find(params[:competition_id])
+    competition_record = competition.competition_record
+    competition_record.destroy!
+    redirect_to competitions_path
+  end
   private
 
   def competition_record_params
