@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: [:create, :new]
   resources :competitions do
-    resources :competition_records, shallow: true
+    resources :competition_records
   end
   # Defines the root path route ("/")
   # root "articles#index"
