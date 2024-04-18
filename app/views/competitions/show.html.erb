@@ -48,7 +48,7 @@
     <strong>---------------</strong>
   </p>
   <% if CompetitionRecord.exists?(competition_id: @competition.id) %>
-	  <%= render 'competition_records/competition_record', competition_record: @competition_record %>
+	  <%= render 'competition_records/competition_record', competition_record: @competition_record, competition: @competition%>
   <% else %>
     <p>大会結果記録はまだ未登録です</p>
   <% end %>
