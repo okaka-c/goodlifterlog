@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gender: 1
+  birthday: 2024-04-19
+  user: one
+
+two:
+  gender: 1
+  birthday: 2024-04-19
+  user: two
