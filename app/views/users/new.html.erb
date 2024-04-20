@@ -22,8 +22,23 @@
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'input input-bordered', placeholder:"password_confirmation", required: true %>
         </div>
+        <!-- Profileの性別と生年月日入力フォームここから -->
+        <%= f.fields_for :profile do |profile_f| %>
+          <div class="form-control">
+            <%= profile_f.label :gender %>
+            <%= profile_f.select :gender,
+            Profile.genders_i18n.invert.map { |key, value| [key, value] },
+            {include_blank: '性別'},
+            { class: 'select select-bordered w-full max-w-xs', required: true } %>
+          </div>
+          <div class="form-control">
+            <%= profile_f.label :birthday %>
+            <%= profile_f.date_field :birthday, class: 'input input-bordered input-xs w-full max-w-xs', placeholder:"開催日", required: true %>
+          </div>
+        <% end %>
+        <!-- Profileの性別と生年月日入力フォームここまで -->
         <div class="form-control mt-6">
-           <%= f.submit class: 'btn btn-primary' %>
+          <%= f.submit class: 'btn btn-primary' %>
         </div>
       <% end %>
       <!-- ここまでform_withを使う形に修正 -->
