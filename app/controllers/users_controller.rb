@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    @user.build_profile
   end
 
   def create
-    @user = User.new(user_params) 
+    @user = User.new(user_params)
     if @user.save
 	    # 登録が完了したら仮のtopのindex.html.elbへリダイレクト
       redirect_to root_path
@@ -17,6 +18,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, profile_attributes: [:gender, :birthday])
   end
 end

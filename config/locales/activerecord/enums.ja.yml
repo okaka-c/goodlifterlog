@@ -1,5 +1,9 @@
 ja:
   enums:
+    profile:
+      gender:
+        man: "男性"
+        women: "女性"
     competition:
       competition_type:
         official: "公式大会"
@@ -50,3 +54,7 @@ ja:
         not_attempted: "未試行"
         success: "成功"
         failure: "失敗"
+    profile:
+      gender:
+        man: "男性"
+        women: "女性"

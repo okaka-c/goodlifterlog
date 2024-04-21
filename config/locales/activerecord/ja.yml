@@ -40,3 +40,6 @@ ja:
         deadlift_second_attempt_result: "デッドリフト 第2試技結果"
         deadlift_third_attempt_result: "デッドリフト 第3試技結果"
         comment: "振り返りメモ"
+      profile:
+        gender: "性別"
+        birthday: "生年月日"

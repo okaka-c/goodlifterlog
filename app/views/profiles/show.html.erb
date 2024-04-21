@@ -1,0 +1,23 @@
+<div id="<%= dom_id @profile %>">
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+  <p>
+    <strong>Gender:</strong>
+    <%= @profile.gender_i18n %>
+  </p>
+  <p>
+    <strong>Birthday:</strong>
+    <%= @profile.birthday %>
+  </p>
+
+
+  <button class="btn btn-primary">
+    <%= link_to "編集", "#" %>
+  </button>
+
