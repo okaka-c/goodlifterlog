@@ -74,6 +74,10 @@
   <strong>デッドリフト第3試技判定結果</strong>
   <%= competition_record.deadlift_third_attempt_result %>
 </p>
+<p>
+  <strong>コメント</strong>
+  <%= simple_format(h(competition_record.comment)) %>
+</p>
 <button class="btn btn-primary">
   <%= link_to "大会結果の編集", edit_competition_competition_record_path(competition, competition_record) %>
 </button>
