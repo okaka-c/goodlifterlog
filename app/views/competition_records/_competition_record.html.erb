@@ -76,7 +76,7 @@
 </p>
 <p>
   <strong>コメント</strong>
-  <%= competition_record.comment %>
+  <%= simple_format(h(competition_record.comment)) %>
 </p>
 <button class="btn btn-primary">
   <%= link_to "大会結果の編集", edit_competition_competition_record_path(competition, competition_record) %>
