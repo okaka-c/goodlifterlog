@@ -48,7 +48,8 @@ class CompetitionRecordsController < ApplicationController
       :benchpress_third_attempt, :benchpress_third_attempt_result,
       :deadlift_first_attempt, :deadlift_first_attempt_result,
       :deadlift_second_attempt, :deadlift_second_attempt_result,
-      :deadlift_third_attempt, :deadlift_third_attempt_result
+      :deadlift_third_attempt, :deadlift_third_attempt_result,
+      :comment
     ).merge(competition_id: params[:competition_id])
   end
 end

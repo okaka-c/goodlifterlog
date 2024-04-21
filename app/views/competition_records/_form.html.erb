@@ -132,8 +132,10 @@
             { class: 'select select-bordered w-full max-w-xs' } %>
         </label>
     </div>
-
-
+    <label class="form-control mb-6">
+        <%= f.label :comment %>
+        <%= f.text_area :comment, class:"textarea textarea-bordered", placeholder:"振り返りコメント" %>
+    </label>
     <div class="form-control mt-6">
         <%= f.submit class: 'btn btn-primary' %>
     </div>
