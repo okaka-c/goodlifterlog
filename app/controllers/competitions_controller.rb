@@ -1,6 +1,6 @@
 class CompetitionsController < ApplicationController
   def index
-    @competitions = Competition.all
+    @competitions = current_user.competitions.order(date: :desc)
   end
 
   def new
