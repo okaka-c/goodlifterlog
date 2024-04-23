@@ -5,7 +5,7 @@
     </div>
     <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <!-- ここからform_withを使う形に修正 -->
-      <%= form_with model: @user, html: { class: "card-body" } do |f| %>
+      <%= form_with model: @user, url: profile_path, html: { class: "card-body" } do |f| %>
         <div class="form-control">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'input input-bordered', placeholder:"name", required: true %>
