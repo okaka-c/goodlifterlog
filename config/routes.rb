@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "tops#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: [:create, :new, :edit, :update]
-  resource :profile, only: :show
+  resource :profile, only: [:show, :edit, :update]
   resources :competitions do
     resources :competition_records
   end
