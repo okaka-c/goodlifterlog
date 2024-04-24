@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :new, :edit, :update]
   resource :profile, only: [:show, :edit, :update]
   resources :competitions do
-    resources :competition_records
+    resource :competition_record, only: [:create, :new, :edit, :update, :destroy]
   end
   # Defines the root path route ("/")
   # root "articles#index"

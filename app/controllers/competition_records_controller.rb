@@ -1,12 +1,13 @@
 class CompetitionRecordsController < ApplicationController
+  before_action :set_competition
+  before_action :set_competition_record, only: %i[ edit update destroy ]
+
   def new
     @competition_record = CompetitionRecord.new
-    @competition = Competition.find(params[:competition_id])
   end
 
   def create
     @competition_record = CompetitionRecord.new(competition_record_params)
-    @competition = Competition.find(params[:competition_id])
     if @competition_record.save
       redirect_to competition_path(@competition)
     else
@@ -14,14 +15,9 @@ class CompetitionRecordsController < ApplicationController
     end
   end
 
-  def edit
-    @competition_record = CompetitionRecord.find(params[:id])
-    @competition = @competition_record.competition
-  end
+  def edit; end
 
   def update
-    @competition_record = CompetitionRecord.find(params[:id])
-    @competition = @competition_record.competition
     if @competition_record.update(competition_record_params)
       redirect_to competition_path(@competition)
     else
@@ -30,11 +26,10 @@ class CompetitionRecordsController < ApplicationController
   end
 
   def destroy
-    competition = Competition.find(params[:competition_id])
-    competition_record = competition.competition_record
-    competition_record.destroy!
+    @competition_record.destroy!
     redirect_to competitions_path
   end
+q
   private
 
   def competition_record_params
@@ -51,5 +46,13 @@ class CompetitionRecordsController < ApplicationController
       :deadlift_third_attempt, :deadlift_third_attempt_result,
       :comment
     ).merge(competition_id: params[:competition_id])
+  end
+
+  def set_competition
+    @competition = current_user.competitions.find(params[:competition_id])
+  end
+
+  def set_competition_record
+    @competition_record = @competition.competition_record
   end
 end
