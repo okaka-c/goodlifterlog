@@ -29,7 +29,7 @@ class CompetitionRecordsController < ApplicationController
     @competition_record.destroy!
     redirect_to competitions_path
   end
-q
+
   private
 
   def competition_record_params
