@@ -1,4 +1,5 @@
 class CompetitionsController < ApplicationController
+  before_action :set_competition, only: %i[ show edit update destroy ]
   def index
     @competitions = current_user.competitions.order(date: :desc)
   end
@@ -17,16 +18,12 @@ class CompetitionsController < ApplicationController
   end
 
   def show
-    @competition = Competition.find(params[:id])
     @competition_record = @competition.competition_record
   end
 
-  def edit
-    @competition = current_user.competitions.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @competition = current_user.competitions.find(params[:id])
     if @competition.update(competition_params)
       redirect_to competition_path(@competition)
     else
@@ -35,8 +32,7 @@ class CompetitionsController < ApplicationController
   end
 
   def destroy
-    competition = current_user.competitions.find(params[:id])
-    competition.destroy!
+    @competition.destroy!
     redirect_to competitions_path
   end
 
@@ -44,5 +40,9 @@ private
 
   def competition_params
     params.require(:competition).permit(:name, :venue, :date, :competition_type, :gearcategory_type, :category, :age_group, :weight_class)
+  end
+
+  def set_competition
+    @competition = current_user.competitions.find(params[:id])
   end
 end
