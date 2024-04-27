@@ -1,59 +1,83 @@
 <%= form_with model: competition do |f| %>
-    <label class="form-control mb-6">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'input input-bordered input-xs w-full max-w-xs', placeholder:"大会名", required: true %>
-    </label>
-    <label class="form-control mb-6">
-        <%= f.label :venue %>
-        <%= f.text_field :venue, class: 'input input-bordered input-xs w-full max-w-xs', placeholder:"会場名", required: true %>
-    </label>
-    <label class="form-control mb-6">
-        <%= f.label :date %>
-        <%= f.date_field :date, class: 'input input-bordered input-xs w-full max-w-xs', placeholder:"開催日", required: true %>
-    </label>
-    <!-- ここからセレクトボックス -->
-    <!-- 大会種別 -->
-    <label class="form-control mb-6">
-        <%= f.label :competition_type %>
-        <%= f.select :competition_type,
-        Competition.competition_types_i18n.invert.map { |key, value| [key, value] },
-        {include_blank: '大会種別'},
-        { class: 'select select-bordered w-full max-w-xs', required: true } %>
-    </label>
-    <!-- ギアカテゴリ -->
-    <label class="form-control mb-6">
-        <%= f.label :gearcategory_type %>
-        <%= f.select :gearcategory_type,
-        Competition.gearcategory_types_i18n.invert.map { |key, value| [key, value] },
-        {include_blank: 'ノーギアかフルギアか'},
-        { class: 'select select-bordered w-full max-w-xs', required: true } %>
-    </label>
-    <!-- 競技種別 -->
-    <label class="form-control mb-6">
-        <%= f.label :category %>
-        <%= f.select :category,
-        options_for_select(Competition::CATEGORIES, f.object.category),
-        {include_blank: '競技種別'},
-        { class: 'select select-bordered w-full max-w-xs', required: true } %>
-    </label>
-    <!-- 年齢別区分 -->
-    <label class="form-control mb-6">
-        <%= f.label :age_group %>
-        <%= f.select :age_group,
-        options_for_select(Competition::AGE_GROUPS, f.object.age_group),
-        {include_blank: '年齢別区分'},
-        { class: 'select select-bordered w-full max-w-xs', required: true } %>
-    </label>
-    <!-- 体重区分 -->
-    <label class="form-control mb-6">
-        <%= f.label :weight_class %>
-        <%= f.select :weight_class,
-        grouped_options_for_select(Competition::WEIGHT_CLASSES, f.object.weight_class),
-        {include_blank: '体重区分'},
-        { class: 'select select-bordered w-full max-w-xs', required: true } %>
-    </label>
-    <!-- ここまでセレクトボックス -->
-    <div class="form-control mt-6">
-        <%= f.submit class: 'btn btn-primary' %>
+  <label class="form-control w-full max-w-xs mb-6">
+    <div class="label p-0 flex justify-start items-center">
+      <%= f.label :name, class: 'mr-2' %>
+      <p class="text-red-500">(必須)</p>
     </div>
+      <%= f.text_field :name, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"大会名", required: true %>
+  </label>
+  <label class="form-control w-full max-w-xs mb-6">
+    <div class="label p-0 flex justify-start items-center">
+      <%= f.label :venue, class: 'mr-2' %>
+      <p class="text-slate-500">(任意)</p>
+    </div>
+      <%= f.text_field :venue, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"会場名" %>
+  </label>
+  <label class="form-control w-full max-w-xs mb-6">
+    <div class="label p-0 flex justify-start items-center">
+      <%= f.label :date, class: 'mr-2' %>
+      <p class="text-red-500">(必須)</p>
+    </div>
+      <%= f.date_field :date, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"開催日", required: true %>
+  </label>
+  <!-- ここからセレクトボックス -->
+  <!-- 大会種別 -->
+  <label class="form-control w-full max-w-xs mb-6">
+    <div class="label p-0 flex justify-start items-center">
+      <%= f.label :competition_type, class: 'mr-2' %>
+      <p class="text-red-500">(必須)</p>
+    </div>
+      <%= f.select :competition_type,
+      Competition.competition_types_i18n.invert.map { |key, value| [key, value] },
+      {include_blank: '選択してください'},
+      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+  </label>
+  <!-- ギアカテゴリ -->
+  <label class="form-control w-full max-w-xs mb-6">
+    <div class="label p-0 flex justify-start items-center">
+      <%= f.label :gearcategory_type, class: 'mr-2' %>
+      <p class="text-red-500">(必須)</p>
+    </div>
+      <%= f.select :gearcategory_type,
+      Competition.gearcategory_types_i18n.invert.map { |key, value| [key, value] },
+      {include_blank: '選択してください'},
+      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+  </label>
+  <!-- 競技種別 -->
+  <label class="form-control w-full max-w-xs mb-6">
+    <div class="label p-0 flex justify-start items-center">
+      <%= f.label :category, class: 'mr-2' %>
+      <p class="text-red-500">(必須)</p>
+    </div>
+      <%= f.select :category,
+      options_for_select(Competition::CATEGORIES, f.object.category),
+      {include_blank: '選択してください'},
+      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+  </label>
+  <!-- 年齢別区分 -->
+  <label class="form-control w-full max-w-xs mb-6">
+    <div class="label p-0 flex justify-start items-center">
+      <%= f.label :age_group, class: 'mr-2' %>
+      <p class="text-red-500">(必須)</p>
+    </div>
+      <%= f.select :age_group,
+      options_for_select(Competition::AGE_GROUPS, f.object.age_group),
+      {include_blank: '選択してください'},
+      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+  </label>
+  <!-- 体重区分 -->
+  <label class="form-control w-full max-w-xs mb-6">
+    <div class="label p-0 flex justify-start items-center">
+      <%= f.label :weight_class, class: 'mr-2' %>
+      <p class="text-red-500">(必須)</p>
+    </div>
+      <%= f.select :weight_class,
+      grouped_options_for_select(Competition::WEIGHT_CLASSES, f.object.weight_class),
+      {include_blank: '選択してください'},
+      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+  </label>
+  <!-- ここまでセレクトボックス -->
+  <div class="form-control mt-6">
+      <%= f.submit class: 'btn btn-primary' %>
+  </div>
 <% end %>
