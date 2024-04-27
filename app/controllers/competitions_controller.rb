@@ -1,5 +1,7 @@
 class CompetitionsController < ApplicationController
   before_action :set_competition, only: %i[ show edit update destroy ]
+  skip_before_action :set_bottom_navi, only: %i[ new edit ]
+
   def index
     @competitions = current_user.competitions.order(date: :desc)
   end

@@ -21,7 +21,9 @@
     <%= yield %>
     <!-- フッターとボトムナビゲーション -->
     <% if logged_in? %>
-      <%= render "shared/bottom_navbar" %>
+      <% if @show_bottom_nav %>
+        <%= render "shared/bottom_navbar" %>
+      <% end %>
     <% else %>
       <%= render "shared/footer" %>
     <% end %>
