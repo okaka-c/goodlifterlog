@@ -1,6 +1,7 @@
 class CompetitionRecordsController < ApplicationController
   before_action :set_competition
   before_action :set_competition_record, only: %i[ edit update destroy ]
+  skip_before_action :set_bottom_navi, only: %i[ new edit ]
 
   def new
     @competition_record = CompetitionRecord.new
