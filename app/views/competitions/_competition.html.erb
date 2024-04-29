@@ -1,44 +1,8 @@
-<div id="<%= dom_id competition %>">
-  <p>
-    <strong>Name:</strong>
-    <%= competition.name %>
-  </p>
-  <p>
-    <strong>Venue:</strong>
-    <%= competition.venue %>
-  </p>
-  <p>
-    <strong>Date:</strong>
-    <%= competition.date %>
-  </p>
-  <p>
-    <strong>Competition_type:</strong>
-    <%= competition.competition_type_i18n %>
-  </p>
-  <p>
-    <strong>Gearcategory_type:</strong>
-    <%= competition.gearcategory_type_i18n %>
-  </p>
-  <p>
-    <strong>Category:</strong>
-    <%= competition.category %>
-  </p>
-  <p>
-    <strong>Age_group:</strong>
-    <%= competition.age_group %>
-  </p>
-  <p>
-    <strong>Weight_class:</strong>
-    <%= competition.weight_class %>
-  </p>
-  <p>
-    <strong>Participation_status:</strong>
-    <%= competition.participation_status_i18n %>
-  </p>
-  <p>
-  <button class="btn btn-primary"><%= link_to "詳細", competition_path(competition) %></button>
-  </p>
-  <p>
-    <strong>---------------</strong>
-  </p>
-</div>
+
+    <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+      <tr class="hover:bg-gray-50">
+        <th class="px-6 py-4 font-medium text-gray-900"><%= competition.date %></th>
+        <td class="px-6 py-4"><%= competition.name %></td>
+        <td class="flex justify-end gap-4 px-6 py-4 font-medium"><a href="">Delete</a><a href="" class="text-primary-700">Edit</a></td>
+      </tr>
+    </tbody>
