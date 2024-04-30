@@ -18,7 +18,9 @@
       <%= render "shared/before_login_header" %>
     <% end %>
     <!-- ヘッダー -->
-    <%= yield %>
+    <div class="pb-16">
+      <%= yield %>
+    </div>
     <!-- フッターとボトムナビゲーション -->
     <% if logged_in? %>
       <% if @show_bottom_nav %>
