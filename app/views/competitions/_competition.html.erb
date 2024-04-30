@@ -1,8 +1,10 @@
 
-    <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+    <tbody class="divide-y divide-gray-100 border-t border-gray-100 text-xs">
       <tr class="hover:bg-gray-50">
-        <th class="px-6 py-4 font-medium text-gray-900"><%= competition.date %></th>
-        <td class="px-6 py-4"><%= competition.name %></td>
-        <td class="flex justify-end gap-4 px-6 py-4 font-medium"><a href="">Delete</a><a href="" class="text-primary-700">Edit</a></td>
+        <td class="text-left px-4 py-4 text-gray-900"><%= competition.date %></td>
+        <td class="text-left px-4 py-4"><%= competition.name %></td>
+        <td class="px-4 py-4">
+          <%= link_to "詳細", competition_path(competition), class: "btn btn-sm text-xs" %>
+        </td>
       </tr>
     </tbody>
