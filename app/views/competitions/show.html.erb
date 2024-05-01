@@ -1,13 +1,12 @@
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col">
     <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4">
-      <div class="flex justify-end items-center w-full">
-        <%= link_to "削除", competition_path(@competition), data: {turbo_method: :delete, turbo_confirm: "削除しますか？"}, class: "btn btn-sm btn-error max-w-24" %>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title text-center">
-          <%= @competition.name %>
-        </h1>
+      <div class="card-body max-w-72 min-w-72">
+        <div class="flex justify-center">
+          <h1 class="card-title text-center">
+            <%= @competition.name %>
+          </h1>
+        </div>
         <div class="border-b-2 border-dashed py-2">
           <h2 class="font-bold"><%= Competition.human_attribute_name(:venue) %>:</h2>
           <p class="text-sm"> <%= @competition.venue %></p>
@@ -36,8 +35,9 @@
           <h2 class="font-bold"><%= Competition.human_attribute_name(:weight_class) %>:</h2>
           <p class="text-sm"> <%= @competition.weight_class %> </p>
         </div>
-        <div class="flex justify-center items-center w-full">
-          <%= link_to "編集", edit_competition_path(@competition), class: "btn btn-sm btn-primary max-w-24" %>
+        <div class="flex justify-end w-full">
+          <%= link_to "編集", edit_competition_path(@competition), class: "btn btn-sm btn-primary max-w-24 mx-2" %>
+          <%= link_to "削除", competition_path(@competition), data: {turbo_method: :delete, turbo_confirm: "削除しますか？"}, class: "btn btn-sm btn-error max-w-24" %>
         </div>
       </div>
     </div>
