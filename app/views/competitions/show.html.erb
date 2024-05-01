@@ -1,6 +1,6 @@
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col">
-    <div class="card items-center mx-auto max-w-80 bg-white shadow-xl p-4">
+    <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4">
       <div class="flex justify-end items-center w-full">
         <%= link_to "削除", competition_path(@competition), data: {turbo_method: :delete, turbo_confirm: "削除しますか？"}, class: "btn btn-sm btn-error max-w-24" %>
       </div>
@@ -40,6 +40,17 @@
           <%= link_to "編集", edit_competition_path(@competition), class: "btn btn-sm btn-primary max-w-24" %>
         </div>
       </div>
+    </div>
+    <!-- 大会試技結果詳細情報 -->
+    <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4">
+      <% if CompetitionRecord.exists?(competition_id: @competition.id) %>
+	      <%= render 'competition_records/competition_record', competition_record: @competition_record, competition: @competition%>
+      <% else %>
+        <div class="flex-col flex justify-center items-center w-full">
+          <p>大会結果記録はまだ未登録です</p>
+          <%= link_to "大会結果記録", new_competition_competition_record_path(@competition), class: "btn btn-sm btn-primary max-w-24" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
