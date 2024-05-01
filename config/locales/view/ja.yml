@@ -17,6 +17,10 @@ ja:
     new:
       title: ユーザー登録
       to_login_page: ログインページへ
+  competition_record:
+    first_attempt: "第1試技"
+    second_attempt: "第2試技"
+    third_attempt: "第3試技"
   header:
     login: ログイン
     logout: ログアウト
