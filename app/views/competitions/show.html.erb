@@ -2,37 +2,37 @@
   <div class="hero-content flex-col">
     <div class="card flex items-center mx-auto max-w-80 bg-white shadow-xl p-4">
       <div class="card-body">
-        <h1 class="card-title flex items-center gap-2 text-2xl font-semibold leading-10 mb-4">
+        <h1 class="card-title text-center">
           <%= @competition.name %>
         </h1>
-        <p class="mb-2">
-          <span class="font-bold"><%= Competition.human_attribute_name(:venue) %>:</span>
-          <%= @competition.venue %>
-        </p>
-        <p class="mb-2">
-            <span class="font-bold"><%= Competition.human_attribute_name(:date) %>:</span>
-            <%= @competition.date %>
-        </p>
-        <p class="border-t border-gray-300 pt-4 mt-4 mb-2">
-            <span class="font-bold"><%= Competition.human_attribute_name(:competition_type) %>:</span>
-            <%= @competition.competition_type_i18n %>
-        </p>
-        <p class="mb-2">
-            <span class="font-bold"><%= Competition.human_attribute_name(:gearcategory_type) %>:</span>
-            <%= @competition.gearcategory_type_i18n %>
-        </p>
-        <p class="mb-2">
-            <span class="font-bold"><%= Competition.human_attribute_name(:category) %>:</span>
-            <%= @competition.category %>
-        </p>
-        <p class="mb-2">
-            <span class="font-bold"><%= Competition.human_attribute_name(:age_group) %>:</span>
-            <%= @competition.age_group %>
-        </p>
-        <p class="mb-4">
-            <span class="font-bold"><%= Competition.human_attribute_name(:weight_class) %>:</span>
-            <%= @competition.weight_class %>
-        </p>
+        <div class="border-b-2 border-dashed py-2">
+          <h2 class="font-bold"><%= Competition.human_attribute_name(:venue) %>:</h2>
+          <p class="text-sm"> <%= @competition.venue %>あああああああああああああああああああああああああ </p>
+        </div>
+        <div class="border-b-2 border-dashed py-2">
+          <h2 class="font-bold"><%= Competition.human_attribute_name(:date) %>:</h2>
+          <p class="text-sm"> <%= @competition.date %> </p>
+        </div>
+        <div class="border-b-2 border-dashed py-2">
+          <h2 class="font-bold"><%= Competition.human_attribute_name(:competition_type) %>:</h2>
+          <p class="text-sm"> <%= @competition.competition_type_i18n %> </p>
+        </div>
+        <div class="border-b-2 border-dashed py-2">
+          <h2 class="font-bold"><%= Competition.human_attribute_name(:gearcategory_type) %>:</h2>
+          <p class="text-sm"> <%= @competition.gearcategory_type_i18n %> </p>
+        </div>
+        <div class="border-b-2 border-dashed py-2">
+          <h2 class="font-bold"><%= Competition.human_attribute_name(:category) %>:</h2>
+          <p class="text-sm"> <%= @competition.category %> </p>
+        </div>
+        <div class="border-b-2 border-dashed py-2">
+          <h2 class="font-bold"><%= Competition.human_attribute_name(:age_group) %>:</h2>
+          <p class="text-sm"> <%= @competition.age_group %> </p>
+        </div>
+        <div class="border-b-2 border-dashed py-2">
+          <h2 class="font-bold"><%= Competition.human_attribute_name(:weight_class) %>:</h2>
+          <p class="text-sm"> <%= @competition.weight_class %> </p>
+        </div>
       </div>
     </div>
   </div>
