@@ -20,6 +20,7 @@ module App
     config.i18n.available_locales = %i[ja en]
     # I18nライブラリに訳文の探索場所を指示する
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
-
+    # バリデーションエラー時に、divタグのfield_with_errorsが挿入されないように設定
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end
