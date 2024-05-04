@@ -9,7 +9,8 @@
             <%= f.label :name, class: 'mr-2' %>
             <p class="text-red-500">(必須)</p>
           </div>
-          <%= f.text_field :name, class: 'input input-bordered', placeholder:"name", required: true %>
+          <%= f.text_field :name, class: 'input input-bordered', placeholder:"name"%>
+          <%= render 'shared/error_messages', object: f.object, attribute: :name %>
         </div>
         <!-- Profileの性別と生年月日入力フォームここから -->
         <%= f.fields_for :profile do |profile_f| %>
@@ -21,14 +22,16 @@
             <%= profile_f.select :gender,
             Profile.genders_i18n.invert.map { |key, value| [key, value] },
             {include_blank: '性別'},
-            { class: 'select select-bordered w-full max-w-xs', required: true } %>
+            { class: 'select select-bordered w-full max-w-xs'} %>
+            <%= render 'shared/error_messages', object: profile_f.object, attribute: :gender %>
           </div>
           <div class="form-control">
             <div class="label p-0 flex justify-start items-center">
               <%= profile_f.label :birthday, class: 'mr-2'%>
               <p class="text-red-500">(必須)</p>
             </div>
-            <%= profile_f.date_field :birthday, class: 'input input-bordered', placeholder:"開催日", required: true %>
+            <%= profile_f.date_field :birthday, class: 'input input-bordered', placeholder:"開催日" %>
+            <%= render 'shared/error_messages', object: profile_f.object, attribute: :birthday %>
           </div>
         <% end %>
         <!-- Profileの性別と生年月日入力フォームここまで -->
