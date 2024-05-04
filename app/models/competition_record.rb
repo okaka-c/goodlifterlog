@@ -60,57 +60,57 @@ class CompetitionRecord < ApplicationRecord
   # カスタムバリデータ　スクワット判定結果
   def squat_first_attempt_is_not_be_not_attempted
     if squat_first_attempt.present? && squat_first_attempt >= 0 && squat_first_attempt_result == "not_attempted"
-      errors.add(:squat_first_attempt_result, "スクワットの第１試技判定結果は成功か失敗かを選んでください")
+      errors.add(:squat_first_attempt_result, "は成功か失敗かを選んでください")
     end
   end
 
   def squat_second_attempt_is_not_be_not_attempted
     if squat_second_attempt.present? && squat_second_attempt >= 0 && squat_second_attempt_result == "not_attempted"
-      errors.add(:squat_second_attempt_result, "スクワットの第2試技判定結果は成功か失敗かを選んでください")
+      errors.add(:squat_second_attempt_result, "は成功か失敗かを選んでください")
     end
   end
 
   def squat_third_attempt_is_not_be_not_attempted
     if squat_third_attempt.present? && squat_third_attempt >= 0 && squat_third_attempt_result == "not_attempted"
-      errors.add(:squat_third_attempt_result, "スクワットの第3試技判定結果は成功か失敗かを選んでください")
+      errors.add(:squat_third_attempt_result, "は成功か失敗かを選んでください")
     end
   end
 
   # カスタムバリデータ　ベンチプレス判定結果
   def benchpress_first_attempt_is_not_be_not_attempted
     if benchpress_first_attempt.present? && benchpress_first_attempt >= 0 && benchpress_first_attempt_result == "not_attempted"
-      errors.add(:benchpress_first_attempt_result, "スクワットの第１試技判定結果は成功か失敗かを選んでください")
+      errors.add(:benchpress_first_attempt_result, "は成功か失敗かを選んでください")
     end
   end
 
   def benchpress_second_attempt_is_not_be_not_attempted
     if benchpress_second_attempt.present? && benchpress_second_attempt >= 0 && benchpress_second_attempt_result == "not_attempted"
-      errors.add(:benchpress_second_attempt_result, "スクワットの第2試技判定結果は成功か失敗かを選んでください")
+      errors.add(:benchpress_second_attempt_result, "は成功か失敗かを選んでください")
     end
   end
 
   def benchpress_third_attempt_is_not_be_not_attempted
     if benchpress_third_attempt.present? && benchpress_third_attempt >= 0 && benchpress_third_attempt_result == "not_attempted"
-      errors.add(:benchpress_third_attempt_result, "スクワットの第3試技判定結果は成功か失敗かを選んでください")
+      errors.add(:benchpress_third_attempt_result, "は成功か失敗かを選んでください")
     end
   end
 
   # カスタムバリデータ　デッドリフト判定結果
   def deadlift_first_attempt_is_not_be_not_attempted
     if deadlift_first_attempt.present? && deadlift_first_attempt >= 0 && deadlift_first_attempt_result == "not_attempted"
-      errors.add(:deadlift_first_attempt_result, "スクワットの第１試技判定結果は成功か失敗かを選んでください")
+      errors.add(:deadlift_first_attempt_result, "は成功か失敗かを選んでください")
     end
   end
 
   def deadlift_second_attempt_is_not_be_not_attempted
     if deadlift_second_attempt.present? && deadlift_second_attempt >= 0 && deadlift_second_attempt_result == "not_attempted"
-      errors.add(:deadlift_second_attempt_result, "スクワットの第2試技判定結果は成功か失敗かを選んでください")
+      errors.add(:deadlift_second_attempt_result, "は成功か失敗かを選んでください")
     end
   end
 
   def deadlift_third_attempt_is_not_be_not_attempted
     if deadlift_third_attempt.present? && deadlift_third_attempt >= 0 && deadlift_third_attempt_result == "not_attempted"
-      errors.add(:deadlift_third_attempt_result, "スクワットの第3試技判定結果は成功か失敗かを選んでください")
+      errors.add(:deadlift_third_attempt_result, "は成功か失敗かを選んでください")
     end
   end
 end

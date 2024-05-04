@@ -4,7 +4,8 @@
       <%= f.label :name, class: 'mr-2' %>
       <p class="text-red-500">(必須)</p>
     </div>
-      <%= f.text_field :name, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"大会名", required: true %>
+      <%= f.text_field :name, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"大会名"%>
+      <%= render 'shared/error_messages', object: f.object, attribute: :name %>
   </label>
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
@@ -18,7 +19,8 @@
       <%= f.label :date, class: 'mr-2' %>
       <p class="text-red-500">(必須)</p>
     </div>
-      <%= f.date_field :date, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"開催日", required: true %>
+      <%= f.date_field :date, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"開催日" %>
+      <%= render 'shared/error_messages', object: f.object, attribute: :date %>
   </label>
   <!-- ここからセレクトボックス -->
   <!-- 大会種別 -->
@@ -30,7 +32,8 @@
       <%= f.select :competition_type,
       Competition.competition_types_i18n.invert.map { |key, value| [key, value] },
       {include_blank: '選択してください'},
-      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+      { class: 'select select-bordered select-sm w-full max-w-xs' } %>
+      <%= render 'shared/error_messages', object: f.object, attribute: :competition_type %>
   </label>
   <!-- ギアカテゴリ -->
   <label class="form-control w-full max-w-xs mb-6">
@@ -41,7 +44,8 @@
       <%= f.select :gearcategory_type,
       Competition.gearcategory_types_i18n.invert.map { |key, value| [key, value] },
       {include_blank: '選択してください'},
-      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+      { class: 'select select-bordered select-sm w-full max-w-xs'} %>
+      <%= render 'shared/error_messages', object: f.object, attribute: :gearcategory_type %>
   </label>
   <!-- 競技種別 -->
   <label class="form-control w-full max-w-xs mb-6">
@@ -52,7 +56,8 @@
       <%= f.select :category,
       options_for_select(Competition::CATEGORIES, f.object.category),
       {include_blank: '選択してください'},
-      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+      { class: 'select select-bordered select-sm w-full max-w-xs'} %>
+      <%= render 'shared/error_messages', object: f.object, attribute: :category %>
   </label>
   <!-- 年齢別区分 -->
   <label class="form-control w-full max-w-xs mb-6">
@@ -63,7 +68,8 @@
       <%= f.select :age_group,
       options_for_select(Competition::AGE_GROUPS, f.object.age_group),
       {include_blank: '選択してください'},
-      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+      { class: 'select select-bordered select-sm w-full max-w-xs'} %>
+      <%= render 'shared/error_messages', object: f.object, attribute: :age_group %>
   </label>
   <!-- 体重区分 -->
   <label class="form-control w-full max-w-xs mb-6">
@@ -74,7 +80,8 @@
       <%= f.select :weight_class,
       grouped_options_for_select(Competition::WEIGHT_CLASSES, f.object.weight_class),
       {include_blank: '選択してください'},
-      { class: 'select select-bordered select-sm w-full max-w-xs', required: true } %>
+      { class: 'select select-bordered select-sm w-full max-w-xs'} %>
+      <%= render 'shared/error_messages', object: f.object, attribute: :weight_class %>
   </label>
   <!-- ここまでセレクトボックス -->
   <div class="form-control mt-6">
