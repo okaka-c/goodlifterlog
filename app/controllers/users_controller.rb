@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
 	    # 登録が失敗したら再度新規登録画面へ
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
