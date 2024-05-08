@@ -6,8 +6,7 @@ class PasswordResetsController < ApplicationController
 
   # ユーザーがパスワードリセットフォームにメールアドレスを入力して送信したときに実行
   def create
-    @user = User.find_by(email: params[:email]
-    # ユーザーが存在する場合(@userがnillでない)、トークンを生成し、メールを送信する
+    @user = User.find_by(email: params[:email])
     @user&.deliver_reset_password_instructions!
     redirect_to login_path
   end
