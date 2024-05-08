@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'password_resets/create'
+  get 'password_resets/edit'
+  get 'password_resets/update'
   root "tops#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: [:create, :new, :edit, :update]
