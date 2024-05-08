@@ -243,6 +243,7 @@ Rails.application.config.sorcery.configure do |config|
   # config.battlenet.scope = "openid"
   # --- user config ---
   config.user_config do |user|
+    user.reset_password_mailer = UserMailer
     # -- core --
     # Specify username attributes, for example: [:username, :email].
     # Default: `[:email]`
