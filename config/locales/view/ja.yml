@@ -13,6 +13,12 @@ ja:
       login: ログイン
       to_register_page: 会員登録ページへ
       password_forget: パスワードをお忘れの方はこちら
+  password_resets:
+    new:
+      title: パスワードリセット申請
+      send: 送信
+    edit:
+      title: パスワードリセット
   users:
     new:
       title: ユーザー登録
