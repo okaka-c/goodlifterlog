@@ -7,9 +7,9 @@ class Record::WeighInsController < ApplicationController
     @weigh_in = WeighIn.new(weigh_in_params)
     if @weigh_in.valid? # 手動でバリデーションの検証をする
       session[:weigh_in] = @weigh_in.weight # セッションに一時保存
-      redirect_to new_record_squat_path # 次のステップへ遷移
+      redirect_to new_competition_squat_path # 次のステップへ遷移
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
