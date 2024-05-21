@@ -1,21 +1,20 @@
 Rails.application.routes.draw do
-  namespace :record do
-    get 'comments/new'
-    get 'comments/create'
-    get 'deadlifts/new'
-    get 'deadlifts/create'
-    get 'bench_presses/new'
-    get 'bench_presses/create'
-    get 'squats/new'
-    get 'squats/create'
-  end
   root "tops#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: [:create, :new, :edit, :update]
   resource :profile, only: [:show, :edit, :update]
   resources :password_resets, only: [:create, :edit, :update, :new]
+
   resources :competitions do
-    resource :competition_record, only: [:create, :new, :edit, :update, :destroy]
+    resource :competition_record, only: [:destroy]
+    scope module: 'record' do
+      # 各ステップのルーティング
+      resource :weigh_in, only: [:new, :create]
+      resource :squat, only: [:new, :create]
+      resource :bench_presse, only: [:new, :create]
+      resource :deadlift, only: [:new, :create]
+      resource :comment, only: [:new, :create]
+    end
   end
   # Defines the root path route ("/")
   # root "articles#index"
