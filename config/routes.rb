@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  namespace :record do
+    get 'comments/new'
+    get 'comments/create'
+    get 'deadlifts/new'
+    get 'deadlifts/create'
+    get 'bench_presses/new'
+    get 'bench_presses/create'
+    get 'squats/new'
+    get 'squats/create'
+  end
   root "tops#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: [:create, :new, :edit, :update]

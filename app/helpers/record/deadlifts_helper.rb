@@ -1,0 +1,2 @@
+module Record::DeadliftsHelper
+end

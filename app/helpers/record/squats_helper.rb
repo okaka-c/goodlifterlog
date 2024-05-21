@@ -1,0 +1,2 @@
+module Record::SquatsHelper
+end
