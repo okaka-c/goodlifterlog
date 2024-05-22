@@ -23,6 +23,8 @@ class Record::Squat
 	validate :squat_first_attempt_is_not_be_not_attempted
 	validate :squat_second_attempt_is_not_be_not_attempted
 	validate :squat_third_attempt_is_not_be_not_attempted
+
+	private
 	# カスタムバリデータ　スクワット判定結果
 	def squat_first_attempt_is_not_be_not_attempted
 		if squat_first_attempt.present? && squat_first_attempt >= 0 && squat_first_attempt_result == "not_attempted"
