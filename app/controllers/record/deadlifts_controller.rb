@@ -1,7 +1,31 @@
 class Record::DeadliftsController < ApplicationController
   def new
+    @dedlift = Record::Deadlift.new
   end
 
   def create
+    @dedlift = Record::Deadlift.new(dedlift_params)
+    if @dedlift.valid? # 手動でバリデーションの検証をする
+      session[:record].merge!({
+        deadlift_first_attempt: @deadlift.deadlift_first_attempt,
+        deadlift_second_attempt: @deadlift.deadlift_second_attempt,
+        deadlift_third_attempt: @deadlift.deadlift_third_attempt,
+        deadlift_first_attempt_result: @deadlift.deadlift_first_attempt_result,
+        deadlift_second_attempt_result: @deadlift.deadlift_second_attempt_result,
+        deadlift_third_attempt_result: @deadlift.deadlift_third_attempt_result
+      })
+      redirect_to new_competition_comment_path # 次のステップへ遷移
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def deadlift_params
+    params.require(:record_deadlift).permit(
+    :deadlift_first_attempt, :deadlift_first_attempt_result,
+    :deadlift_second_attempt, :deadlift_second_attempt_result,
+    :deadlift_third_attempt, :deadlift_third_attempt_result)
   end
 end
