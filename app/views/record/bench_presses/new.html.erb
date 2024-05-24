@@ -1,2 +1,76 @@
-<h1>Record::BenchPresses#new</h1>
-<p>Find me in app/views/record/bench_presses/new.html.erb</p>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col">
+    <div class="items-center mx-auto max-w-80 min-w-80">
+      <!-- ここからform_withを使う形に修正 -->
+      <h1 class="text-2xl text-center">試技結果の登録</h1>
+			<%= form_with model: @bench_press, url: competition_bench_presse_path(@competition)  do |f| %>
+			<!-- ベンチプレス試技結果 -->
+				<!-- ベンチプレス第１試技 -->
+				<div class="flex flex-col mb-6">
+					<div class="flex justify-between">
+						<label class="form-control flex-grow mr-2">
+							<%= f.label :benchpress_first_attempt %>
+							<%= f.text_field :benchpress_first_attempt, class: 'input input-bordered input-sm rounded w-full', placeholder:"重量を入力してください" %>
+						</label>
+						<label class="form-control flex-grow">
+							<div class="label p-0 flex justify-start items-center">
+								<%= f.label :benchpress_first_attempt_result, class: 'mr-2' %>
+								<p class="text-red-500">(※)</p>
+							</div>
+							<%= f.select :benchpress_first_attempt_result,
+							CompetitionRecord.benchpress_first_attempt_results_i18n.invert.map { |key, value| [key, value] },
+							{include_blank: '判定結果'}, { class: 'select select-bordered rounded select-sm w-full' } %>
+						</label>
+					</div>
+						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_first_attempt %>
+						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_first_attempt_result %>
+					</div>
+				<!-- ベンチプレス第2試技 -->
+				<div class="flex flex-col mb-6">
+					<div class="flex justify-between">
+						<label class="form-control flex-grow mr-2">
+							<%= f.label :benchpress_second_attempt %>
+							<%= f.text_field :benchpress_second_attempt, class: 'input input-bordered input-sm rounded w-full', placeholder:"重量を入力してください" %>
+						</label>
+						<label class="form-control flex-grow">
+							<div class="label p-0 flex justify-start items-center">
+								<%= f.label :benchpress_second_attempt_result, class: 'mr-2' %>
+								<p class="text-red-500">(※)</p>
+							</div>
+							<%= f.select :benchpress_second_attempt_result,
+							CompetitionRecord.benchpress_second_attempt_results_i18n.invert.map { |key, value| [key, value] },
+							{include_blank: '判定結果'}, { class: 'select select-bordered rounded select-sm w-full' } %>
+						</label>
+					</div>
+						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_second_attempt %>
+						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_second_attempt_result %>
+				</div>
+				<!-- ベンチプレス第3試技 -->
+				<div class="flex flex-col mb-6">
+					<div class="flex justify-between">
+						<label class="form-control flex-grow mr-2">
+							<%= f.label :benchpress_third_attempt %>
+							<%= f.text_field :benchpress_third_attempt, class: 'input input-bordered input-sm rounded w-full', placeholder:"重量を入力してください" %>
+						</label>
+						<label class="form-control flex-grow">
+							<div class="label p-0 flex justify-start items-center">
+								<%= f.label :benchpress_third_attempt_result, class: 'mr-2' %>
+								<p class="text-red-500">(※)</p>
+							</div>
+							<%= f.select :benchpress_third_attempt_result,
+							CompetitionRecord.benchpress_third_attempt_results_i18n.invert.map { |key, value| [key, value] },
+							{include_blank: '判定結果'}, { class: 'select select-bordered rounded select-sm w-full' } %>
+						</label>
+					</div>
+						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_third_attempt %>
+						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_third_attempt_result %>
+				</div>
+			<!-- ボタン -->
+				<div class="form-control mt-6">
+						<%= f.submit class: 'btn btn-primary' %>
+				</div>
+			<% end %>
+      <!-- ここまでform_withを使う形に修正 -->
+    </div>
+  </div>
+</div>
