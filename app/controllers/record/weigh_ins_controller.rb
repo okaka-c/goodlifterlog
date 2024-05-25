@@ -1,10 +1,12 @@
 class Record::WeighInsController < ApplicationController
   def new
     @weigh_in = Record::WeighIn.new
+    @competition = current_user.competitions.find(params[:competition_id])
   end
 
   def create
     @weigh_in = Record::WeighIn.new(weigh_in_params)
+    @competition = current_user.competitions.find(params[:competition_id])
     if @weigh_in.valid? # 手動でバリデーションの検証をする
       session[:record] = {
         competition_id: @weigh_in.competition_id,
@@ -19,6 +21,6 @@ class Record::WeighInsController < ApplicationController
   private
 
   def weigh_in_params
-    params.require(:record_weigh_in).permit(:weight, :competition_id)
+    params.require(:record_weigh_in).permit(:weight).merge(competition_id: params[:competition_id])
   end
 end

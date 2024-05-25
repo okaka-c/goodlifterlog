@@ -1,10 +1,12 @@
 class Record::SquatsController < ApplicationController
   def new
     @squat = Record::Squat.new
+    @competition = current_user.competitions.find(params[:competition_id])
   end
 
   def create
     @squat = Record::Squat.new(squat_params)
+    @competition = current_user.competitions.find(params[:competition_id])
     if @squat.valid? # 手動でバリデーションの検証をする
       session[:record].merge!({
         squat_first_attempt: @squat.squat_first_attempt,

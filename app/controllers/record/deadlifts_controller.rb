@@ -1,11 +1,13 @@
 class Record::DeadliftsController < ApplicationController
   def new
     @dedlift = Record::Deadlift.new
+    @competition = current_user.competitions.find(params[:competition_id])
   end
 
   def create
-    @dedlift = Record::Deadlift.new(dedlift_params)
-    if @dedlift.valid? # 手動でバリデーションの検証をする
+    @deadlift = Record::Deadlift.new(deadlift_params)
+    @competition = current_user.competitions.find(params[:competition_id])
+    if @deadlift.valid? # 手動でバリデーションの検証をする
       session[:record].merge!({
         deadlift_first_attempt: @deadlift.deadlift_first_attempt,
         deadlift_second_attempt: @deadlift.deadlift_second_attempt,

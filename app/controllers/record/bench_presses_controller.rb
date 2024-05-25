@@ -1,10 +1,12 @@
 class Record::BenchPressesController < ApplicationController
   def new
     @bench_press = Record::BenchPress.new
+    @competition = current_user.competitions.find(params[:competition_id])
   end
 
   def create
     @bench_press = Record::BenchPress.new(bench_press_params)
+    @competition = current_user.competitions.find(params[:competition_id])
     if @bench_press.valid? # 手動でバリデーションの検証をする
       session[:record].merge!({
         benchpress_first_attempt: @bench_press.benchpress_first_attempt,
