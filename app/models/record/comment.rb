@@ -1,4 +1,5 @@
 class Record::Comment
 	include ActiveModel::Model
-	attr_accessor :comment
+	include ActiveModel::Attributes
+	attribute :comment, :string, default: nil
 end

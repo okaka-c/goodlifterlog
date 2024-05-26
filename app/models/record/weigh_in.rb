@@ -1,5 +1,7 @@
 class Record::WeighIn
   include ActiveModel::Model
+  include ActiveModel::Validations
+
   attr_accessor :weight, :competition_id
 
   validates :weight, presence: true, numericality: true
