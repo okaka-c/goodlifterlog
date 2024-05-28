@@ -1,0 +1,26 @@
+ja:
+  # acrivremodel用のロケールファイル
+  activemodel:
+      attributes:
+        record/squat:
+          squat_first_attempt: "第1試技"
+          squat_second_attempt: "第2試技"
+          squat_third_attempt: "第3試技"
+          squat_first_attempt_result: "第1試技結果"
+          squat_second_attempt_result: "第2試技結果"
+          squat_third_attempt_result: "第3試技結果"
+        record/benchpress:
+          benchpress_first_attempt: "第1試技"
+          benchpress_second_attempt: "第2試技"
+          benchpress_third_attempt: "第3試技"
+          benchpress_first_attempt_result: "試技結果"
+          benchpress_second_attempt_result: "試技結果"
+          benchpress_third_attempt_result: "試技結果"
+        record/deadlift:
+          deadlift_first_attempt: "第1試技"
+          deadlift_second_attempt: "第2試技"
+          deadlift_third_attempt: "第3試技"
+          deadlift_first_attempt_result: "試技結果"
+          deadlift_second_attempt_result: "試技結果"
+          deadlift_third_attempt_result: "試技結果"
+
