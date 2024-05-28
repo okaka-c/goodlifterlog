@@ -1,73 +1,125 @@
-<div class="hero min-h-screen bg-base-200">
+<div class="hero min-h-screen bg-white">
   <div class="hero-content flex-col">
     <div class="items-center mx-auto max-w-80 min-w-80">
-      <!-- ここからform_withを使う形に修正 -->
-      <h1 class="text-2xl text-center">試技結果の登録</h1>
+      <div class="mb-5">
+				<ul class="steps">
+					<li class="step step-primary text-[10px]">検量体重</li>
+					<li class="step step-primary text-[10px]">スクワット</li>
+					<li class="step step-primary text-[10px] text-orange-600 font-bold">ベンチプレス</li>
+					<li class="step text-[10px]">デッドリフト</li>
+					<li class="step text-[10px]">振り返り<br>コメント</li>
+				</ul>
+			</div>
+      <h1 class="text-2xl text-center mb-5">ベンチプレス結果登録</h1>
 			<%= form_with model: @bench_press, url: competition_bench_presse_path(@competition)  do |f| %>
-			<!-- ベンチプレス試技結果 -->
+				<!-- ベンチプレス試技結果 -->
 				<!-- ベンチプレス第１試技 -->
-				<div class="flex flex-col mb-6">
-					<div class="flex justify-between">
-						<label class="form-control flex-grow mr-2">
-							<%= f.label :benchpress_first_attempt %>
-							<%= f.text_field :benchpress_first_attempt, class: 'input input-bordered input-sm rounded w-full', placeholder:"重量を入力してください" %>
-						</label>
-						<label class="form-control flex-grow">
-							<div class="label p-0 flex justify-start items-center">
-								<%= f.label :benchpress_first_attempt_result, class: 'mr-2' %>
-								<p class="text-red-500">(※)</p>
-							</div>
-							<%= f.select :benchpress_first_attempt_result,
-							CompetitionRecord.benchpress_first_attempt_results_i18n.invert.map { |key, value| [key, value] },
-							{include_blank: '判定結果'}, { class: 'select select-bordered rounded select-sm w-full' } %>
-						</label>
-					</div>
+				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+					<!-- 重量-->
+					<div class="flex flex-col mb-3">
+						<div class="flex justify-between">
+							<%= f.label :benchpress_first_attempt, class: 'text-xl' %>
+							<label class="form-control flex flex-row">
+								<%= f.text_field :benchpress_first_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2', placeholder: "重量" %>
+								<span>kg</span>
+							</label>
+						</div>
 						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_first_attempt %>
+					</div>
+					<!--判定-->
+					<div class="flex flex-col mb-3">
+						<label class="form-control">
+								<div class="flex justify-between items-center mt-2">
+										<label class="flex items-center">
+												<%= f.radio_button :benchpress_first_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :benchpress_first_attempt_result, "未試行" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :benchpress_first_attempt_result, 'success', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :benchpress_first_attempt_result, "成功" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :benchpress_first_attempt_result, 'failure', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :benchpress_first_attempt_result, "失敗" %></span>
+										</label>
+								</div>
+						</label>
 						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_first_attempt_result %>
 					</div>
+				</div>
 				<!-- ベンチプレス第2試技 -->
-				<div class="flex flex-col mb-6">
-					<div class="flex justify-between">
-						<label class="form-control flex-grow mr-2">
-							<%= f.label :benchpress_second_attempt %>
-							<%= f.text_field :benchpress_second_attempt, class: 'input input-bordered input-sm rounded w-full', placeholder:"重量を入力してください" %>
-						</label>
-						<label class="form-control flex-grow">
-							<div class="label p-0 flex justify-start items-center">
-								<%= f.label :benchpress_second_attempt_result, class: 'mr-2' %>
-								<p class="text-red-500">(※)</p>
-							</div>
-							<%= f.select :benchpress_second_attempt_result,
-							CompetitionRecord.benchpress_second_attempt_results_i18n.invert.map { |key, value| [key, value] },
-							{include_blank: '判定結果'}, { class: 'select select-bordered rounded select-sm w-full' } %>
-						</label>
-					</div>
+				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+					<!-- 重量-->
+					<div class="flex flex-col mb-3">
+						<div class="flex justify-between">
+							<%= f.label :benchpress_second_attempt, class: 'text-xl' %>
+							<label class="form-control flex flex-row">
+								<%= f.text_field :benchpress_second_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2', placeholder: "重量" %>
+								<span>kg</span>
+							</label>
+						</div>
 						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_second_attempt %>
+					</div>
+					<!--判定-->
+					<div class="flex flex-col mb-3">
+						<label class="form-control">
+								<div class="flex justify-between items-center mt-2">
+										<label class="flex items-center">
+												<%= f.radio_button :benchpress_second_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :benchpress_second_attempt_result, "未試行" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :benchpress_second_attempt_result, 'success', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :benchpress_second_attempt_result, "成功" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :benchpress_second_attempt_result, 'failure', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :benchpress_second_attempt_result, "失敗" %></span>
+										</label>
+								</div>
+						</label>
 						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_second_attempt_result %>
+					</div>
 				</div>
 				<!-- ベンチプレス第3試技 -->
-				<div class="flex flex-col mb-6">
-					<div class="flex justify-between">
-						<label class="form-control flex-grow mr-2">
-							<%= f.label :benchpress_third_attempt %>
-							<%= f.text_field :benchpress_third_attempt, class: 'input input-bordered input-sm rounded w-full', placeholder:"重量を入力してください" %>
-						</label>
-						<label class="form-control flex-grow">
-							<div class="label p-0 flex justify-start items-center">
-								<%= f.label :benchpress_third_attempt_result, class: 'mr-2' %>
-								<p class="text-red-500">(※)</p>
-							</div>
-							<%= f.select :benchpress_third_attempt_result,
-							CompetitionRecord.benchpress_third_attempt_results_i18n.invert.map { |key, value| [key, value] },
-							{include_blank: '判定結果'}, { class: 'select select-bordered rounded select-sm w-full' } %>
-						</label>
-					</div>
+				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+					<!-- 重量-->
+					<div class="flex flex-col mb-3">
+						<div class="flex justify-between">
+							<%= f.label :benchpress_third_attempt, class: 'text-xl' %>
+							<label class="form-control flex flex-row">
+								<%= f.text_field :benchpress_third_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2', placeholder: "重量" %>
+								<span>kg</span>
+							</label>
+						</div>
 						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_third_attempt %>
+					</div>
+					<!--判定-->
+					<div class="flex flex-col mb-3">
+						<label class="form-control">
+								<div class="flex justify-between items-center mt-2">
+										<label class="flex items-center">
+												<%= f.radio_button :benchpress_third_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :benchpress_third_attempt_result, "未試行" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :benchpress_third_attempt_result, 'success', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :benchpress_third_attempt_result, "成功" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :benchpress_third_attempt_result, 'failure', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :benchpress_third_attempt_result, "失敗" %></span>
+										</label>
+								</div>
+						</label>
 						<%= render 'shared/error_messages', object: f.object, attribute: :benchpress_third_attempt_result %>
+					</div>
 				</div>
-			<!-- ボタン -->
-				<div class="form-control mt-6">
-						<%= f.submit class: 'btn btn-primary' %>
+				<!-- ボタン -->
+				<div class="form-control mt-6 flex flex-row justify-center">
+					<div>
+						<%= f.submit "次の種目へ", class: 'btn btn-secondary btn-sm w-24' %>
+					</div>
 				</div>
 			<% end %>
       <!-- ここまでform_withを使う形に修正 -->
