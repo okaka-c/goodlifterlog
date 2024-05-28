@@ -9,7 +9,7 @@ ja:
           squat_first_attempt_result: "第1試技結果"
           squat_second_attempt_result: "第2試技結果"
           squat_third_attempt_result: "第3試技結果"
-        record/benchpress:
+        record/bench_press:
           benchpress_first_attempt: "第1試技"
           benchpress_second_attempt: "第2試技"
           benchpress_third_attempt: "第3試技"
