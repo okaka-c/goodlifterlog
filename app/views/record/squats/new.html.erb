@@ -1,8 +1,16 @@
 <div class="hero min-h-screen bg-white">
   <div class="hero-content flex-col">
     <div class="items-center mx-auto max-w-80 min-w-80">
-      <!-- ここからform_withを使う形に修正 -->
-      <h1 class="text-2xl text-center mb-10">スクワット</h1>
+      <div class="mb-5">
+				<ul class="steps">
+					<li class="step step-primary text-[10px]">検量体重</li>
+					<li class="step step-primary text-[10px] text-orange-600 font-bold">スクワット</li>
+					<li class="step text-[10px]">ベンチプレス</li>
+					<li class="step text-[10px]">デッドリフト</li>
+					<li class="step text-[10px]">振り返り<br>コメント</li>
+				</ul>
+			</div>
+      <h1 class="text-2xl text-center mb-5">スクワット結果登録</h1>
 			<%= form_with model: @squat, url: competition_squat_path(@competition)  do |f| %>
 				<!-- スクワット試技結果 -->
 				<!-- スクワット第１試技 -->
@@ -108,8 +116,10 @@
 					</div>
 				</div>
 				<!-- ボタン -->
-				<div class="form-control mt-6">
-						<%= f.submit class: 'btn btn-primary' %>
+				<div class="form-control mt-6 flex flex-row justify-center">
+					<div>
+						<%= f.submit "次の種目へ", class: 'btn btn-secondary btn-sm w-24' %>
+					</div>
 				</div>
 			<% end %>
       <!-- ここまでform_withを使う形に修正 -->
