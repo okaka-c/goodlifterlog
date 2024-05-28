@@ -1,6 +1,8 @@
 class Record::DeadliftsController < ApplicationController
+  skip_before_action :set_bottom_navi, only: %i[ new edit ]
+
   def new
-    @dedlift = Record::Deadlift.new
+    @deadlift = Record::Deadlift.new
     @competition = current_user.competitions.find(params[:competition_id])
   end
 
