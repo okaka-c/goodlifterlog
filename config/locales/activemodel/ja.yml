@@ -23,4 +23,5 @@ ja:
           deadlift_first_attempt_result: "試技結果"
           deadlift_second_attempt_result: "試技結果"
           deadlift_third_attempt_result: "試技結果"
-
+        record/comment:
+          comment: "振り返りを書いてみましょう"

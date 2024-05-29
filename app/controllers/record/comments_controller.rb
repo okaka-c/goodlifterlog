@@ -1,4 +1,6 @@
 class Record::CommentsController < ApplicationController
+  skip_before_action :set_bottom_navi, only: %i[ new edit ]
+
   def new
     @comment = Record::Comment.new
     @competition = current_user.competitions.find(params[:competition_id])
