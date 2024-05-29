@@ -4,8 +4,17 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :new, :edit, :update]
   resource :profile, only: [:show, :edit, :update]
   resources :password_resets, only: [:create, :edit, :update, :new]
+
   resources :competitions do
-    resource :competition_record, only: [:create, :new, :edit, :update, :destroy]
+    resource :competition_record, only: [:destroy]
+    scope module: 'record' do
+      # 各ステップのルーティング
+      resource :weigh_in, only: [:new, :create]
+      resource :squat, only: [:new, :create]
+      resource :bench_presse, only: [:new, :create]
+      resource :deadlift, only: [:new, :create]
+      resource :comment, only: [:new, :create]
+    end
   end
   # Defines the root path route ("/")
   # root "articles#index"

@@ -1,0 +1,128 @@
+<div class="hero min-h-screen bg-white">
+  <div class="hero-content flex-col">
+    <div class="items-center mx-auto max-w-80 min-w-80">
+      <div class="mb-5">
+				<ul class="steps">
+					<li class="step step-primary text-[10px]">検量体重</li>
+					<li class="step step-primary text-[10px]">スクワット</li>
+					<li class="step step-primary text-[10px]">ベンチプレス</li>
+					<li class="step step-primary text-[10px] text-orange-600 font-bold">デッドリフト</li>
+					<li class="step text-[10px]">振り返り<br>コメント</li>
+				</ul>
+			</div>
+      <h1 class="text-2xl text-center mb-5">デッドリフト結果登録</h1>
+			<%= form_with model: @deadlift, url: competition_deadlift_path(@competition)  do |f| %>
+				<!-- デッドリフト試技結果 -->
+				<!-- デッドリフト第１試技 -->
+				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+					<!-- 重量-->
+					<div class="flex flex-col mb-3">
+						<div class="flex justify-between">
+							<%= f.label :deadlift_first_attempt, class: 'text-xl' %>
+							<label class="form-control flex flex-row">
+								<%= f.text_field :deadlift_first_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2', placeholder: "重量" %>
+								<span>kg</span>
+							</label>
+						</div>
+						<%= render 'shared/error_messages', object: f.object, attribute: :deadlift_first_attempt %>
+					</div>
+					<!--判定-->
+					<div class="flex flex-col mb-3">
+						<label class="form-control">
+								<div class="flex justify-between items-center mt-2">
+										<label class="flex items-center">
+												<%= f.radio_button :deadlift_first_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :deadlift_first_attempt_result, "未試行" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :deadlift_first_attempt_result, 'success', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :deadlift_first_attempt_result, "成功" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :deadlift_first_attempt_result, 'failure', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :deadlift_first_attempt_result, "失敗" %></span>
+										</label>
+								</div>
+						</label>
+						<%= render 'shared/error_messages', object: f.object, attribute: :deadlift_first_attempt_result %>
+					</div>
+				</div>
+				<!-- デッドリフト第2試技 -->
+				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+					<!-- 重量-->
+					<div class="flex flex-col mb-3">
+						<div class="flex justify-between">
+							<%= f.label :deadlift_second_attempt, class: 'text-xl' %>
+							<label class="form-control flex flex-row">
+								<%= f.text_field :deadlift_second_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2', placeholder: "重量" %>
+								<span>kg</span>
+							</label>
+						</div>
+						<%= render 'shared/error_messages', object: f.object, attribute: :deadlift_second_attempt %>
+					</div>
+					<!--判定-->
+					<div class="flex flex-col mb-3">
+						<label class="form-control">
+								<div class="flex justify-between items-center mt-2">
+										<label class="flex items-center">
+												<%= f.radio_button :deadlift_second_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :deadlift_second_attempt_result, "未試行" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :deadlift_second_attempt_result, 'success', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :deadlift_second_attempt_result, "成功" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :deadlift_second_attempt_result, 'failure', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :deadlift_second_attempt_result, "失敗" %></span>
+										</label>
+								</div>
+						</label>
+						<%= render 'shared/error_messages', object: f.object, attribute: :deadlift_second_attempt_result %>
+					</div>
+				</div>
+				<!-- デッドリフト第3試技 -->
+				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+					<!-- 重量-->
+					<div class="flex flex-col mb-3">
+						<div class="flex justify-between">
+							<%= f.label :deadlift_third_attempt, class: 'text-xl' %>
+							<label class="form-control flex flex-row">
+								<%= f.text_field :deadlift_third_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2', placeholder: "重量" %>
+								<span>kg</span>
+							</label>
+						</div>
+						<%= render 'shared/error_messages', object: f.object, attribute: :deadlift_third_attempt %>
+					</div>
+					<!--判定-->
+					<div class="flex flex-col mb-3">
+						<label class="form-control">
+								<div class="flex justify-between items-center mt-2">
+										<label class="flex items-center">
+												<%= f.radio_button :deadlift_third_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :deadlift_third_attempt_result, "未試行" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :deadlift_third_attempt_result, 'success', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :deadlift_third_attempt_result, "成功" %></span>
+										</label>
+										<label class="flex items-center">
+												<%= f.radio_button :deadlift_third_attempt_result, 'failure', class: 'radio radio-primary' %>
+												<span class="ml-2"><%= f.label :deadlift_third_attempt_result, "失敗" %></span>
+										</label>
+								</div>
+						</label>
+						<%= render 'shared/error_messages', object: f.object, attribute: :deadlift_third_attempt_result %>
+					</div>
+				</div>
+				<!-- ボタン -->
+				<div class="form-control mt-6 flex flex-row justify-center">
+					<div>
+						<%= f.submit "次の種目へ", class: 'btn btn-secondary btn-sm w-24' %>
+					</div>
+				</div>
+			<% end %>
+      <!-- ここまでform_withを使う形に修正 -->
+    </div>
+  </div>
+</div>

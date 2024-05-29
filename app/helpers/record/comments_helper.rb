@@ -1,0 +1,2 @@
+module Record::CommentsHelper
+end
