@@ -2,6 +2,9 @@ ja:
   # acrivremodel用のロケールファイル
   activemodel:
       attributes:
+        record/weigh_in:
+          weight: "体重"
+          competition_id: "この大会の"
         record/squat:
           squat_first_attempt: "第1試技"
           squat_second_attempt: "第2試技"

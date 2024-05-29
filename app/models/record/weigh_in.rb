@@ -11,7 +11,7 @@ class Record::WeighIn
 
   def unique_competition_id
     if CompetitionRecord.exists?(competition_id: competition_id)
-      errors.add(:competition_id, "試技結果はすでに存在しています")
+      errors.add(:competition_id, "の試技結果はすでに存在しています")
     end
   end
 end

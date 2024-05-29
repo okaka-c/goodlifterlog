@@ -1,4 +1,6 @@
 class Record::WeighInsController < ApplicationController
+  skip_before_action :set_bottom_navi, only: %i[ new edit ]
+
   def new
     @weigh_in = Record::WeighIn.new
     @competition = current_user.competitions.find(params[:competition_id])
