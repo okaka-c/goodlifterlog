@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     resource :competition_record, only: [:destroy]
     scope module: 'record' do
       # 各ステップのルーティング
-      resource :weigh_in, only: [:new, :create]
-      resource :squat, only: [:new, :create]
-      resource :bench_presse, only: [:new, :create]
-      resource :deadlift, only: [:new, :create]
-      resource :comment, only: [:new, :create]
+      resource :weigh_in, only: [:new, :create, :edit, :update]
+      resource :squat, only: [:new, :create, :edit, :update]
+      resource :bench_presse, only: [:new, :create, :edit, :update]
+      resource :deadlift, only: [:new, :create, :edit, :update]
+      resource :comment, only: [:new, :create, :edit, :update]
     end
   end
   # Defines the root path route ("/")
