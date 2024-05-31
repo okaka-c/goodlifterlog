@@ -7,6 +7,7 @@
   <div class="border-b-2 border-dashed py-2">
     <h2 class="font-bold"><%= CompetitionRecord.human_attribute_name(:weight) %>:</h2>
     <p class="text-sm"> <%= competition_record.weight %> kg</p>
+    <%= link_to "編集", edit_competition_weigh_in_path(@competition), class: "btn btn-sm btn-primary max-w-24 mx-2" %>
   </div>
   <!-- SQ試技結果 -->
   <div class="border-b-2 border-dashed py-2">
@@ -101,7 +102,7 @@
         <p class="text-sm basis-1/3 text-right text-red-500">
       <% elsif competition_record.benchpress_third_not_attempted? %>
         <p class="text-sm basis-1/3 text-right text-gray-500">
-      <% end %> 
+      <% end %>
         <%= competition_record.benchpress_third_attempt_result_i18n %>
       </p>
     </div>
