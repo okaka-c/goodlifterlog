@@ -199,6 +199,6 @@
     </div>
   </div>
   <div class="flex justify-end w-full">
-    <%= link_to "削除", '#', data: {turbo_method: :delete, turbo_confirm: "削除しますか？"}, class: "btn btn-sm btn-error max-w-24" %>
+    <%= link_to "削除", competition_competition_record_path(@competition), data: {turbo_method: :delete, turbo_confirm: "削除しますか？"}, class: "btn btn-sm btn-error max-w-24" %>
   </div>
 </div>
