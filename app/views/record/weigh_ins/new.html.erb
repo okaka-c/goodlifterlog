@@ -1,12 +1,16 @@
 <div class="hero min-h-screen bg-white">
   <div class="hero-content flex-col">
     <div class="items-center mx-auto max-w-80 min-w-80">
-      <div class="mb-5">
+      <div class="mb-5 flex justify-center">
 				<ul class="steps">
 					<li class="step step-primary text-[10px] text-orange-600 font-bold">検量体重</li>
-					<li class="step text-[10px]">スクワット</li>
+					<% unless @competition.category == "シングルベンチプレス" %>
+						<li class="step text-[10px]">スクワット</li>
+					<% end %>
 					<li class="step text-[10px]">ベンチプレス</li>
-					<li class="step text-[10px]">デッドリフト</li>
+					<% unless @competition.category == "シングルベンチプレス" %>
+						<li class="step text-[10px]">デッドリフト</li>
+					<% end %>
 					<li class="step text-[10px]">振り返り<br>コメント</li>
 				</ul>
 			</div>

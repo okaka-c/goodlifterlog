@@ -18,7 +18,12 @@ class Record::BenchPressesController < ApplicationController
         benchpress_second_attempt_result: @bench_press.benchpress_second_attempt_result,
         benchpress_third_attempt_result: @bench_press.benchpress_third_attempt_result
       })
-      redirect_to  new_competition_deadlift_path # 次のステップへ遷移
+      case @competition.category
+        when "パワーリフティング"
+          redirect_to new_competition_deadlift_path # デッドリフトへ
+        when "シングルベンチプレス"
+          redirect_to new_competition_comment_path # コメントへ
+      end
     else
       render :new, status: :unprocessable_entity
     end

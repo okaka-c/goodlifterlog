@@ -14,7 +14,12 @@ class Record::WeighInsController < ApplicationController
         competition_id: @weigh_in.competition_id,
         weight: @weigh_in.weight
       }
-      redirect_to new_competition_squat_path # 次のステップへ遷移
+      case @competition.category
+        when "パワーリフティング"
+          redirect_to new_competition_squat_path # スクワットへ
+        when "シングルベンチプレス"
+          redirect_to new_competition_bench_presse_path # ベンチプレスへ
+      end
     else
       render :new, status: :unprocessable_entity
     end
