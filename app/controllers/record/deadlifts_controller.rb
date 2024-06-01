@@ -1,14 +1,14 @@
 class Record::DeadliftsController < ApplicationController
+  before_action :set_competition
+  before_action :set_competition_record, only: %i[ edit update ]
   skip_before_action :set_bottom_navi, only: %i[ new edit ]
 
   def new
     @deadlift = Record::Deadlift.new
-    @competition = current_user.competitions.find(params[:competition_id])
   end
 
   def create
     @deadlift = Record::Deadlift.new(deadlift_params)
-    @competition = current_user.competitions.find(params[:competition_id])
     if @deadlift.valid? # 手動でバリデーションの検証をする
       session[:record].merge!({
         deadlift_first_attempt: @deadlift.deadlift_first_attempt,
@@ -25,10 +25,6 @@ class Record::DeadliftsController < ApplicationController
   end
 
   def edit
-    # competitionのレコードを取得してくる
-    @competition = current_user.competitions.find(params[:competition_id])
-    # 取得したcompetitionのレコードに紐づくcompetition_recordレコードを取得
-    @competition_record = @competition.competition_record
     @deadlift = Record::Deadlift.new(
       deadlift_first_attempt: @competition_record.deadlift_first_attempt,
       deadlift_second_attempt: @competition_record.deadlift_second_attempt,
@@ -42,10 +38,6 @@ class Record::DeadliftsController < ApplicationController
   def update
     # ユーザーが入力した値を取得
     @deadlift = Record::Deadlift.new(deadlift_params)
-    # competitionのレコードを取得してくる
-    @competition = current_user.competitions.find(params[:competition_id])
-    # 取得したcompetitionのレコードに紐づくcompetition_recordレコードを取得
-    @competition_record = @competition.competition_record
     deadlift_update_params = {
       deadlift_first_attempt: @deadlift.deadlift_first_attempt,
       deadlift_second_attempt: @deadlift.deadlift_second_attempt,
@@ -69,5 +61,13 @@ class Record::DeadliftsController < ApplicationController
     :deadlift_first_attempt, :deadlift_first_attempt_result,
     :deadlift_second_attempt, :deadlift_second_attempt_result,
     :deadlift_third_attempt, :deadlift_third_attempt_result)
+  end
+
+  def set_competition
+    @competition = current_user.competitions.find(params[:competition_id])
+  end
+
+  def set_competition_record
+    @competition_record = @competition.competition_record
   end
 end

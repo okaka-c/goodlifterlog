@@ -1,14 +1,14 @@
 class Record::SquatsController < ApplicationController
-skip_before_action :set_bottom_navi, only: %i[ new edit ]
+  before_action :set_competition
+  before_action :set_competition_record, only: %i[ edit update ]
+  skip_before_action :set_bottom_navi, only: %i[ new edit ]
 
   def new
     @squat = Record::Squat.new
-    @competition = current_user.competitions.find(params[:competition_id])
   end
 
   def create
     @squat = Record::Squat.new(squat_params)
-    @competition = current_user.competitions.find(params[:competition_id])
     if @squat.valid? # 手動でバリデーションの検証をする
       session[:record].merge!({
         squat_first_attempt: @squat.squat_first_attempt,
@@ -25,10 +25,6 @@ skip_before_action :set_bottom_navi, only: %i[ new edit ]
   end
 
   def edit
-    # competitionのレコードを取得してくる
-    @competition = current_user.competitions.find(params[:competition_id])
-    # 取得したcompetitionのレコードに紐づくcompetition_recordレコードを取得
-    @competition_record = @competition.competition_record
     @squat = Record::Squat.new(
 		squat_first_attempt: @competition_record.squat_first_attempt,
     squat_second_attempt: @competition_record.squat_second_attempt,
@@ -42,10 +38,6 @@ skip_before_action :set_bottom_navi, only: %i[ new edit ]
   def update
     # ユーザーが入力した値を取得
     @squat = Record::Squat.new(squat_params)
-    # competitionのレコードを取得してくる
-    @competition = current_user.competitions.find(params[:competition_id])
-    # 取得したcompetitionのレコードに紐づくcompetition_recordレコードを取得
-    @competition_record = @competition.competition_record
     squat_update_params = {
       squat_first_attempt: @squat.squat_first_attempt,
       squat_second_attempt: @squat.squat_second_attempt,
@@ -69,6 +61,14 @@ skip_before_action :set_bottom_navi, only: %i[ new edit ]
     :squat_first_attempt, :squat_first_attempt_result,
     :squat_second_attempt, :squat_second_attempt_result,
     :squat_third_attempt, :squat_third_attempt_result)
+  end
+
+  def set_competition
+    @competition = current_user.competitions.find(params[:competition_id])
+  end
+
+  def set_competition_record
+    @competition_record = @competition.competition_record
   end
 end
 

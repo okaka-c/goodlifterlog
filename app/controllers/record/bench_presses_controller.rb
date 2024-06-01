@@ -1,13 +1,14 @@
 class Record::BenchPressesController < ApplicationController
+  before_action :set_competition
+  before_action :set_competition_record, only: %i[ edit update ]
   skip_before_action :set_bottom_navi, only: %i[ new edit ]
+
   def new
     @bench_press = Record::BenchPress.new
-    @competition = current_user.competitions.find(params[:competition_id])
   end
 
   def create
     @bench_press = Record::BenchPress.new(bench_press_params)
-    @competition = current_user.competitions.find(params[:competition_id])
     if @bench_press.valid? # 手動でバリデーションの検証をする
       session[:record].merge!({
         benchpress_first_attempt: @bench_press.benchpress_first_attempt,
@@ -24,10 +25,6 @@ class Record::BenchPressesController < ApplicationController
   end
 
   def edit
-    # competitionのレコードを取得してくる
-    @competition = current_user.competitions.find(params[:competition_id])
-    # 取得したcompetitionのレコードに紐づくcompetition_recordレコードを取得
-    @competition_record = @competition.competition_record
     @bench_press = Record::BenchPress.new(
       benchpress_first_attempt: @competition_record.benchpress_first_attempt,
       benchpress_second_attempt: @competition_record.benchpress_second_attempt,
@@ -41,10 +38,6 @@ class Record::BenchPressesController < ApplicationController
   def update
     # ユーザーが入力した値を取得
     @bench_press = Record::BenchPress.new(bench_press_params)
-    # competitionのレコードを取得してくる
-    @competition = current_user.competitions.find(params[:competition_id])
-    # 取得したcompetitionのレコードに紐づくcompetition_recordレコードを取得
-    @competition_record = @competition.competition_record
     bench_press_update_params = {
       benchpress_first_attempt: @bench_press.benchpress_first_attempt,
       benchpress_second_attempt: @bench_press.benchpress_second_attempt,
@@ -68,5 +61,13 @@ class Record::BenchPressesController < ApplicationController
     :benchpress_first_attempt, :benchpress_first_attempt_result,
     :benchpress_second_attempt, :benchpress_second_attempt_result,
     :benchpress_third_attempt, :benchpress_third_attempt_result)
+  end
+
+  def set_competition
+    @competition = current_user.competitions.find(params[:competition_id])
+  end
+
+  def set_competition_record
+    @competition_record = @competition.competition_record
   end
 end
