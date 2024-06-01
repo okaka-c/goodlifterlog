@@ -1,14 +1,14 @@
 class Record::CommentsController < ApplicationController
+  before_action :set_competition
+  before_action :set_competition_record, only: %i[ edit update ]
   skip_before_action :set_bottom_navi, only: %i[ new edit ]
 
   def new
     @comment = Record::Comment.new
-    @competition = current_user.competitions.find(params[:competition_id])
   end
 
   def create
     @comment = Record::Comment.new(comment_params)
-    @competition = current_user.competitions.find(params[:competition_id])
     if @comment.valid? # 手動でバリデーションの検証をする
       # @commentを、sessionに保存
       session[:record].merge!({
@@ -27,9 +27,32 @@ class Record::CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Record::Comment.new(comment: @competition_record.comment)
+  end
+
+  def update
+    # ユーザーが入力した値を取得
+    @comment = Record::Comment.new(comment_params)
+    # 取得したレコードのweightの値を、@weigh_in.weightに上書きしてupdateする
+    if @competition_record.update(comment: @comment.comment)
+      redirect_to competition_path(@competition) # 成功したら詳細ページへ遷移する
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def comment_params
     params.require(:record_comment).permit(:comment)
+  end
+
+  def set_competition
+    @competition = current_user.competitions.find(params[:competition_id])
+  end
+
+  def set_competition_record
+    @competition_record = @competition.competition_record
   end
 end
