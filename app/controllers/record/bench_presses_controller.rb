@@ -23,6 +23,44 @@ class Record::BenchPressesController < ApplicationController
     end
   end
 
+  def edit
+    # competitionのレコードを取得してくる
+    @competition = current_user.competitions.find(params[:competition_id])
+    # 取得したcompetitionのレコードに紐づくcompetition_recordレコードを取得
+    @competition_record = @competition.competition_record
+    @bench_press = Record::BenchPress.new(
+      benchpress_first_attempt: @competition_record.benchpress_first_attempt,
+      benchpress_second_attempt: @competition_record.benchpress_second_attempt,
+      benchpress_third_attempt: @competition_record.benchpress_third_attempt,
+      benchpress_first_attempt_result: @competition_record.benchpress_first_attempt_result,
+      benchpress_second_attempt_result: @competition_record.benchpress_second_attempt_result,
+      benchpress_third_attempt_result: @competition_record.benchpress_third_attempt_result
+  )
+  end
+
+  def update
+    # ユーザーが入力した値を取得
+    @bench_press = Record::BenchPress.new(bench_press_params)
+    # competitionのレコードを取得してくる
+    @competition = current_user.competitions.find(params[:competition_id])
+    # 取得したcompetitionのレコードに紐づくcompetition_recordレコードを取得
+    @competition_record = @competition.competition_record
+    bench_press_update_params = {
+      benchpress_first_attempt: @bench_press.benchpress_first_attempt,
+      benchpress_second_attempt: @bench_press.benchpress_second_attempt,
+      benchpress_third_attempt: @bench_press.benchpress_third_attempt,
+      benchpress_first_attempt_result: @bench_press.benchpress_first_attempt_result,
+      benchpress_second_attempt_result: @bench_press.benchpress_second_attempt_result,
+      benchpress_third_attempt_result: @bench_press.benchpress_third_attempt_result
+    }
+    # 取得したレコードの値を、ユーザーが入力してきた値に上書きしてupdateする
+    if @competition_record.update(bench_press_update_params)
+      redirect_to competition_path(@competition) # 成功したら詳細ページへ遷移する
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def bench_press_params
