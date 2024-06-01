@@ -4,7 +4,7 @@
       <%= f.label :name, class: 'mr-2' %>
       <p class="text-red-500">(必須)</p>
     </div>
-      <%= f.text_field :name, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"大会名"%>
+      <%= f.text_field :name, class: 'input input-bordered input-sm rounded w-full max-w-xs text-base', placeholder:"大会名"%>
       <%= render 'shared/error_messages', object: f.object, attribute: :name %>
   </label>
   <label class="form-control w-full max-w-xs mb-6">
@@ -12,14 +12,14 @@
       <%= f.label :venue, class: 'mr-2' %>
       <p class="text-slate-500">(任意)</p>
     </div>
-      <%= f.text_field :venue, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"会場名" %>
+      <%= f.text_field :venue, class: 'input input-bordered input-sm rounded w-full max-w-xs text-base', placeholder:"会場名" %>
   </label>
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
       <%= f.label :date, class: 'mr-2' %>
       <p class="text-red-500">(必須)</p>
     </div>
-      <%= f.date_field :date, class: 'input input-bordered input-sm rounded w-full max-w-xs', placeholder:"開催日" %>
+      <%= f.date_field :date, class: 'input input-bordered input-sm rounded w-full max-w-xs text-base', placeholder:"開催日" %>
       <%= render 'shared/error_messages', object: f.object, attribute: :date %>
   </label>
   <!-- ここからセレクトボックス -->
