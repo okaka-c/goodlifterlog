@@ -1,7 +1,7 @@
 <div class="hero min-h-screen bg-white">
   <div class="hero-content flex-col">
     <div class="items-center mx-auto max-w-80 min-w-80">
-      <h1 class="text-2xl text-center mb-5">振り返りコメント 編集</h1>
+      <h1 class="text-2xl text-center mb-5 font-bold">振り返りコメント 編集</h1>
 			  <%= form_with model: @comment, url: competition_comment_path(@competition), method: "patch" do |f| %>
           <!-- 振り返りコメント -->
           <label class="form-control mb-6">
