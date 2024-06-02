@@ -1,68 +1,95 @@
 <%= form_with model: competition do |f| %>
+  <!-- 大会名 -->
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
-      <%= f.label :name, class: 'mr-2' %>
+      <%= f.label :name, class: 'mr-2 font-semibold' %>
       <p class="text-red-500">(必須)</p>
     </div>
       <%= f.text_field :name, class: 'input input-bordered input-sm rounded w-full max-w-xs text-base', placeholder:"大会名"%>
       <%= render 'shared/error_messages', object: f.object, attribute: :name %>
   </label>
+  <!-- 会場名 -->
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
-      <%= f.label :venue, class: 'mr-2' %>
+      <%= f.label :venue, class: 'mr-2 font-semibold' %>
       <p class="text-slate-500">(任意)</p>
     </div>
       <%= f.text_field :venue, class: 'input input-bordered input-sm rounded w-full max-w-xs text-base', placeholder:"会場名" %>
   </label>
+  <!-- 開催日 -->
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
-      <%= f.label :date, class: 'mr-2' %>
+      <%= f.label :date, class: 'mr-2 font-semibold' %>
       <p class="text-red-500">(必須)</p>
     </div>
       <%= f.date_field :date, class: 'input input-bordered input-sm rounded w-full max-w-xs text-base', placeholder:"開催日" %>
       <%= render 'shared/error_messages', object: f.object, attribute: :date %>
   </label>
-  <!-- ここからセレクトボックス -->
+  <!-- ここから選択制 -->
   <!-- 大会種別 -->
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
-      <%= f.label :competition_type, class: 'mr-2' %>
+      <%= f.label :competition_type, class: 'mr-2 font-semibold' %>
       <p class="text-red-500">(必須)</p>
     </div>
-      <%= f.select :competition_type,
-      Competition.competition_types_i18n.invert.map { |key, value| [key, value] },
-      {include_blank: '選択してください'},
-      { class: 'select select-bordered select-sm w-full max-w-xs' } %>
+    <div class="form-control mb-3">
+      <div class="flex flex-col mt-2">
+        <label class="flex items-center mb-3">
+          <%= f.radio_button :competition_type, 'official', class: 'radio radio-primary' %>
+          <span class="ml-2"><%= f.label :competition_type, Competition.competition_types_i18n["official"] %></span>
+        </label>
+        <label class="flex items-center">
+          <%= f.radio_button :competition_type, 'official', class: 'radio radio-primary' %>
+          <span class="ml-2"><%= f.label :competition_type, Competition.competition_types_i18n["unofficial"] %></span>
+        </label>
+      </div>
       <%= render 'shared/error_messages', object: f.object, attribute: :competition_type %>
+    </div>
   </label>
   <!-- ギアカテゴリ -->
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
-      <%= f.label :gearcategory_type, class: 'mr-2' %>
+      <%= f.label :gearcategory_type, class: 'mr-2 font-semibold' %>
       <p class="text-red-500">(必須)</p>
     </div>
-      <%= f.select :gearcategory_type,
-      Competition.gearcategory_types_i18n.invert.map { |key, value| [key, value] },
-      {include_blank: '選択してください'},
-      { class: 'select select-bordered select-sm w-full max-w-xs'} %>
+    <div class="form-control mb-3">
+      <div class="flex flex-col mt-2">
+        <label class="flex items-center mb-3">
+          <%= f.radio_button :gearcategory_type, 'raw', class: 'radio radio-primary' %>
+          <span class="ml-2"><%= f.label :gearcategory_type, Competition.gearcategory_types_i18n["raw"] %></span>
+        </label>
+        <label class="flex items-center">
+          <%= f.radio_button :gearcategory_type, 'equipped', class: 'radio radio-primary' %>
+          <span class="ml-2"><%= f.label :gearcategory_type, Competition.gearcategory_types_i18n["equipped"] %></span>
+        </label>
+      </div>
       <%= render 'shared/error_messages', object: f.object, attribute: :gearcategory_type %>
+    </div>
   </label>
   <!-- 競技種別 -->
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
-      <%= f.label :category, class: 'mr-2' %>
+      <%= f.label :category, class: 'mr-2 font-semibold' %>
       <p class="text-red-500">(必須)</p>
     </div>
-      <%= f.select :category,
-      options_for_select(Competition::CATEGORIES, f.object.category),
-      {include_blank: '選択してください'},
-      { class: 'select select-bordered select-sm w-full max-w-xs'} %>
+    <div class="form-control mb-3">
+      <div class="flex flex-col mt-2">
+        <label class="flex items-center mb-3">
+          <%= f.radio_button :category, "パワーリフティング", class: 'radio radio-primary' %>
+          <span class="ml-2"><%= f.label :category, "パワーリフティング" %></span>
+        </label>
+        <label class="flex items-center">
+          <%= f.radio_button :category, "シングルベンチプレス", class: 'radio radio-primary' %>
+          <span class="ml-2"><%= f.label :category, "シングルベンチプレス" %></span>
+        </label>
+      </div>
       <%= render 'shared/error_messages', object: f.object, attribute: :category %>
+    </div>
   </label>
   <!-- 年齢別区分 -->
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
-      <%= f.label :age_group, class: 'mr-2' %>
+      <%= f.label :age_group, class: 'mr-2 font-semibold' %>
       <p class="text-red-500">(必須)</p>
     </div>
       <%= f.select :age_group,
@@ -74,7 +101,7 @@
   <!-- 体重区分 -->
   <label class="form-control w-full max-w-xs mb-6">
     <div class="label p-0 flex justify-start items-center">
-      <%= f.label :weight_class, class: 'mr-2' %>
+      <%= f.label :weight_class, class: 'mr-2 font-semibold' %>
       <p class="text-red-500">(必須)</p>
     </div>
       <%= f.select :weight_class,
@@ -84,7 +111,7 @@
       <%= render 'shared/error_messages', object: f.object, attribute: :weight_class %>
   </label>
   <!-- ここまでセレクトボックス -->
-  <div class="form-control mt-6">
-      <%= f.submit class: 'btn btn-primary' %>
+  <div class="form-control mt-6 flex flex-row justify-center">
+      <%= f.submit class: 'btn btn-secondary btn-sm w-24' %>
   </div>
 <% end %>
