@@ -1,12 +1,12 @@
 <div class="hero min-h-screen bg-white">
   <div class="hero-content flex-col">
     <div class="items-center mx-auto max-w-80 min-w-80">
-      <h1 class="text-2xl text-center mb-5">検量体重　編集</h1>
+      <h1 class="text-2xl text-center mb-5 font-bold">検量体重 編集</h1>
 			<%= form_with model: @weigh_in, url: competition_weigh_in_path(@competition), method: "patch" do |f| %>
 				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
 					<div class="flex justify-between">
 						<div class="label p-0 flex justify-start items-center">
-							<%= f.label :weight, class: 'mr-2'%>
+							<%= f.label :weight, class: 'mr-2 font-semibold'%>
 							<p class="text-red-500">(必須)</p>
 						</div>
 						<label class="form-control flex flex-row">
