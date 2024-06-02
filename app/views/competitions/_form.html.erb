@@ -78,7 +78,7 @@
       <p class="text-red-500">(必須)</p>
     </div>
       <%= f.select :weight_class,
-      grouped_options_for_select(Competition::WEIGHT_CLASSES, f.object.weight_class),
+      options_for_select(weight_classes_for(current_user), f.object.weight_class),
       {include_blank: '選択してください'},
       { class: 'select select-bordered select-sm w-full max-w-xs'} %>
       <%= render 'shared/error_messages', object: f.object, attribute: :weight_class %>
