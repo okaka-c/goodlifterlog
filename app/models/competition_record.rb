@@ -1,5 +1,6 @@
 class CompetitionRecord < ApplicationRecord
   belongs_to :competition
+  has_one :competition_result, dependent: :destroy
 
   # スクワット 判定結果定義
   enum squat_first_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :squat_first
