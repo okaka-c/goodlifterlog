@@ -1,7 +1,7 @@
 class CompetitionResult < ApplicationRecord
   belongs_to :competition_record
 
-  validates :competition_record_id, uniqueness: tru
+  validates :competition_record_id, uniqueness: true
   # 各計算値のバリデーション定義
   with_options numericality: true, allow_nil: true do
     validates :best_squat_weight
