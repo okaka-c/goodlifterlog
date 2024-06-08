@@ -52,5 +52,29 @@
         </div>
       <% end %>
     </div>
+    <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4">
+      <% if @competition_result.present? %>
+      <div class="border-b-2 border-dashed py-2">
+        <h2 class="font-bold">スクワット最高重量:</h2>
+        <p class="text-sm"> <%= @competition_result.best_squat_weight %></p>
+      </div>
+      <div class="border-b-2 border-dashed py-2">
+        <h2 class="font-bold">ベンチプレス最高重量:</h2>
+        <p class="text-sm"> <%= @competition_result.best_benchpress_weight %></p>
+      </div>
+      <div class="border-b-2 border-dashed py-2">
+        <h2 class="font-bold">デッドリフト最高重量:</h2>
+        <p class="text-sm"> <%= @competition_result.best_deadlift_weight %></p>
+      </div>
+      <div class="border-b-2 border-dashed py-2">
+        <h2 class="font-bold">合計重量:</h2>
+        <p class="text-sm"> <%= @competition_result.total_lifted_weight %></p>
+      </div>
+      <div class="border-b-2 border-dashed py-2">
+        <h2 class="font-bold">IPF GLポイント:</h2>
+        <p class="text-sm"> <%= @competition_result.ipf_points.round(2) %></p>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>

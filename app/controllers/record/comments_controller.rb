@@ -17,7 +17,10 @@ class Record::CommentsController < ApplicationController
       # セッションからデータを、キーと値のペアで取り出す
       @competition_record_params = session[:record]
       # レコードを保存する
-      CompetitionRecord.create!(@competition_record_params)
+      @competition_record = CompetitionRecord.new(@competition_record_params)
+      # transaction開始
+      gender = current_user.profile.gender
+      @competition_record.result_create(@competition_record, @competition, gender)
       # セッションをクリアにする
       session.delete(:record)
       # 大会結果詳細ページへ遷移

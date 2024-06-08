@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_08_124250) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_04_131337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_124250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["competition_id"], name: "index_competition_records_on_competition_id", unique: true
+  end
+
+  create_table "competition_results", force: :cascade do |t|
+    t.bigint "competition_record_id", null: false
+    t.float "best_squat_weight"
+    t.float "best_benchpress_weight"
+    t.float "best_deadlift_weight"
+    t.float "total_lifted_weight"
+    t.float "ipf_points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_record_id"], name: "index_competition_results_on_competition_record_id", unique: true
   end
 
   create_table "competitions", force: :cascade do |t|
@@ -82,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_124250) do
   end
 
   add_foreign_key "competition_records", "competitions"
+  add_foreign_key "competition_results", "competition_records"
   add_foreign_key "competitions", "users"
   add_foreign_key "profiles", "users"
 end
