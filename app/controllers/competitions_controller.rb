@@ -21,7 +21,7 @@ class CompetitionsController < ApplicationController
 
   def show
     @competition_record = @competition.competition_record
-    @competition_result = @competition_record.competition_result
+    @competition_result = @competition_record.competition_result  if @competition_record.present?
   end
 
   def edit; end
