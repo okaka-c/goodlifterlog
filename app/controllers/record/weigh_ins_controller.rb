@@ -1,6 +1,7 @@
 class Record::WeighInsController < ApplicationController
   before_action :set_competition
   before_action :set_competition_record, only: %i[ edit update ]
+  before_action :set_competition_result, only: %i[ update ]
   skip_before_action :set_bottom_navi, only: %i[ new edit ]
 
   def new
@@ -32,8 +33,14 @@ class Record::WeighInsController < ApplicationController
   def update
     # ユーザーが入力した値を取得
     @weigh_in = Record::WeighIn.new(weigh_in_params)
-    # 取得したレコードのweightの値を、@weigh_in.weightに上書きしてupdateする
-    if @competition_record.update(weight: @weigh_in.weight)
+    weigh_in_uptate_params = {weight: @weigh_in.weight}
+    # 取得したレコードの属性の値を入力フォームから受け取った値に変更する
+    @competition_record.assign_attributes(weigh_in_uptate_params)
+    # バリデーション実行
+    if @competition_record.valid?
+      gender = current_user.profile.gender
+      # メソッド内でtransaction実行し、competition_recordとcompetition_result更新
+      @competition_record.result_save(@competition_record, @competition, gender)
       redirect_to competition_path(@competition) # 成功したら詳細ページへ遷移する
     else
       render :edit, status: :unprocessable_entity
@@ -52,5 +59,9 @@ class Record::WeighInsController < ApplicationController
 
   def set_competition_record
     @competition_record = @competition.competition_record
+  end
+
+  def set_competition_result
+    @competition_result = @competition_record.competition_result
   end
 end

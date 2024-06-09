@@ -1,6 +1,7 @@
 class Record::BenchPressesController < ApplicationController
   before_action :set_competition
   before_action :set_competition_record, only: %i[ edit update ]
+  before_action :set_competition_result, only: %i[ update ]
   skip_before_action :set_bottom_navi, only: %i[ new edit ]
 
   def new
@@ -51,8 +52,13 @@ class Record::BenchPressesController < ApplicationController
       benchpress_second_attempt_result: @bench_press.benchpress_second_attempt_result,
       benchpress_third_attempt_result: @bench_press.benchpress_third_attempt_result
     }
-    # 取得したレコードの値を、ユーザーが入力してきた値に上書きしてupdateする
-    if @competition_record.update(bench_press_update_params)
+    # 取得したレコードの属性の値を入力フォームから受け取った値に変更する
+    @competition_record.assign_attributes(bench_press_update_params)
+    # バリデーション実行
+    if @competition_record.valid?
+      gender = current_user.profile.gender
+      # メソッド内でtransaction実行し、competition_recordとcompetition_result更新
+      @competition_record.result_save(@competition_record, @competition, gender)
       redirect_to competition_path(@competition) # 成功したら詳細ページへ遷移する
     else
       render :edit, status: :unprocessable_entity
@@ -74,5 +80,9 @@ class Record::BenchPressesController < ApplicationController
 
   def set_competition_record
     @competition_record = @competition.competition_record
+  end
+
+  def set_competition_result
+    @competition_result = @competition_record.competition_result
   end
 end

@@ -20,7 +20,7 @@ class Record::CommentsController < ApplicationController
       @competition_record = CompetitionRecord.new(@competition_record_params)
       # transaction開始
       gender = current_user.profile.gender
-      @competition_record.result_create(@competition_record, @competition, gender)
+      @competition_record.result_save(@competition_record, @competition, gender)
       # セッションをクリアにする
       session.delete(:record)
       # 大会結果詳細ページへ遷移
