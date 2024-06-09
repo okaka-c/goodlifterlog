@@ -134,7 +134,7 @@ class CompetitionRecord < ApplicationRecord
         squat_attempts << value if competition_record[result_key] == "success"
       end
       # 成功試技の中で、最高重量を変数に代入
-      best_squat_weight = squat_attempts.max
+      best_squat_weight = squat_attempts.empty? ? 0 : squat_attempts.max
       # ベンチプレスの最高重量を算出
       benchpress_attempt = {
         benchpress_first_attempt: competition_record.benchpress_first_attempt,
@@ -148,7 +148,7 @@ class CompetitionRecord < ApplicationRecord
         benchpress_attempts << value if competition_record[result_key] == "success"
       end
       # 成功試技の中で、最高重量を変数に代入
-      best_benchpress_weight = benchpress_attempts.max
+      best_benchpress_weight = benchpress_attempts.empty? ? 0 : benchpress_attempts.max
       # デッドリフトの最高重量を算出
       deadlift_attempt = {
         deadlift_first_attempt: competition_record.deadlift_first_attempt,
@@ -162,7 +162,7 @@ class CompetitionRecord < ApplicationRecord
         deadlift_attempts << value if competition_record[result_key] == "success"
       end
       # 成功試技の中で、最高重量を変数に代入
-      best_deadlift_weight = deadlift_attempts.max
+      best_deadlift_weight = deadlift_attempts.empty? ? 0 : deadlift_attempts.max
       # トータル重量を出す
       total_lifted_weight =
         case competition.category
