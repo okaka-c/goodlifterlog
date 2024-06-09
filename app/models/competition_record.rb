@@ -115,7 +115,7 @@ class CompetitionRecord < ApplicationRecord
     end
   end
 
-  def result_create(competition_record, competition, gender)
+  def result_save(competition_record, competition, gender)
     ActiveRecord::Base.transaction do
       # ステップ1 @competition_recordの内容をテーブルに保存
       competition_record.save!
