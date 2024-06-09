@@ -1,5 +1,7 @@
 class CompetitionsController < ApplicationController
   before_action :set_competition, only: %i[ show edit update destroy ]
+  before_action :set_competition_record, only: %i[ show update ]
+  before_action :set_competition_result, only: %i[ show update ]
   skip_before_action :set_bottom_navi, only: %i[ new edit ]
 
   def index
@@ -19,15 +21,23 @@ class CompetitionsController < ApplicationController
     end
   end
 
-  def show
-    @competition_record = @competition.competition_record
-    @competition_result = @competition_record.competition_result  if @competition_record.present?
-  end
+  def show; end
 
   def edit; end
 
   def update
-    if @competition.update(competition_params)
+    @competition.assign_attributes(competition_params)
+    if @competition.valid?
+      ActiveRecord::Base.transaction do
+        @competition.save!
+        if @competition_record.present?
+          gender = current_user.profile.gender
+          # 計算式を呼び出し、再計算結果を返す
+          ipf_gl_points_update = @competition_record.ipf_points_update(@competition_record, @competition, gender)
+          @competition_result.ipf_points = ipf_gl_points_update
+          @competition_result.save!
+        end
+      end
       redirect_to competition_path(@competition)
     else
       render :edit, status: :unprocessable_entity
@@ -47,5 +57,13 @@ private
 
   def set_competition
     @competition = current_user.competitions.find(params[:id])
+  end
+
+  def set_competition_record
+    @competition_record = @competition.competition_record
+  end
+
+  def set_competition_result
+    @competition_result = @competition_record.competition_result if @competition_record.present?
   end
 end

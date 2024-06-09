@@ -207,4 +207,19 @@ class CompetitionRecord < ApplicationRecord
       @competition_result.save!
     end
   end
+
+  def ipf_points_update(competition_record, competition, gender)
+    # IPFポイントの計算をする
+    # 係数a,b,cの決定
+    coefficients = CompetitionResult::COEFFICIENTS[gender][competition.gearcategory_type][competition.category]
+    a = coefficients[:a]
+    b = coefficients[:b]
+    c = coefficients[:c]
+    # 検量体重
+    body_weight = competition_record.weight
+    total_lifted_weight = competition_record.competition_result.total_lifted_weight
+    # IPFポイント計算式
+    ipf_gl_points = total_lifted_weight * 100 / (a - b * Math.exp(-c * body_weight))
+    return ipf_gl_points
+  end
 end
