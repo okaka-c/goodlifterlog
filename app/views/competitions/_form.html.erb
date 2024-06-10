@@ -75,11 +75,11 @@
     <div class="form-control mb-3">
       <div class="flex flex-col mt-2">
         <label class="flex items-center mb-3">
-          <%= f.radio_button :category, "パワーリフティング", class: 'radio radio-primary' %>
+          <%= f.radio_button :category, "パワーリフティング", class: 'radio radio-primary', disabled: @competition_record.present? %>
           <span class="ml-2"><%= f.label :category, "パワーリフティング" %></span>
         </label>
         <label class="flex items-center">
-          <%= f.radio_button :category, "シングルベンチプレス", class: 'radio radio-primary' %>
+          <%= f.radio_button :category, "シングルベンチプレス", class: 'radio radio-primary', disabled: @competition_record.present? %>
           <span class="ml-2"><%= f.label :category, "シングルベンチプレス" %></span>
         </label>
       </div>

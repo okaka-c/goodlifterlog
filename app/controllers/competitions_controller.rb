@@ -1,6 +1,6 @@
 class CompetitionsController < ApplicationController
   before_action :set_competition, only: %i[ show edit update destroy ]
-  before_action :set_competition_record, only: %i[ show update ]
+  before_action :set_competition_record, only: %i[ show edit update ]
   before_action :set_competition_result, only: %i[ show update ]
   skip_before_action :set_bottom_navi, only: %i[ new edit ]
 
