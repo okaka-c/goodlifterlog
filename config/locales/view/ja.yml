@@ -31,6 +31,10 @@ ja:
     create:
       success: 会員登録が完了しました
       danger: 会員登録に失敗しました
+  profiles:
+    update:
+      success: プロフィールの更新が完了しました
+      danger: プロフィールの更新に失敗しました
   competition_record:
     first_attempt: "第1試技"
     second_attempt: "第2試技"
