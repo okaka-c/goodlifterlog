@@ -13,6 +13,11 @@ ja:
       login: ログイン
       to_register_page: 会員登録ページへ
       password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログインしました
+      danger: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
   password_resets:
     new:
       title: パスワードリセット申請
