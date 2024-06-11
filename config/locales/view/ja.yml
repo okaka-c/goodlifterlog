@@ -22,6 +22,10 @@ ja:
     new:
       title: パスワードリセット申請
       send: 送信
+    create:
+      success: メールを送信しました
+    update:
+      success: パスワードを変更しました
     edit:
       title: パスワードリセット
   users:
