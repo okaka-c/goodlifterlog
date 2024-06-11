@@ -8,10 +8,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-	    # 登録が完了したら仮のtopのindex.html.elbへリダイレクト
-      redirect_to root_path
+    # 登録が完了したら仮のtopのindex.html.elbへリダイレクト
+      redirect_to root_path, success: t('.success')
     else
-	    # 登録が失敗したら再度新規登録画面へ
+      flash.now[:danger] = t('.danger')
+    # 登録が失敗したら再度新規登録画面へ
       render :new, status: :unprocessable_entity
     end
   end
