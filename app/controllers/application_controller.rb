@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :require_login
   before_action :set_bottom_navi
+  add_flash_types :success, :danger
 
   private
 
