@@ -17,11 +17,12 @@ class Record::WeighInsController < ApplicationController
       }
       case @competition.category
         when "パワーリフティング"
-          redirect_to new_competition_squat_path # スクワットへ
+          redirect_to new_competition_squat_path, success: t('.success') # スクワットへ
         when "シングルベンチプレス"
-          redirect_to new_competition_bench_presse_path # ベンチプレスへ
+          redirect_to new_competition_bench_presse_path, success: t('.success') # ベンチプレスへ
       end
     else
+      flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
   end

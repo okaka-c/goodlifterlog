@@ -7,6 +7,27 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+  record:
+    weigh_ins:
+      create:
+        success: 検量体重が正しく入力できていることを確認しました
+        danger: 検量体重が正しく入力されていません
+    squats:
+      create:
+        success: 試技結果が正しく入力できていることを確認しました
+        danger: 試技結果が正しく入力されていません
+    bench_presses:
+      create:
+        success: 試技結果が正しく入力できていることを確認しました
+        danger: 試技結果が正しく入力されていません
+    deadlifts:
+      create:
+        success: 試技結果が正しく入力できていることを確認しました
+        danger: 試技結果が正しく入力されていません
+    comments:
+      create:
+        success: 試技結果の登録とトータル重量/IPFポイントの計算が完了しました
+        danger: 試技結果の登録に失敗しました
   user_sessions:
     new:
       title: ログイン

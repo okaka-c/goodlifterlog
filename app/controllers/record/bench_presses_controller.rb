@@ -21,11 +21,12 @@ class Record::BenchPressesController < ApplicationController
       })
       case @competition.category
         when "パワーリフティング"
-          redirect_to new_competition_deadlift_path # デッドリフトへ
+          redirect_to new_competition_deadlift_path, success: t('.success') # デッドリフトへ
         when "シングルベンチプレス"
-          redirect_to new_competition_comment_path # コメントへ
+          redirect_to new_competition_comment_path, success: t('.success') # コメントへ
       end
     else
+      flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
   end

@@ -19,8 +19,9 @@ class Record::SquatsController < ApplicationController
         squat_second_attempt_result: @squat.squat_second_attempt_result,
         squat_third_attempt_result: @squat.squat_third_attempt_result
       })
-      redirect_to new_competition_bench_presse_path # 次のステップへ遷移
+      redirect_to new_competition_bench_presse_path, success: t('.success') # 次のステップへ遷移
     else
+      flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
   end

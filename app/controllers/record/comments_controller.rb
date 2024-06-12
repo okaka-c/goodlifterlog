@@ -24,8 +24,9 @@ class Record::CommentsController < ApplicationController
       # セッションをクリアにする
       session.delete(:record)
       # 大会結果詳細ページへ遷移
-      redirect_to competition_path(@competition)
+      redirect_to competition_path(@competition), success: t('.success')
     else
+      flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
   end
