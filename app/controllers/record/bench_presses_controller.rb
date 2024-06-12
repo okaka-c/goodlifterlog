@@ -21,11 +21,12 @@ class Record::BenchPressesController < ApplicationController
       })
       case @competition.category
         when "パワーリフティング"
-          redirect_to new_competition_deadlift_path # デッドリフトへ
+          redirect_to new_competition_deadlift_path, success: t('.success') # デッドリフトへ
         when "シングルベンチプレス"
-          redirect_to new_competition_comment_path # コメントへ
+          redirect_to new_competition_comment_path, success: t('.success') # コメントへ
       end
     else
+      flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
   end
@@ -59,8 +60,9 @@ class Record::BenchPressesController < ApplicationController
       gender = current_user.profile.gender
       # メソッド内でtransaction実行し、competition_recordとcompetition_result更新
       @competition_record.result_save(@competition_record, @competition, gender)
-      redirect_to competition_path(@competition) # 成功したら詳細ページへ遷移する
+      redirect_to competition_path(@competition), success: t('.success') # 成功したら詳細ページへ遷移する
     else
+      flash.now[:danger] = t('.danger')
       render :edit, status: :unprocessable_entity
     end
   end

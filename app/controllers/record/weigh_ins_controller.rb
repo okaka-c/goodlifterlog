@@ -17,11 +17,12 @@ class Record::WeighInsController < ApplicationController
       }
       case @competition.category
         when "パワーリフティング"
-          redirect_to new_competition_squat_path # スクワットへ
+          redirect_to new_competition_squat_path, success: t('.success') # スクワットへ
         when "シングルベンチプレス"
-          redirect_to new_competition_bench_presse_path # ベンチプレスへ
+          redirect_to new_competition_bench_presse_path, success: t('.success') # ベンチプレスへ
       end
     else
+      flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
   end
@@ -41,8 +42,9 @@ class Record::WeighInsController < ApplicationController
       gender = current_user.profile.gender
       # メソッド内でtransaction実行し、competition_recordとcompetition_result更新
       @competition_record.result_save(@competition_record, @competition, gender)
-      redirect_to competition_path(@competition) # 成功したら詳細ページへ遷移する
+      redirect_to competition_path(@competition), success: t('.success') # 成功したら詳細ページへ遷移する
     else
+      flash.now[:danger] = t('.danger')
       render :edit, status: :unprocessable_entity
     end
   end

@@ -24,8 +24,9 @@ class Record::CommentsController < ApplicationController
       # セッションをクリアにする
       session.delete(:record)
       # 大会結果詳細ページへ遷移
-      redirect_to competition_path(@competition)
+      redirect_to competition_path(@competition), success: t('.success')
     else
+      flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
   end
@@ -39,8 +40,9 @@ class Record::CommentsController < ApplicationController
     @comment = Record::Comment.new(comment_params)
     # 取得したレコードのweightの値を、@weigh_in.weightに上書きしてupdateする
     if @competition_record.update(comment: @comment.comment)
-      redirect_to competition_path(@competition) # 成功したら詳細ページへ遷移する
+      redirect_to competition_path(@competition), success: t('.success') # 成功したら詳細ページへ遷移する
     else
+      flash.now[:danger] = t('.danger')
       render :edit, status: :unprocessable_entity
     end
   end

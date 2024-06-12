@@ -7,6 +7,42 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+  record:
+    weigh_ins:
+      create:
+        success: 検量体重が正しく入力できていることを確認しました
+        danger: 検量体重が正しく入力されていません
+      update:
+        success: 検量体重の更新とトータル重量/IPFポイントの計算結果を更新しました
+        danger: 検量体重の更新に失敗しました
+    squats:
+      create:
+        success: 試技結果が正しく入力できていることを確認しました
+        danger: 試技結果が正しく入力されていません
+      update:
+        success: スクワットの更新とトータル重量/IPFポイントの計算結果を更新しました
+        danger: スクワットの更新に失敗しました
+    bench_presses:
+      create:
+        success: 試技結果が正しく入力できていることを確認しました
+        danger: 試技結果が正しく入力されていません
+      update:
+        success: ベンチプレスの更新とトータル重量/IPFポイントの計算結果を更新しました
+        danger: ベンチプレスの更新に失敗しました
+    deadlifts:
+      create:
+        success: 試技結果が正しく入力できていることを確認しました
+        danger: 試技結果が正しく入力されていません
+      update:
+        success: デッドリフトの更新とトータル重量/IPFポイントの計算結果を更新しました
+        danger: デッドリフトの更新に失敗しました
+    comments:
+      create:
+        success: 試技結果の登録とトータル重量/IPFポイントの計算が完了しました
+        danger: 試技結果の登録に失敗しました
+      update:
+        success: コメントの更新をしました
+        danger: コメントの更新に失敗しました
   user_sessions:
     new:
       title: ログイン
@@ -48,6 +84,9 @@ ja:
       danger: 大会情報の更新に失敗しました
     destroy:
       success: 大会情報を削除しました
+  competition_records:
+    destroy:
+      success: 試技結果を削除しました
   competition_record:
     first_attempt: "第1試技"
     second_attempt: "第2試技"
