@@ -4,7 +4,7 @@ class CompetitionRecordsController < ApplicationController
 
   def destroy
     @competition_record.destroy!
-    redirect_to competition_path(@competition)
+    redirect_to competition_path(@competition), success: t('.success')
   end
 
   private

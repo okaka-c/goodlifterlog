@@ -42,8 +42,9 @@ class Record::WeighInsController < ApplicationController
       gender = current_user.profile.gender
       # メソッド内でtransaction実行し、competition_recordとcompetition_result更新
       @competition_record.result_save(@competition_record, @competition, gender)
-      redirect_to competition_path(@competition) # 成功したら詳細ページへ遷移する
+      redirect_to competition_path(@competition), success: t('.success') # 成功したら詳細ページへ遷移する
     else
+      flash.now[:danger] = t('.danger')
       render :edit, status: :unprocessable_entity
     end
   end
