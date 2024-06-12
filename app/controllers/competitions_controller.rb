@@ -15,8 +15,9 @@ class CompetitionsController < ApplicationController
   def create
     @competition = current_user.competitions.build(competition_params)
     if @competition.save
-      redirect_to competitions_path
+      redirect_to competitions_path, success: t('.success')
     else
+      flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
   end
@@ -38,15 +39,16 @@ class CompetitionsController < ApplicationController
           @competition_result.save!
         end
       end
-      redirect_to competition_path(@competition)
+      redirect_to competition_path(@competition), success: t('.success')
     else
+      flash.now[:danger] = t('.danger')
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @competition.destroy!
-    redirect_to competitions_path
+    redirect_to competitions_path, success: t('.success')
   end
 
 private

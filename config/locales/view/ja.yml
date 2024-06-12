@@ -39,6 +39,15 @@ ja:
     update:
       success: プロフィールの更新が完了しました
       danger: プロフィールの更新に失敗しました
+  competitions:
+    create:
+      success: 大会情報を登録しました
+      danger: 大会情報の登録に失敗しました
+    update:
+      success: 大会情報を更新しました
+      danger: 大会情報の更新に失敗しました
+    destroy:
+      success: 大会情報を削除しました
   competition_record:
     first_attempt: "第1試技"
     second_attempt: "第2試技"
