@@ -1,6 +1,7 @@
 class Competition < ApplicationRecord
   belongs_to :user
   has_one :competition_record, dependent: :destroy
+  has_one :competition_result, through: :competition_record
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :venue, length: { maximum: 255 }
@@ -31,4 +32,47 @@ class Competition < ApplicationRecord
     ]
   }.freeze
 
+  def best_squat_weight_result(competition)
+    competition&.competition_record&.competition_result&.best_squat_weight
+  end
+
+  def best_benchpress_weight_result(competition)
+    competition&.competition_record&.competition_result&.best_benchpress_weight
+  end
+
+  def best_deadlift_weight_result(competition)
+    competition&.competition_record&.competition_result&.best_deadlift_weight
+  end
+
+  def total_lifted_weight_result(competition)
+    competition&.competition_record&.competition_result&.total_lifted_weight
+  end
+
+  def ipf_points_result(competition)
+    competition&.competition_record&.competition_result&.ipf_points
+  end
+
+  def first_benchpress_result(competition)
+    competition&.competition_record&.benchpress_first_attempt
+  end
+
+  def second_benchpress_result(competition)
+    competition&.competition_record&.benchpress_second_attempt
+  end
+
+  def third_benchpress_result(competition)
+    competition&.competition_record&.benchpress_third_attempt
+  end
+
+  def benchpress_first_attempt_failure?(competition)
+    competition&.competition_record&.benchpress_first_attempt_result == "failure"
+  end
+
+  def benchpress_second_attempt_failure?(competition)
+    competition&.competition_record&.benchpress_second_attempt_result == "failure"
+  end
+
+  def benchpress_third_attempt_failure?(competition)
+    competition&.competition_record&.benchpress_third_attempt_result == "failure"
+  end
 end
