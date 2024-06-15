@@ -1,40 +1,5 @@
 <div class="mx-auto w-full max-w-screen-sm text-center">
     <!-- 大会結果一覧 -->
   <h1 class="text-2xl">出場済大会の一覧</h1>
-  <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 border-2 border-red-500/50">
-    <div class="p-4 border-b border-gray-200">
-      <div class="flex items-center justify-left">
-        <span class="text-sm font-medium text-red-500 mr-2">非公式</span>
-        <span class="text-sm font-medium text-red-500 mr-auto">シングルベンチプレス</span>
-        <button class="btn btn-sm btn-outline btn-primary">詳細</button>
-      </div>
-      <div class="flex flex-col place-items-start">
-        <div class="mt-1 text-sm text-gray-500">2024/10/30</div>
-        <div class="mt-1 text-base  text-left font-bold truncate w-full">第76回東京都パワーリフティング春季大会ああああああああああああああ</div>
-        <div class="mt-1 flex items-center justify-left">
-          <span class="text-sm text-gray-500 mr-2">女子47kg級</span>
-          <span class="text-sm text-gray-500 ">ノーギア</span>
-        </div>
-      </div>
-    </div>
-    <div class="p-4">
-      <div class="flex items-center justify-between">
-        <div class = "mr-1">
-          <div class="text-sm text-red-500">TOTAL</div>
-          <div class="text-xl font-bold text-red-500">300.0kg</div>
-        </div>
-        <div class="text-center">
-          <div class="text-sm text-gray-500">SQ</div>
-          <div class="text-base font-bold">100.0kg</div>
-        </div>
-        <div class="text-center">
-          <div class="text-sm text-gray-500">BP</div>
-          <div class="text-base font-bold">100.0kg</div>
-        </div>
-        <div class="text-center">
-          <div class="text-sm text-gray-500">DL</div>
-          <div class="text-base font-bold">100.0kg</div>
-        </div>
-      </div>
-  </div>
+  <%= render @competitions %>
 </div>
