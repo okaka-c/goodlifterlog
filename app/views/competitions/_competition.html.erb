@@ -1,10 +1,33 @@
-
-    <tbody class="divide-y divide-gray-100 border-t border-gray-100 text-xs">
-      <tr class="hover:bg-gray-50">
-        <td class="text-left px-4 py-4 text-gray-900"><%= competition.date %></td>
-        <td class="text-left px-4 py-4 w-48"><%= competition.name %></td>
-        <td class="px-4 py-4">
-          <%= link_to "詳細", competition_path(competition), class: "btn btn-sm text-xs" %>
-        </td>
-      </tr>
-    </tbody>
+  <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 border-2 border-red-500/50">
+    <div class="p-4 border-b border-gray-200">
+      <div class="flex items-center justify-left">
+        <span class="text-sm font-medium text-red-500 mr-2"><%= competition.competition_type_i18n %></span>
+        <span class="text-sm font-medium text-red-500 mr-auto"><%= competition.category %></span>
+        <%= link_to "詳細", competition_path(competition), class: "btn btn-sm btn-outline btn-primary" %>
+      </div>
+      <div class="flex flex-col place-items-start">
+        <div class="mt-1 text-sm text-gray-500"><%= competition.date %></div>
+        <div class="mt-1 text-base  text-left font-bold truncate w-full"><%= competition.name %></div>
+        <div class="mt-1 flex items-center justify-left">
+          <span class="text-sm text-gray-500 mr-2"><%= competition.weight_class %></span>
+          <span class="text-sm text-gray-500 "><%= competition.gearcategory_type_i18n %></span>
+        </div>
+      </div>
+    </div>
+    <div class="p-4 h-20">
+      <div class="flex items-center justify-between">
+      <% unless competition.competition_record.present? %>
+        <div class = "mr-1">
+          <div class="text-base  text-left font-bold">試技結果が未登録です</div>
+        </div>
+      <% else %>
+        <% if competition.category == "パワーリフティング" %>
+          <%= render 'powerlifting_result', competition: competition %>
+        <% end %>
+        <% if competition.category == "シングルベンチプレス" %>
+          <%= render 'benchpress_result', competition: competition %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
