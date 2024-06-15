@@ -14,24 +14,20 @@
         </div>
       </div>
     </div>
-    <div class="p-4">
+    <div class="p-4 h-20">
       <div class="flex items-center justify-between">
+      <% unless competition.competition_record.present? %>
         <div class = "mr-1">
-          <div class="text-sm text-red-500">TOTAL</div>
-          <div class="text-xl font-bold text-red-500"><%= competition.total_lifted_weight_result(competition) %>kg</div>
+          <div class="text-base  text-left font-bold">試技結果が未登録です</div>
         </div>
-        <div class="text-center">
-          <div class="text-sm text-gray-500">SQ</div>
-          <div class="text-base font-bold"><%= competition.best_squat_weight_result(competition) %>kg</div>
-        </div>
-        <div class="text-center">
-          <div class="text-sm text-gray-500">BP</div>
-          <div class="text-base font-bold"><%= competition.best_benchpress_weight_result(competition) %>kg</div>
-        </div>
-        <div class="text-center">
-          <div class="text-sm text-gray-500">DL</div>
-          <div class="text-base font-bold"><%= competition.best_deadlift_weight_result(competition) %>kg </div>
-        </div>
+      <% else %>
+        <% if competition.category == "パワーリフティング" %>
+          <%= render 'powerlifting_result', competition: competition %>
+        <% end %>
+        <% if competition.category == "シングルベンチプレス" %>
+          <%= render 'benchpress_result', competition: competition %>
+        <% end %>
+      <% end %>
       </div>
     </div>
   </div>
