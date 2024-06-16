@@ -55,6 +55,7 @@
     <!-- 合計重量・各種目最高重量 -->
     <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-2">
       <% if @competition_result.present? %>
+        <!-- 合計重量 -->
         <div class="flex flex-row shadow divide-x rounded-lg border-[1px] w-full">
           <div class="flex w-1/2 flex-col p-4">
             <div class="text-sm font-medium text-gray-500">TOTAL</div>
@@ -69,6 +70,41 @@
             <div class="text-sm text-gray-400 mt-1">
               <span class="rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">- 10.0kg down</span>
             </div>
+          </div>
+        </div>
+          <div class="card-body w-full ">
+            <!-- 各種目ベスト重量 -->
+            <div class="py-2">
+              <div class="flex items-center justify-between mb-3">
+                <h2 class="font-bold mr-2">種目別 最高重量</h2>
+              </div>
+              <!-- スクワット -->
+              <div class="flex flex-row pb-1">
+                <h3 class="font-bold text-sm basis-1/3">BEST SQ</h3>
+                <p class="text-sm basis-1/3 text-right"><%= @competition_result.best_squat_weight %>kg</p>
+                <!-- 前回からの伸び -->
+                <p class="text-sm basis-1/3 text-right text-red-500">
+                  + 10.0kg
+                </p>
+              </div>
+              <!-- ベンチプレス -->
+              <div class="flex flex-row pb-1">
+                <h3 class="font-bold text-sm basis-1/3">BEST BP</h3>
+                <p class="text-sm basis-1/3 text-right"><%= @competition_result.best_benchpress_weight %>kg</p>
+                <!-- 前回からの伸び -->
+                <p class="text-sm basis-1/3 text-right text-red-500">
+                  + 10.0kg
+                </p>
+              </div>
+              <!-- デッドリフト -->
+              <div class="flex flex-row pb-1">
+                <h3 class="font-bold text-sm basis-1/3">BEST DL</h3>
+                <p class="text-sm basis-1/3 text-right"><%= @competition_result.best_deadlift_weight %>kg</p>
+                <!-- 前回からの伸び -->
+                <p class="text-sm basis-1/3 text-right text-red-500">
+                  + 10.0kg
+                </p>
+              </div>
           </div>
         </div>
       <% end %>
