@@ -22,7 +22,9 @@ class CompetitionsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @past_competition = current_user.competitions.past_competitions(@competition.gearcategory_type, @competition.category).order(date: :desc).offset(1).first
+  end
 
   def edit; end
 
