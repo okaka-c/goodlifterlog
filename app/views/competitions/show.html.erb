@@ -89,17 +89,19 @@
                 <h2 class="font-bold mr-2">種目別 最高重量</h2>
               </div>
               <!-- スクワット -->
-              <div class="flex flex-row pb-1">
-                <h3 class="font-bold text-sm basis-1/3 ">BEST SQ</h3>
-                <p class="text-sm basis-1/3 text-right pr-2"><%= @competition_result.best_squat_weight %>kg</p>
-                <!-- 前回からの伸び -->
-                <div class="text-sm basis-1/3 ">
-                  <span class="flex w-full place-items-center rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(@competition_result.squat_subtraction(@competition_result, @past_competition_result)) %>">
-                    <%= raw subtraction_result_allow(@competition_result.squat_subtraction(@competition_result, @past_competition_result)) %>
-                    <%= @competition_result.squat_subtraction(@competition_result, @past_competition_result).abs %>kg
-                  </span>
+              <% if @competition.category == "パワーリフティング" %>
+                <div class="flex flex-row pb-1">
+                  <h3 class="font-bold text-sm basis-1/3 ">BEST SQ</h3>
+                  <p class="text-sm basis-1/3 text-right pr-2"><%= @competition_result.best_squat_weight %>kg</p>
+                  <!-- 前回からの伸び -->
+                  <div class="text-sm basis-1/3 ">
+                    <span class="flex w-full place-items-center rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(@competition_result.squat_subtraction(@competition_result, @past_competition_result)) %>">
+                      <%= raw subtraction_result_allow(@competition_result.squat_subtraction(@competition_result, @past_competition_result)) %>
+                      <%= @competition_result.squat_subtraction(@competition_result, @past_competition_result).abs %>kg
+                    </span>
+                  </div>
                 </div>
-              </div>
+              <% end %>
               <!-- ベンチプレス -->
               <div class="flex flex-row pb-1">
                 <h3 class="font-bold text-sm basis-1/3 ">BEST BP</h3>
@@ -113,17 +115,19 @@
                 </div>
               </div>
               <!-- デッドリフト -->
-              <div class="flex flex-row pb-1">
-                <h3 class="font-bold text-sm basis-1/3 ">BEST DL</h3>
-                <p class="text-sm basis-1/3 text-right pr-2 "><%= @competition_result.best_deadlift_weight %>kg</p>
-                <!-- 前回からの伸び -->
-                <div class="text-sm basis-1/3 ">
-                  <span class="flex w-full place-items-center rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(@competition_result.deadlift_subtraction(@competition_result, @past_competition_result)) %>">
-                    <%= raw subtraction_result_allow(@competition_result.deadlift_subtraction(@competition_result, @past_competition_result)) %>
-                    <%= @competition_result.deadlift_subtraction(@competition_result, @past_competition_result).abs %>kg
-                  </span>
+              <% if @competition.category == "パワーリフティング" %>
+                <div class="flex flex-row pb-1">
+                  <h3 class="font-bold text-sm basis-1/3 ">BEST DL</h3>
+                  <p class="text-sm basis-1/3 text-right pr-2 "><%= @competition_result.best_deadlift_weight %>kg</p>
+                  <!-- 前回からの伸び -->
+                  <div class="text-sm basis-1/3 ">
+                    <span class="flex w-full place-items-center rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(@competition_result.deadlift_subtraction(@competition_result, @past_competition_result)) %>">
+                      <%= raw subtraction_result_allow(@competition_result.deadlift_subtraction(@competition_result, @past_competition_result)) %>
+                      <%= @competition_result.deadlift_subtraction(@competition_result, @past_competition_result).abs %>kg
+                    </span>
+                  </div>
                 </div>
-              </div>
+              <% end %>
           </div>
         </div>
       <% end %>
