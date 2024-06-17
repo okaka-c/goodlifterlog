@@ -24,7 +24,7 @@ class CompetitionsController < ApplicationController
 
   def show
     past_competition = current_user.competitions.past_competitions(@competition.gearcategory_type, @competition.category).order(date: :desc).offset(1).first
-    @past_competition_result = past_competition.competition_result
+    @past_competition_result = past_competition.competition_result if past_competition.present?
   end
 
   def edit; end
