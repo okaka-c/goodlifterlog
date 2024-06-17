@@ -7,7 +7,7 @@
         <div class="text-2xl font-bold"><%= competition_result.total_lifted_weight %> kg</div>
         <!-- 増減バッチ -->
         <div class="flex flex-col text-sm mt-1">
-          <span class="w-4/5 rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(competition_result.total_subtraction(competition_result, past_competition_result)) %>">
+          <span class="flex items-center w-4/5 rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(competition_result.total_subtraction(competition_result, past_competition_result)) %>">
             <%= raw subtraction_result_allow(competition_result.total_subtraction(competition_result, past_competition_result)) %>
             <%= competition_result.total_subtraction(competition_result, past_competition_result).abs %> kg
           </span>
@@ -20,7 +20,7 @@
         <div class="text-2xl font-bold"><%= competition_result.ipf_points.round(2) %></div>
         <!-- 増減バッチ -->
         <div class="flex flex-col text-sm mt-1">
-          <span class="w-4/5 rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(competition_result.ipf_points_subtraction(competition_result, past_competition_result)) %>">
+          <span class="flex items-center w-4/5 rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(competition_result.ipf_points_subtraction(competition_result, past_competition_result)) %>">
             <%= raw subtraction_result_allow(competition_result.ipf_points_subtraction(competition_result, past_competition_result)) %>
             <%= competition_result.ipf_points_subtraction(competition_result, past_competition_result).abs %>
           </span>
