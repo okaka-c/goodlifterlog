@@ -1,0 +1,85 @@
+<div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-2">
+    <!-- 合計重量とIPF point -->
+    <div class="flex flex-row shadow divide-x rounded-lg border-[1px] w-full">
+      <!-- 合計重量 -->
+      <div class="flex w-1/2 flex-col p-4">
+        <div class="text-sm font-medium text-gray-500">TOTAL</div>
+        <div class="text-2xl font-bold"><%= competition_result.total_lifted_weight %> kg</div>
+        <!-- 増減バッチ -->
+        <div class="flex flex-col text-sm mt-1">
+          <span class="w-4/5 rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(competition_result.total_subtraction(competition_result, past_competition_result)) %>">
+            <%= raw subtraction_result_allow(competition_result.total_subtraction(competition_result, past_competition_result)) %>
+            <%= competition_result.total_subtraction(competition_result, past_competition_result).abs %> kg
+          </span>
+          <span class= "text-[10px] text-gray-500">(前大会比)</span>
+        </div>
+      </div>
+      <!-- IPFポイント -->
+      <div class="flex w-1/2 flex-col p-4">
+        <div class="text-sm font-medium text-gray-500">IPF POINTS</div>
+        <div class="text-2xl font-bold"><%= competition_result.ipf_points.round(2) %></div>
+        <!-- 増減バッチ -->
+        <div class="flex flex-col text-sm mt-1">
+          <span class="w-4/5 rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(competition_result.ipf_points_subtraction(competition_result, past_competition_result)) %>">
+            <%= raw subtraction_result_allow(competition_result.ipf_points_subtraction(competition_result, past_competition_result)) %>
+            <%= competition_result.ipf_points_subtraction(competition_result, past_competition_result).abs %>
+          </span>
+          <span class= "text-[10px] text-gray-500">(前大会比)</span>
+        </div>
+      </div>
+    </div>
+      <div class="card-body w-full py-5">
+        <!-- 各種目ベスト重量 -->
+        <div class="py-2">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="font-bold mr-2">種目別 最高重量</h2>
+            <span class= "text-[10px] text-gray-500">(前大会比)</span>
+          </div>
+          <!-- スクワット -->
+          <% if competition.category == "パワーリフティング" %>
+            <div class="flex flex-row pb-1 items-center">
+              <h3 class="font-bold text-sm basis-1/3 ">BEST SQ</h3>
+              <p class="text-sm basis-1/3 text-right pr-2"><%= competition_result.best_squat_weight %>kg</p>
+              <!-- 前回からの伸び -->
+              <div class="text-sm basis-1/3 ">
+                <span class="flex w-full place-items-center rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(competition_result.squat_subtraction(competition_result, past_competition_result)) %>">
+                  <%= raw subtraction_result_allow(competition_result.squat_subtraction(competition_result, past_competition_result)) %>
+                  <%= competition_result.squat_subtraction(competition_result, past_competition_result).abs %>kg
+                </span>
+              </div>
+            </div>
+          <% end %>
+          <!-- ベンチプレス -->
+          <div class="flex flex-row pb-1 items-center">
+            <h3 class="font-bold text-sm basis-1/3 ">BEST BP</h3>
+            <p class="text-sm basis-1/3 text-right pr-2 "><%= competition_result.best_benchpress_weight %>kg</p>
+            <!-- 前回からの伸び -->
+            <div class="text-sm basis-1/3 ">
+              <span class="flex w-full place-items-center rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(competition_result.benchpress_subtraction(competition_result, past_competition_result)) %>">
+                <%= raw subtraction_result_allow(competition_result.benchpress_subtraction(competition_result, past_competition_result)) %>
+                <%= competition_result.benchpress_subtraction(competition_result, past_competition_result).abs %>kg
+              </span>
+            </div>
+          </div>
+          <!-- デッドリフト -->
+          <% if competition.category == "パワーリフティング" %>
+            <div class="flex flex-row pb-1 items-center">
+              <h3 class="font-bold text-sm basis-1/3 ">BEST DL</h3>
+              <p class="text-sm basis-1/3 text-right pr-2 "><%= competition_result.best_deadlift_weight %>kg</p>
+              <!-- 前回からの伸び -->
+              <div class="text-sm basis-1/3 ">
+                <span class="flex w-full place-items-center rounded-full px-2 py-1 text-xs font-semibold <%= subtraction_result_color(competition_result.deadlift_subtraction(competition_result, past_competition_result)) %>">
+                  <%= raw subtraction_result_allow(competition_result.deadlift_subtraction(competition_result, past_competition_result)) %>
+                  <%= competition_result.deadlift_subtraction(competition_result, past_competition_result).abs %>kg
+                </span>
+              </div>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  <% if past_competition.present? %>
+    <%= link_to "比較に使った前回の大会の詳細", competition_path(past_competition), class: "link link-info text-gray-500" %>
+  <% else%>
+    <p class="text-sm">比較する前回の大会がありません</p>
+  <% end %>
+</div>
