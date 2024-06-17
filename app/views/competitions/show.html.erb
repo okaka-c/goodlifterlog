@@ -82,7 +82,7 @@
             </div>
           </div>
         </div>
-          <div class="card-body w-full ">
+          <div class="card-body w-full py-5">
             <!-- 各種目ベスト重量 -->
             <div class="py-2">
               <div class="flex items-center justify-between mb-3">
@@ -130,6 +130,11 @@
               <% end %>
           </div>
         </div>
+      <% end %>
+      <% if @past_competition.present? %>
+        <%= link_to "比較に使った前回の大会の詳細", competition_path(@past_competition), class: "link link-info text-gray-500" %>
+      <% else%>
+        <p class="text-sm">比較する前回の大会がありません</p>
       <% end %>
     </div>
   </div>
