@@ -39,6 +39,11 @@ class Record::Deadlift
 	validate :deadlift_second_attempt_is_not_be_not_attempted, unless: :should_validate_deadlift_second_attempt_numericality?
 	validate :deadlift_third_attempt_is_not_be_not_attempted, unless: :should_validate_deadlift_third_attempt_numericality?
 
+	# 成功か失敗選択時に重量が入力されていない
+	validate :deadlift_first_attempt_is_not_be_blank
+	validate :deadlift_second_attempt_is_not_be_blank
+	validate :deadlift_third_attempt_is_not_be_blank
+
 	private
 	# 重量の入力フォームに文字列が入力されていないか？
 	# 第一試技
@@ -71,6 +76,26 @@ class Record::Deadlift
 	def deadlift_third_attempt_is_not_be_not_attempted
 		if deadlift_third_attempt.present? && Float(deadlift_third_attempt, exception: false) >= 0 && deadlift_third_attempt_result == "not_attempted"
 			errors.add(:deadlift_third_attempt_result, "は成功か失敗かを選んでください")
+		end
+	end
+
+	# 成功か失敗選択時に重量が入力されていない
+  # デッドリフト
+  def deadlift_first_attempt_is_not_be_blank
+		if (deadlift_first_attempt_result == "success" || deadlift_first_attempt_result == "failure") && deadlift_first_attempt.blank?
+			errors.add(:deadlift_first_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+		end
+	end
+
+	def deadlift_second_attempt_is_not_be_blank
+		if (deadlift_second_attempt_result == "success" || deadlift_second_attempt_result == "failure") && deadlift_second_attempt.blank?
+			errors.add(:deadlift_second_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+		end
+	end
+
+	def deadlift_third_attempt_is_not_be_blank
+		if (deadlift_third_attempt_result == "success" || deadlift_third_attempt_result == "failure") && deadlift_third_attempt.blank?
+			errors.add(:deadlift_third_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
 		end
 	end
 end
