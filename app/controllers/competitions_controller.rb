@@ -15,7 +15,7 @@ class CompetitionsController < ApplicationController
   def create
     @competition = current_user.competitions.build(competition_params)
     if @competition.save
-      redirect_to competitions_path, success: t('.success')
+      redirect_to new_competition_weigh_in_path(@competition), success: t('.success')
     else
       flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
