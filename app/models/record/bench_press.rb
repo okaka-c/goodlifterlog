@@ -39,6 +39,11 @@ class Record::BenchPress
 	validate :benchpress_second_attempt_is_not_be_not_attempted, unless: :should_validate_benchpress_second_attempt_numericality?
 	validate :benchpress_third_attempt_is_not_be_not_attempted, unless: :should_validate_benchpress_third_attempt_numericality?
 
+	# 成功か失敗選択時に重量が入力されていない
+	validate :benchpress_first_attempt_is_not_be_blank
+	validate :benchpress_second_attempt_is_not_be_blank
+	validate :benchpress_third_attempt_is_not_be_blank
+
 	private
 	# 重量の入力フォームに文字列が入力されていないか？
 	# 第一試技
@@ -71,6 +76,25 @@ class Record::BenchPress
 	def benchpress_third_attempt_is_not_be_not_attempted
 		if benchpress_third_attempt.present? && Float(benchpress_third_attempt, exception: false) >= 0 && benchpress_third_attempt_result == "not_attempted"
 			errors.add(:benchpress_third_attempt_result, "は成功か失敗かを選んでください")
+		end
+	end
+	# 成功か失敗選択時に重量が入力されていない
+  # ベンチプレス
+  def benchpress_first_attempt_is_not_be_blank
+		if (benchpress_first_attempt_result == "success" || benchpress_first_attempt_result == "failure") && benchpress_first_attempt.blank?
+			errors.add(:benchpress_first_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+		end
+	end
+
+	def benchpress_second_attempt_is_not_be_blank
+		if (benchpress_second_attempt_result == "success" || benchpress_second_attempt_result == "failure") && benchpress_second_attempt.blank?
+			errors.add(:benchpress_second_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+		end
+	end
+
+	def benchpress_third_attempt_is_not_be_blank
+		if (benchpress_third_attempt_result == "success" || benchpress_third_attempt_result == "failure") && benchpress_third_attempt.blank?
+			errors.add(:benchpress_third_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
 		end
 	end
 end
