@@ -34,4 +34,24 @@ class CompetitionResult < ApplicationRecord
       }
     }
   }.freeze
+
+  def total_subtraction(result, past_result)
+    past_result.nil? ? 0.0 : result.total_lifted_weight - past_result.total_lifted_weight
+  end
+
+  def squat_subtraction(result, past_result)
+    past_result.nil? ? 0.0 : result.best_squat_weight - past_result.best_squat_weight
+  end
+
+  def benchpress_subtraction(result, past_result)
+    past_result.nil? ? 0.0 : result.best_benchpress_weight - past_result.best_benchpress_weight
+  end
+
+  def deadlift_subtraction(result, past_result)
+    past_result.nil? ? 0.0 : result.best_deadlift_weight - past_result.best_deadlift_weight
+  end
+
+  def ipf_points_subtraction(result, past_result)
+    past_result.nil? ? 0.0 : (result.ipf_points - past_result.ipf_points).round(2)
+  end
 end

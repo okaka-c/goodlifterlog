@@ -32,6 +32,17 @@ class Competition < ApplicationRecord
     ]
   }.freeze
 
+  # scopeの定義
+  scope :past_competitions, ->(gearcategory_type, category, date) {
+    where(
+      competition_type: :official,
+      participation_status: :participated,
+      gearcategory_type: gearcategory_type,
+      category: category
+      ).where('date < ?', date)
+    }
+
+
   def best_squat_weight_result(competition)
     competition&.competition_record&.competition_result&.best_squat_weight
   end

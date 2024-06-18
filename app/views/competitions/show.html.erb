@@ -41,6 +41,10 @@
         </div>
       </div>
     </div>
+        <!-- 合計重量・各種目最高重量 -->
+    <% if @competition_result.present? %>
+      <%= render 'competition_result', competition: @competition, competition_result: @competition_result, past_competition_result: @past_competition_result, past_competition: @past_competition %>
+    <% end %>
     <!-- 大会試技結果詳細情報 -->
     <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4">
       <% if CompetitionRecord.exists?(competition_id: @competition.id) %>
@@ -50,30 +54,6 @@
           <p>大会結果記録はまだ未登録です</p>
           <%= link_to "大会結果記録", new_competition_weigh_in_path(@competition), class: "btn btn-sm btn-primary max-w-24" %>
         </div>
-      <% end %>
-    </div>
-    <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4">
-      <% if @competition_result.present? %>
-      <div class="border-b-2 border-dashed py-2">
-        <h2 class="font-bold">スクワット最高重量:</h2>
-        <p class="text-sm"> <%= @competition_result.best_squat_weight %></p>
-      </div>
-      <div class="border-b-2 border-dashed py-2">
-        <h2 class="font-bold">ベンチプレス最高重量:</h2>
-        <p class="text-sm"> <%= @competition_result.best_benchpress_weight %></p>
-      </div>
-      <div class="border-b-2 border-dashed py-2">
-        <h2 class="font-bold">デッドリフト最高重量:</h2>
-        <p class="text-sm"> <%= @competition_result.best_deadlift_weight %></p>
-      </div>
-      <div class="border-b-2 border-dashed py-2">
-        <h2 class="font-bold">合計重量:</h2>
-        <p class="text-sm"> <%= @competition_result.total_lifted_weight %></p>
-      </div>
-      <div class="border-b-2 border-dashed py-2">
-        <h2 class="font-bold">IPF GLポイント:</h2>
-        <p class="text-sm"> <%= @competition_result.ipf_points.round(2) %></p>
-      </div>
       <% end %>
     </div>
   </div>
