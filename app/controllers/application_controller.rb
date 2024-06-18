@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   def set_bottom_navi
 	  @show_bottom_nav = true
   end
+
+  def hide_bottom_navi
+    @show_bottom_nav = false
+  end
 end

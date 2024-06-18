@@ -2,6 +2,7 @@ class Record::CommentsController < ApplicationController
   before_action :set_competition
   before_action :set_competition_record, only: %i[ edit update ]
   skip_before_action :set_bottom_navi, only: %i[ new edit ]
+  before_action :hide_bottom_navi, only: %i[ create update ]
 
   def new
     @comment = Record::Comment.new
