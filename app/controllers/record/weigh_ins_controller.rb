@@ -3,6 +3,7 @@ class Record::WeighInsController < ApplicationController
   before_action :set_competition_record, only: %i[ edit update ]
   before_action :set_competition_result, only: %i[ update ]
   skip_before_action :set_bottom_navi, only: %i[ new edit ]
+  before_action :hide_bottom_navi, only: %i[ create update ]
 
   def new
     @weigh_in = Record::WeighIn.new
