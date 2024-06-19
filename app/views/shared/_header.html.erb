@@ -21,7 +21,7 @@
           <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
             <li><%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete } %></li>
             <li><%= link_to t('information.contact_us'), '#' %></li>
-            <li><%= link_to t('information.terms_of_use'), '#' %></li>
+            <li><%= link_to t('information.terms_of_use'), terms_path %></li>
             <li><%= link_to t('information.privacy_policy'), '#' %></li>
           </ul>
         </div>
