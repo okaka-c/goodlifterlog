@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   post 'login', to: "user_sessions#create"
   delete 'logout', to: 'user_sessions#destroy', :as => :logout
 
+  get 'terms', to: 'static_pages#terms'
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
