@@ -24,6 +24,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy', :as => :logout
 
   get 'terms', to: 'static_pages#terms'
-
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
