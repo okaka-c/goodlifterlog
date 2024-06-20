@@ -22,7 +22,7 @@
       <%= f.label :date, class: 'mr-2 font-semibold' %>
       <p class="text-red-500">(必須)</p>
     </div>
-      <%= f.date_field :date, class: 'input input-bordered input-sm rounded w-full max-w-xs text-base', placeholder:"開催日" %>
+      <%= f.date_field :date, class: 'input input-bordered input-sm rounded w-full max-w-xs text-base', placeholder:"開催日", max: Date.today%>
       <%= render 'shared/error_messages', object: f.object, attribute: :date %>
   </label>
   <!-- ここから選択制 -->

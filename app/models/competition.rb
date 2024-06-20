@@ -12,6 +12,7 @@ class Competition < ApplicationRecord
   validates :age_group, presence: true
   validates :weight_class, presence: true
   validates :participation_status, presence: true
+  validate  :date_is_not_future
 
   # enum定義
   enum competition_type: { official: 0, unofficial: 1 } # 大会種別：公式大会、非公式大会
@@ -85,5 +86,13 @@ class Competition < ApplicationRecord
 
   def benchpress_third_attempt_failure?(competition)
     competition&.competition_record&.benchpress_third_attempt_result == "failure"
+  end
+
+  private
+
+  def date_is_not_future
+    if date.present? && date > Date.today
+      errors.add(:date, "は本日含む過去の日付を入力してください") 
+    end
   end
 end
