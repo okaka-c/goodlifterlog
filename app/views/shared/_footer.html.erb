@@ -1,10 +1,10 @@
-<footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
+<footer class="footer footer-center p-10 bg-primary text-base-content rounded">
   <nav class="grid grid-flow-col gap-4">
-    <a class="link link-hover"><%= link_to t('information.contact_us'), 'https://forms.gle/vhNpcExKi48JeSBZ6', target: '_blank' %></a>
-    <a class="link link-hover"><%= link_to t('information.terms_of_use'), terms_path %></a>
-    <a class="link link-hover"><%= link_to t('information.privacy_policy'), privacy_policy_path %></a>
+    <a class="link link-hover"><%= link_to t('information.contact_us'), 'https://forms.gle/vhNpcExKi48JeSBZ6', target: '_blank', class: 'text-white' %></a>
+    <a class="link link-hover"><%= link_to t('information.terms_of_use'), terms_path, class: 'text-white'%></a>
+    <a class="link link-hover"><%= link_to t('information.privacy_policy'), privacy_policy_path, class: 'text-white' %></a>
   </nav>
   <aside>
-    <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
+    <p class="text-white">Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
   </aside>
 </footer>
