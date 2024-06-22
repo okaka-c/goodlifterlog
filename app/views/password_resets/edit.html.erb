@@ -3,7 +3,7 @@
     <div class="text-center lg:text-left">
       <h1 class="text-5xl font-bold">会員登録</h1>
     </div>
-    <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4 text-sm">
+    <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-md p-4 text-sm">
       <!-- ここからform_withを使う形に修正 -->
 			<%= form_with model: @user, url: password_reset_path(@token), method: :patch, html: { class: "card-body" } do |f| %>
 				<div class="form-control">

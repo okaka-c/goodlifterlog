@@ -1,6 +1,6 @@
 <% if object.errors.full_messages_for(attribute).any? %>
 <div class="flex flex-none w-full">
-  <div class="rounded-md bg-red-50 p-1 text-xs text-red-500 w-full" >
+  <div class="rounded-md bg-red-50 p-1 text-xs font-bold text-red-500 w-full" >
     <ul class="list-none">
       <% object.errors.full_messages_for(attribute).each do |message| %>
         <li><%= message %></li>

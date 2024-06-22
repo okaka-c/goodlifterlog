@@ -1,11 +1,11 @@
-<div class="navbar bg-primary sticky top-0 z-50">
-  <div class="flex-1 text-white">
-    <%= link_to "Powerlifter's log", competitions_path, class:"btn btn-ghost text-base font-bold text-white" %>
+<div class="navbar bg-primary sticky top-0 z-50 text-primary-content">
+  <div class="flex-1">
+    <%= link_to "Powerlifter's log", competitions_path, class:"btn btn-ghost text-base font-bold" %>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
       <li class="size-10 flex items-center justify-center">
-        <%= link_to profile_path, class: "flex items-center justify-center text-white" do %>
+        <%= link_to profile_path, class: "flex items-center justify-center" do %>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 512 512">
           <path d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
           </svg>
@@ -13,17 +13,16 @@
       </li>
       <li class="size-10 flex items-center justify-center">
         <div class="dropdown dropdown-bottom dropdown-end p-0">
-          <div tabindex="0" role="button" class="btn btn-ghost flex items-center justify-center text-white">
+          <div tabindex="0" role="button" class="btn btn-ghost flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 448 512">
               <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
             </svg>
           </div>
           <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-            <li><%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete } %></li>
-            <li><%= link_to t('information.contact_us'), 'https://forms.gle/vhNpcExKi48JeSBZ6', target: '_blank' %></li>
-            <li><%= link_to t('information.terms_of_use'), terms_path %></li>
-            <li><%= link_to t('information.privacy_policy'), privacy_policy_path %></li>
-          </ul>
+            <li><%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete }, class: "text-gray-700"%></li>
+            <li><%= link_to t('information.contact_us'), 'https://forms.gle/vhNpcExKi48JeSBZ6', target: '_blank', class: "text-gray-700" %></li>
+            <li><%= link_to t('information.terms_of_use'), terms_path, class: "text-gray-700"%></li>
+            <li><%= link_to t('information.privacy_policy'), privacy_policy_path, class: "text-gray-700"%></li>
         </div>
       </li>
     </ul>
