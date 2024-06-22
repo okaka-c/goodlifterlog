@@ -1,7 +1,7 @@
-<div class="hero min-h-screen bg-base-200">
+<div class="hero min-h-screen">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="text-center lg:text-left">
-      <h1 class="text-5xl font-bold">Login now!</h1>
+      <h1 class="text-5xl font-bold text-gray-700">Login now!</h1>
     </div>
     <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <!-- ここからform_withを使う形に修正 -->
@@ -15,7 +15,7 @@
           <%= f.password_field :password, class: 'input input-bordered', placeholder:"password", required: true %>
         </div>
         <div class="form-control mt-6">
-          <%= f.submit t('.login'), class: 'btn btn-primary' %>
+          <%= f.submit t('.login'), class: 'btn btn-accent text-white' %>
         </div>
         <!-- パスワード申請ページへのリンク -->
         <%= link_to t('.password_forget'), new_password_reset_path, class:'text-center' %>
