@@ -1,2 +1,4 @@
 default_url_options:
   host: 'goodlifterlog.onrender.com'
+sorcery:
+  line_callback_url: 'https://www.powerlifterslog.com/oauth/callback?provider=line'
