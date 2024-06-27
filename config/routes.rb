@@ -24,8 +24,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy', :as => :logout
 
   # LINE認証用
-  get 'oauth/:provider', to: 'oauths#oauth', :as => :auth_at_provider
+  get "oauth/callback", to: "oauths#callback"
   post "oauth/callback", to: "oauths#callback"
+  get 'oauth/:provider', to: 'oauths#oauth', :as => :auth_at_provider
   # 利用規約とプライバシーポリシー
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
