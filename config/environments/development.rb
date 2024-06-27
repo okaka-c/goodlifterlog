@@ -70,4 +70,6 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener_web
   # configのファイルで設定したhost情報を読み取りハッシュで返させる
   config.action_mailer.default_url_options = Settings.default_url_options.to_h
+  # ngrokを接続
+  config.hosts << '.ngrok-free.app'
 end
