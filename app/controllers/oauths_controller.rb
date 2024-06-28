@@ -7,13 +7,13 @@ class OauthsController < ApplicationController
   def callback
     provider = auth_params[:provider] #ストロングパラメータで受け取り
     if @user = login_from(provider)
-      redirect_to competitions_path, success: t('.success')
+      redirect_to profile_existence_path, success: t('.success')
     else
       begin
         @user = create_from(provider)
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_to competitions_path, success: t('.success')
+        redirect_to profile_existence_path, success: t('.success')
       rescue
         redirect_to root_path, danger: t('.danger')
       end
