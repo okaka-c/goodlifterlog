@@ -8,6 +8,8 @@
         <h1 class="text-3xl font-bold">記録を始めましょう!</h1>
         <%= link_to t('header.login'), login_path, class:"btn btn-accent" %>
         <%= link_to t('header.to_register_page'), new_user_path, class:"btn btn-accent" %>
+        <h1 class="text-xl font-bold mt-10">LINEログイン（開発中) なのでパスワード・アドレスから会員登録してくださいいい泣</h1>
+        <%= link_to 'LINEログイン', auth_at_provider_path(:provider => :line), class:"btn btn-accent mt-4" %>
       </article>
     </div>
   </div>
