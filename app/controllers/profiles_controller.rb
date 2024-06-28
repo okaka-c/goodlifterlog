@@ -1,9 +1,12 @@
 class ProfilesController < ApplicationController
-
+  skip_before_action :set_header_navi, only: %i[ new ]
+  before_action :hide_header_navi, only: %i[ create ]
+  skip_before_action :set_bottom_navi, only: %i[ new edit ]
+  before_action :hide_bottom_navi, only: %i[ create update ]
   def existence
     if current_user.profile.present?
-      # プロフィールが存在する場合,詳細画面へ
-      redirect_to profile_path
+      # プロフィールが存在する場合,大会結果一覧へ
+      redirect_to competitions_path
     else
       # プロフィール登録が未の場合,新規登録ページへ
       redirect_to new_profile_path
