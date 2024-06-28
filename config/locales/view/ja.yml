@@ -54,6 +54,10 @@ ja:
       danger: ログインに失敗しました
     destroy:
       success: ログアウトしました
+  oauths:
+    callback:
+      success: LINEログインしました
+      danger: LINEログインに失敗しました
   password_resets:
     new:
       title: パスワードリセット申請
@@ -72,6 +76,9 @@ ja:
       success: 会員登録が完了しました
       danger: 会員登録に失敗しました
   profiles:
+    create:
+      success: プロフィールの登録が完了しました
+      danger: プロフィールの登録に失敗しました
     update:
       success: プロフィールの更新が完了しました
       danger: プロフィールの更新に失敗しました
