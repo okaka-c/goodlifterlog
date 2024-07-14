@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :profile, only: [:new, :create, :show, :edit, :update]
   get 'profile/existence', to: "profiles#existence"
   resources :password_resets, only: [:create, :edit, :update, :new]
-
+  resources :charts, only: [:index]
   resources :competitions do
     resource :competition_record, only: [:destroy]
     scope module: 'record' do
