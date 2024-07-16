@@ -1,5 +1,5 @@
 class EquippedSingleBenchPressIpfglpointsQuery < Query
-	def initialize(user)
+  def initialize(user)
     @user = user
   end
 
