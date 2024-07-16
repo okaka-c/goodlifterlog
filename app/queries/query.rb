@@ -1,6 +1,6 @@
 class Query
-  class << self
-    delegate :call, to: :new
+  def self.call(*args)
+    new(*args).call
   end
 
   def call
