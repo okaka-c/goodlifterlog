@@ -1,5 +1,4 @@
 class ClassicPowerliftingIpfglpointsQuery < Query
-
 	def initialize(user)
     @user = user
   end

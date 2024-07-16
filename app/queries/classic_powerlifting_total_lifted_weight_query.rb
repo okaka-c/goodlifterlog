@@ -1,5 +1,4 @@
 class ClassicPowerliftingTotalLiftedWeightQuery < Query
-
 	def initialize(user)
     @user = user
   end
