@@ -3,8 +3,8 @@
 <% end %>
 <div class="mx-auto w-full max-w-screen-sm text-center pb-16">
   <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 p-2">
-    <h1>パワーリフティング(ノーギア)<br/>合計重量</h1>
-      <%= line_chart [["2020-5-3", 287.5], ["2020-10-1", 247.5], ["2021-10-1", 280.0]],
+    <h1 class="font-bold text-primary">パワーリフティング(ノーギア)<br/>合計重量</h1>
+      <%= line_chart @classic_power_total_weights,
       xtitle: "開催日" ,
       ytitle: "重量(kg)",
       decimal: ",",
@@ -12,8 +12,8 @@
       %>
   </div>
   <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 p-2">
-    <h1>パワーリフティング(フルギア)<br/>合計重量</h1>
-      <%= line_chart [["2020-1-1", 300.0], ["2022-2-1", 322.5], ["2023-2-2", 405.0], ["2024-3-2", 500.0], ["2025-4-2", 522.5], ["2026-5-2", 600.5], ["2027-6-2", 725.5]],
+    <h1 class="font-bold text-primary">パワーリフティング(フルギア)<br/>合計重量</h1>
+      <%= line_chart @equipped_power_total_weights,
       xtitle: "開催日" ,
       ytitle: "重量(kg)",
       decimal: ",",
@@ -21,8 +21,8 @@
       %>
   </div>
   <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 p-2">
-    <h1>シングルベンチプレス(ノーギア)<br/>重量</h1>
-      <%= line_chart [["2020-1-1", 300.0], ["2022-2-1", 322.5], ["2023-2-2", 405.0], ["2024-3-2", 500.0], ["2025-4-2", 522.5], ["2026-5-2", 600.5], ["2027-6-2", 725.5]],
+    <h1 class="font-bold text-primary">シングルベンチプレス(ノーギア)<br/>重量</h1>
+      <%= line_chart @classic_single_benchpress_weights,
       xtitle: "開催日" ,
       ytitle: "重量(kg)",
       decimal: ",",
@@ -30,8 +30,8 @@
       %>
   </div>
   <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 p-2">
-    <h1>シングルベンチプレス(フルギア)<br/>重量</h1>
-      <%= line_chart [["2020-1-1", 300.0], ["2022-2-1", 322.5], ["2023-2-2", 405.0], ["2024-3-2", 500.0], ["2025-4-2", 522.5], ["2026-5-2", 600.5], ["2027-6-2", 725.5]],
+    <h1 class="font-bold text-primary">シングルベンチプレス(フルギア)<br/>重量</h1>
+      <%= line_chart @equipped_single_benchpress_weights,
       xtitle: "開催日" ,
       ytitle: "重量(kg)",
       decimal: ",",
