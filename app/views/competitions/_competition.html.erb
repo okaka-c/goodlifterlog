@@ -1,9 +1,9 @@
-  <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 border-2 border-red-500/50">
+  <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4">
     <div class="p-4 border-b border-gray-200">
       <div class="flex items-center justify-left">
-        <span class="text-sm font-medium text-red-500 mr-2"><%= competition.competition_type_i18n %></span>
-        <span class="text-sm font-medium text-red-500 mr-auto"><%= competition.category %></span>
-        <%= link_to "詳細", competition_path(competition), class: "btn btn-sm btn-outline btn-primary" %>
+        <span class="text-sm font-medium text-primary mr-2"><%= competition.competition_type_i18n %></span>
+        <span class="text-sm font-medium text-primary mr-auto"><%= competition.category %></span>
+        <%= link_to "詳細", competition_path(competition), class: "btn btn-sm btn-outline btn-accent" %>
       </div>
       <div class="flex flex-col place-items-start">
         <div class="mt-1 text-sm text-gray-500"><%= competition.date %></div>

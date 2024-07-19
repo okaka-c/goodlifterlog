@@ -1,16 +1,16 @@
 <div class = "mr-1">
-  <div class="text-sm text-red-500">MAX</div>
-  <div class="text-xl font-bold text-red-500"><%= competition.total_lifted_weight_result(competition) %>kg</div>
+  <div class="text-sm text-primary">MAX</div>
+  <div class="text-xl font-bold text-primary"><%= competition.total_lifted_weight_result(competition) %>kg</div>
 </div>
 <div class="text-center">
   <div class="text-sm text-gray-500">1st</div>
-  <div class="text-base font-bold <%= 'line-through' if competition.benchpress_first_attempt_failure?(competition) %>"><%= competition.first_benchpress_result(competition) %>kg</div>
+  <div class="text-base font-bold <%= "line-through" if competition.benchpress_first_attempt_failure?(competition) %>"><%= competition.first_benchpress_result(competition) %>kg</div>
 </div>
 <div class="text-center">
   <div class="text-sm text-gray-500">2st</div>
-  <div class="text-base font-bold <%= 'line-through' if competition.benchpress_second_attempt_failure?(competition) %>"><%= competition.second_benchpress_result(competition) %>kg</div>
+  <div class="text-base font-bold <%= "line-through" if competition.benchpress_second_attempt_failure?(competition) %>"><%= competition.second_benchpress_result(competition) %>kg</div>
 </div>
 <div class="text-center">
   <div class="text-sm text-gray-500">3rd</div>
-  <div class="text-base font-bold <%= 'line-through' if competition.benchpress_third_attempt_failure?(competition) %>"><%= competition.third_benchpress_result(competition) %>kg </div>
+  <div class="text-base font-bold <%= "line-through" if competition.benchpress_third_attempt_failure?(competition) %>"><%= competition.third_benchpress_result(competition) %>kg </div>
 </div>
