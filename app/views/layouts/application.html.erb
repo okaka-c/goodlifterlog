@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="mytheme">
+<html data-theme="mytheme" class="overflow-x-hidden">
   <head>
     <%= yield :head %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body class="bg-zinc-50 text-gray-700">
+  <body class="bg-zinc-50 text-gray-700 overflow-x-hidden">
     <!-- ヘッダー -->
     <% if logged_in? %>
       <% if @show_header_nav %>
