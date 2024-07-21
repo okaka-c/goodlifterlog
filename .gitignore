@@ -41,3 +41,6 @@ config/environments/*.local.yml
 
 .env
 .DS_Store
+/config/credentials/development.key
+
+/config/credentials/production.key
