@@ -10,15 +10,15 @@ default_password = SecureRandom.urlsafe_base64
 
 # Userをつくる
 User.create!(
-	name: "ゲストユーザー",
-	email: "guest@example.com",
-	password: default_password,
-	password_confirmation: default_password,
-	role: "guest")
+  name: "ゲストユーザー",
+  email: "guest@example.com",
+  password: default_password,
+  password_confirmation: default_password,
+  role: "guest")
 
 guest_user_id = User.find_by(role: "guest").id
 # profileもつくる
 Profile.create!(
-	user_id: guest_user_id,
-	gender: "man",
-	birthday: "2024-05-27")
+  user_id: guest_user_id,
+  gender: "man",
+  birthday: "2024-05-27")
