@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "tops#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  post "guest_login", to: "guest_sessions#create"
   resource :profile, only: [:new, :create, :show, :edit, :update]
   get 'profile/existence', to: "profiles#existence"
   resources :password_resets, only: [:create, :edit, :update, :new]
