@@ -1,0 +1,2 @@
+class GuestSessionsController < ApplicationController
+end
