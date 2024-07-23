@@ -15,4 +15,8 @@ class User < ApplicationRecord
   validates :reset_password_token, uniqueness: true, allow_nil: true
 
   enum role: { user: 0, guest: 1}
+
+  def guest?
+    role == 'guest'
+  end
 end
