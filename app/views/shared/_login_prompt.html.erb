@@ -1,0 +1,18 @@
+<div role="alert" class="alert shadow bg-white mt-1 mb-4">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    class="stroke-info h-6 w-6 shrink-0">
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  </svg>
+  <div>
+    <h3 class="font-bold text-info">ゲストユーザーとしてログインしています。</h3>
+    <div class="text-xs">フル機能を利用するには、ログアウトして会員登録してください</div>
+  </div>
+  <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, class: "btn btn-sm btn-info text-white" %>
+</div>

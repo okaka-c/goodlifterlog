@@ -3,15 +3,22 @@ class ApplicationController < ActionController::Base
   before_action :set_header_navi
   before_action :set_bottom_navi
   add_flash_types :success, :danger
+  before_action :restrict_guest_user_actions
 
   private
+
+  def restrict_guest_user_actions
+    if current_user&.guest? && action_name.in?(%w[new create edit update destroy])
+      redirect_to competitions_path, danger: "ゲストユーザーは新規登録・編集・削除機能を実行できません。"
+    end
+  end
 
   def not_authenticated
     redirect_to login_path
   end
 
   def set_bottom_navi
-	  @show_bottom_nav = true
+    @show_bottom_nav = true
   end
 
   def hide_bottom_navi
