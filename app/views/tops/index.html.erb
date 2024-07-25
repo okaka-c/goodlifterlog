@@ -6,10 +6,11 @@
   <div class="items-center mx-auto max-w-80 min-w-80">
     <article class="text-wrap text-center m-2">
       <p class="py-2 font-bold text-base">パワーリフティング/<br/>シングルベンチプレス大会に出場後、<br/>
-      <span class="text-primary text-lg">試合結果を記録</span>
-      して
-      <span class="text-primary text-lg">管理</span>
-      ができる!</p>
+        <span class="text-primary text-lg">試合結果を記録</span>
+        して
+        <span class="text-primary text-lg">管理</span>
+        ができる!
+      </p>
       <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md">
         <ul class="list-disc pl-5 font-bold text-left text-sm text-primary-content">
           <li>過去大会の成績をすぐに確認できる！</li>
@@ -24,6 +25,34 @@
         <% end %>
         <p class="font-bold">お試しでアプリを触ってみる</p>
         <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
+      </div>
+      <div class="rounded-lg bg-white shadow-lg my-6 pt-4">
+        <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
+          <p class="font-bold text-primary-content">大会結果が一覧で見れる</p>
+        </div>
+        <div class="flex flex-col items-center mb-4">
+          <p class="font-bold text-base">記録した自分の大会結果が<br/>一覧で確認できます！</p>
+          <%= image_tag asset_path("compe_index.png"), class:"w-3/5" %>
+        </div>
+      </div>
+      <div class="rounded-lg bg-white shadow-lg my-6 pt-4">
+        <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
+          <p class="font-bold text-primary-content">TOTAL重量と<br/>IPF GL Pointsを自動計算</p>
+          <p class="font-bold text-primary-content">前大会からの増減がわかる</p>
+        </div>
+        <div class="flex flex-col items-center mb-4">
+          <p class="font-bold text-base">試技の重量と判定結果を<br/>入力するだけで自動計算します！</p>
+          <%= image_tag asset_path("total_ipf_point.png"), class:"w-3/5" %>
+        </div>
+      </div>
+      <div class="rounded-lg bg-white shadow-lg my-6 pt-4">
+        <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
+          <p class="font-bold text-primary-content">成績の成長をグラフで見える化！</p>
+        </div>
+        <div class="flex flex-col items-center mb-4">
+          <p class="font-bold text-base">グラフ種類どんどん拡張予定！</p>
+          <%= image_tag asset_path("gragh.png"), class:"w-3/5" %>
+        </div>
       </div>
     </article>
   </div>
