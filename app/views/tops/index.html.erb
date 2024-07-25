@@ -26,6 +26,7 @@
         <p class="font-bold">お試しでアプリを触ってみる</p>
         <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
       </div>
+      <div class="divider divider-info font-bold">機能紹介</div>
       <div class="rounded-lg bg-white shadow-lg my-6 pt-4">
         <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
           <p class="font-bold text-primary-content">大会結果が一覧で見れる</p>
@@ -53,6 +54,15 @@
           <p class="font-bold text-base">グラフ種類どんどん拡張予定！</p>
           <%= image_tag asset_path("gragh.png"), class:"w-3/5" %>
         </div>
+      </div>
+      <div class="divider divider-info font-bold mt-8">記録を開始してみる！</div>
+      <div class="grid place-items-center mt-6">
+        <p class="font-bold">LINEで会員登録andログイン</p>
+        <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 my-2" do %>
+          <%= image_tag asset_path("btn_login_base.png") %>
+        <% end %>
+        <p class="font-bold">お試しでアプリを触ってみる</p>
+        <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
       </div>
     </article>
   </div>
