@@ -1,25 +1,30 @@
 <% content_for :head do %>
     <title>PowerLifter's Log</title>
 <% end %>
-<div class="hero min-h-screen">
-  <div class="hero-content flex-col">
-    <div class="items-center mx-auto max-w-80 min-w-80">
-      <%= image_tag asset_path("top2.png"), class:"max-w-full max-h-full" %>
-      <article class="text-wrap text-center m-4">
-        <h1 class="text-4xl font-bold">ようこそ</h1>
-        <p class="py-6">パワーリフティング大会や<br/>シングルベンチプレス大会に出場後、<br/>自分の試合結果を記録して<br/>管理ができるサービスです</p>
-        <h1 class="text-3xl font-bold">記録を始めましょう!</h1>
-        <div class="grid place-items-center mt-6">
-          <svg class="w-6 h-6 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path d="M352 96l64 0c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c53 0 96-43 96-96l0-256c0-53-43-96-96-96l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-9.4 182.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L242.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/>
-          </svg>
-          <p class="font-bold">LINEで会員登録andログイン</p>
-        </div>
-        <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 mt-2" do %>
-          <%= image_tag asset_path("btn_login_base.png") %>
-        <% end %>
-        <%= link_to "ゲストログイン(お試し)", guest_login_path, data: { turbo_method: :post } %>
-      </article>
-    </div>
+<%= image_tag asset_path("firstview.png"), class:"max-w-full max-h-full" %>
+<div class="mx-auto w-full max-w-screen-sm text-center">
+  <div class="items-center mx-auto max-w-80 min-w-80">
+    <article class="text-wrap text-center m-4">
+      <p class="py-2 font-bold text-base">パワーリフティング/<br/>シングルベンチプレス大会に出場後、<br/>
+      <span class="text-primary text-lg">試合結果を記録</span>
+      して
+      <span class="text-primary text-lg">管理</span>
+      ができる!</p>
+      <ul class="list-disc pl-5 text-left text-primary">
+        <li>過去大会の成績をすぐに確認できる！</li>
+        <li>前回大会と比較して成績がどれくらい増減したかわかる！</li>
+        <li>成績をグラフ化して伸び率を見える化！</li>
+      </ul>
+      <div class="grid place-items-center mt-6">
+        <svg class="w-6 h-6 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path d="M352 96l64 0c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c53 0 96-43 96-96l0-256c0-53-43-96-96-96l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-9.4 182.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L242.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/>
+        </svg>
+        <p class="font-bold">LINEで会員登録andログイン</p>
+      </div>
+      <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 mt-2" do %>
+        <%= image_tag asset_path("btn_login_base.png") %>
+      <% end %>
+      <%= link_to "ゲストログイン(お試し)", guest_login_path, data: { turbo_method: :post } %>
+    </article>
   </div>
 </div>
