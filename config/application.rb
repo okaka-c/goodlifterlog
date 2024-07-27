@@ -20,5 +20,10 @@ module App
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     # バリデーションエラー時に、divタグのfield_with_errorsが挿入されないように設定
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+    config.generators do |g|
+      g.skip_routes true
+      g.helper false
+      g.test_framework nil
+    end
   end
 end
