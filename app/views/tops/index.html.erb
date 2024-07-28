@@ -64,25 +64,7 @@
         <p class="font-bold">お試しでアプリを触ってみる</p>
         <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
       </div>
-      <!-- You can open the modal using ID.showModal() method -->
-      <button class="btn" onclick="my_modal_3.showModal()">open modal</button>
-      <dialog id="my_modal_3" class="modal">
-        <div class="modal-box">
-          <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-          </form>
-          <div class="rounded-lg bg-zinc-50 shadow-lg my-6 pt-4">
-            <div class="bg-gradient-to-t from-[#5176fa] to-[#10bde4ee] p-2 shadow-lg rounded-md m-4">
-              <p class="font-bold text-primary-content">「ログインができませんでした。」<br/>と表示されてしまったときの対処法</p>
-            </div>
-            <div class="flex flex-col items-center mb-4">
-              <p class="font-bold text-base my-4">このような画面になってしまったら、<br/>下にスクロールをしてください</p>
-              <%= image_tag asset_path("line_error.png"), class:"w-3/5" %>
-              <p class="font-bold text-base my-4"><span class="text-primary text-lg">「LINEアプリでログイン」</span>をタップ<br/>または長押ししてお試しください。</p>
-              <%= image_tag asset_path("line_click.png"), class:"w-3/5" %>
-            </div>
-          </div>
-      </dialog>
+      <%= render "shared/line_login_error" %>
     </article>
   </div>
 </div>
