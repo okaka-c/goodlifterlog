@@ -6,4 +6,18 @@ module ApplicationHelper
     else "bg-gray-500 text-black"
     end
   end
+
+  def default_meta_tags
+    {
+      og: {
+        title: "PowerLifter's Log",
+        description: 'パワーリフティング/シングルベンチプレス大会の大会結果を記録・管理！',
+        image: image_url('ogp.png'),
+      },
+      twitter: {
+        card: 'summary_large_image',
+        domain: 'powerlifterslog.com'
+      }
+    }
+  end
 end
