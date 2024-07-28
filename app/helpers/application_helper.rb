@@ -12,7 +12,7 @@ module ApplicationHelper
       og: {
         title: "PowerLifter's Log",
         description: 'パワーリフティング/シングルベンチプレス大会の大会結果を記録・管理！',
-        image: image_url('firstview.png'),
+        image: image_url('ogp.png'),
       },
       twitter: {
         card: 'summary_large_image',
