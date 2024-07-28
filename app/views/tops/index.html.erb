@@ -64,17 +64,15 @@
         <p class="font-bold">お試しでアプリを触ってみる</p>
         <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
       </div>
-      <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
-      <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+      <!-- You can open the modal using ID.showModal() method -->
+      <button class="btn" onclick="my_modal_3.showModal()">open modal</button>
+      <dialog id="my_modal_3" class="modal">
         <div class="modal-box">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          </form>
           <h3 class="text-lg font-bold">Hello!</h3>
-          <p class="py-4">Press ESC key or click the button below to close</p>
-          <div class="modal-action">
-            <form method="dialog">
-              <!-- if there is a button in form, it will close the modal -->
-              <button class="btn">Close</button>
-            </form>
-          </div>
+          <p class="py-4">Press ESC key or click on ✕ button to close</p>
         </div>
       </dialog>
     </article>
