@@ -20,25 +20,7 @@
       </div>
       <div class="grid place-items-center mt-6">
         <p class="font-bold">LINEで会員登録andログイン</p>
-        <!-- You can open the modal using ID.showModal() method -->
-        <a class="link link-info text-sm" onclick="my_modal_4.showModal()">「ログインできませんでした。」<br/>と表示されてしまったら</a>
-        <dialog id="my_modal_4" class="modal">
-          <div class="modal-box">
-            <form method="dialog">
-              <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            </form>
-            <div class="rounded-lg bg-zinc-50 shadow-lg my-6 pt-4">
-              <div class="bg-gradient-to-t from-[#5176fa] to-[#10bde4ee] p-2 shadow-lg rounded-md m-4">
-                <p class="font-bold text-primary-content">「ログインできませんでした。」<br/>と表示されてしまったときの対処法</p>
-              </div>
-              <div class="flex flex-col items-center mb-4">
-                <p class="font-bold text-base my-4">このような画面になってしまったら、<br/>下にスクロールをしてください</p>
-                <%= image_tag asset_path("line_error.png"), class:"w-3/5" %>
-                <p class="font-bold text-base my-4"><span class="text-primary text-lg">「LINEアプリでログイン」</span>をタップ<br/>または長押ししてお試しください。</p>
-                <%= image_tag asset_path("line_click.png"), class:"w-3/5" %>
-              </div>
-            </div>
-        </dialog>
+        <%= render partial: 'shared/line_login_modal', locals: { modal_id: 'my_modal_1' } %>
         <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 my-2" do %>
           <%= image_tag asset_path("btn_login_base.png") %>
         <% end %>
@@ -77,25 +59,7 @@
       <div class="divider divider-info font-bold mt-8">記録を開始してみる！</div>
       <div class="grid place-items-center mt-6">
         <p class="font-bold">LINEで会員登録andログイン</p>
-        <!-- You can open the modal using ID.showModal() method -->
-        <a class="link link-info text-sm" onclick="my_modal_5.showModal()">「ログインできませんでした。」<br/>と表示されてしまったら</a>
-        <dialog id="my_modal_5" class="modal">
-          <div class="modal-box">
-            <form method="dialog">
-              <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            </form>
-            <div class="rounded-lg bg-zinc-50 shadow-lg my-6 pt-4">
-              <div class="bg-gradient-to-t from-[#5176fa] to-[#10bde4ee] p-2 shadow-lg rounded-md m-4">
-                <p class="font-bold text-primary-content">「ログインできませんでした。」<br/>と表示されてしまったときの対処法</p>
-              </div>
-              <div class="flex flex-col items-center mb-4">
-                <p class="font-bold text-base my-4">このような画面になってしまったら、<br/>下にスクロールをしてください</p>
-                <%= image_tag asset_path("line_error.png"), class:"w-3/5" %>
-                <p class="font-bold text-base my-4"><span class="text-primary text-lg">「LINEアプリでログイン」</span>をタップ<br/>または長押ししてお試しください。</p>
-                <%= image_tag asset_path("line_click.png"), class:"w-3/5" %>
-              </div>
-            </div>
-        </dialog>
+        <%= render partial: 'shared/line_login_modal', locals: { modal_id: 'my_modal_2' } %>
         <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 my-2" do %>
           <%= image_tag asset_path("btn_login_base.png") %>
         <% end %>

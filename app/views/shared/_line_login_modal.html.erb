@@ -1,0 +1,20 @@
+<!-- You can open the modal using ID.showModal() method -->
+<a class="link link-info text-sm" onclick="<%= modal_id %>.showModal()">「ログインできませんでした。」<br/>と表示されてしまったら</a>
+<dialog id= "<%= modal_id %>" class="modal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <div class="rounded-lg bg-zinc-50 shadow-lg my-6 pt-4">
+      <div class="bg-gradient-to-t from-[#5176fa] to-[#10bde4ee] p-2 shadow-lg rounded-md m-4">
+        <p class="font-bold text-primary-content">「ログインできませんでした。」<br/>と表示されてしまったときの対処法</p>
+      </div>
+      <div class="flex flex-col items-center mb-4">
+        <p class="font-bold text-base my-4">このような画面になってしまったら、<br/>下にスクロールをしてください</p>
+        <%= image_tag asset_path("line_error.png"), class:"w-3/5" %>
+        <p class="font-bold text-base my-4"><span class="text-primary text-lg">「LINEアプリでログイン」</span>をタップ<br/>または長押ししてお試しください。</p>
+        <%= image_tag asset_path("line_click.png"), class:"w-3/5" %>
+      </div>
+    </div>
+  </div>
+</dialog>
