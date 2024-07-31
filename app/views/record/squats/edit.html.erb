@@ -1,121 +1,121 @@
 <% content_for :head do %>
-    <title><%= @competition.name %> | PowerLifter's Log</title>
+  <title><%= @competition.name %> | PowerLifter's Log</title>
 <% end %>
 <div class="hero min-h-screen bg-white">
   <div class="hero-content flex-col">
     <div class="items-center mx-auto max-w-80 min-w-80">
       <h1 class="text-2xl text-center mb-5 font-bold">スクワット結果 登録</h1>
-			<%= form_with model: @squat, url: competition_squat_path(@competition), method: "patch" do |f| %>
-				<!-- スクワット試技結果 -->
-				<!-- スクワット第１試技 -->
-				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
-					<!-- 重量-->
-					<div class="flex flex-col mb-3">
-						<div class="flex justify-between">
-							<%= f.label :squat_first_attempt, class: 'text-xl font-semibold' %>
-							<label class="form-control flex flex-row">
-								<%= f.text_field :squat_first_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2 text-base', placeholder: "重量", inputmode: "decimal" %>
-								<span>kg</span>
-							</label>
-						</div>
-						<%= render 'shared/error_messages', object: @competition_record, attribute: :squat_first_attempt %>
-					</div>
-					<!--判定-->
-					<div class="flex flex-col mb-3">
-						<label class="form-control">
-								<div class="flex justify-between items-center mt-2">
-										<label class="flex items-center">
-												<%= f.radio_button :squat_first_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_first_attempt_result, "未試行" %></span>
-										</label>
-										<label class="flex items-center">
-												<%= f.radio_button :squat_first_attempt_result, 'success', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_first_attempt_result, "成功" %></span>
-										</label>
-										<label class="flex items-center">
-												<%= f.radio_button :squat_first_attempt_result, 'failure', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_first_attempt_result, "失敗" %></span>
-										</label>
-								</div>
-						</label>
-						<%= render 'shared/error_messages', object: @competition_record, attribute: :squat_first_attempt_result %>
-					</div>
-				</div>
-				<!-- スクワット第2試技 -->
-				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
-					<!-- 重量-->
-					<div class="flex flex-col mb-3">
-						<div class="flex justify-between">
-							<%= f.label :squat_second_attempt, class: 'text-xl font-semibold' %>
-							<label class="form-control flex flex-row">
-								<%= f.text_field :squat_second_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2 text-base', placeholder: "重量", inputmode: "decimal" %>
-								<span>kg</span>
-							</label>
-						</div>
-						<%= render 'shared/error_messages', object: @competition_record, attribute: :squat_second_attempt %>
-					</div>
-					<!--判定-->
-					<div class="flex flex-col mb-3">
-						<label class="form-control">
-								<div class="flex justify-between items-center mt-2">
-										<label class="flex items-center">
-												<%= f.radio_button :squat_second_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_second_attempt_result, "未試行" %></span>
-										</label>
-										<label class="flex items-center">
-												<%= f.radio_button :squat_second_attempt_result, 'success', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_second_attempt_result, "成功" %></span>
-										</label>
-										<label class="flex items-center">
-												<%= f.radio_button :squat_second_attempt_result, 'failure', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_second_attempt_result, "失敗" %></span>
-										</label>
-								</div>
-						</label>
-						<%= render 'shared/error_messages', object: @competition_record, attribute: :squat_second_attempt_result %>
-					</div>
-				</div>
-				<!-- スクワット第3試技 -->
-				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
-					<!-- 重量-->
-					<div class="flex flex-col mb-3">
-						<div class="flex justify-between">
-							<%= f.label :squat_third_attempt, class: 'text-xl font-semibold' %>
-							<label class="form-control flex flex-row">
-								<%= f.text_field :squat_third_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2 text-base', placeholder: "重量", inputmode: "decimal" %>
-								<span>kg</span>
-							</label>
-						</div>
-						<%= render 'shared/error_messages', object: @competition_record, attribute: :squat_third_attempt %>
-					</div>
-					<!--判定-->
-					<div class="flex flex-col mb-3">
-						<label class="form-control">
-								<div class="flex justify-between items-center mt-2">
-										<label class="flex items-center">
-												<%= f.radio_button :squat_third_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_third_attempt_result, "未試行" %></span>
-										</label>
-										<label class="flex items-center">
-												<%= f.radio_button :squat_third_attempt_result, 'success', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_third_attempt_result, "成功" %></span>
-										</label>
-										<label class="flex items-center">
-												<%= f.radio_button :squat_third_attempt_result, 'failure', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_third_attempt_result, "失敗" %></span>
-										</label>
-								</div>
-						</label>
-						<%= render 'shared/error_messages', object: @competition_record, attribute: :squat_third_attempt_result %>
-					</div>
-				</div>
-				<!-- ボタン -->
-				<div class="form-control mt-6 flex flex-row justify-center">
-					<div>
-						<%= f.submit "更新", class: 'btn btn-accent btn-sm w-24' %>
-					</div>
-				</div>
-			<% end %>
+      <%= form_with model: @squat, url: competition_squat_path(@competition), method: "patch" do |f| %>
+        <!-- スクワット試技結果 -->
+        <!-- スクワット第１試技 -->
+        <div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+          <!-- 重量-->
+          <div class="flex flex-col mb-3">
+            <div class="flex justify-between">
+              <%= f.label :squat_first_attempt, class: 'text-xl font-semibold' %>
+              <label class="form-control flex flex-row">
+                <%= f.text_field :squat_first_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2 text-base', placeholder: "重量", inputmode: "decimal" %>
+                <span>kg</span>
+              </label>
+            </div>
+            <%= render 'shared/error_messages', object: @competition_record, attribute: :squat_first_attempt %>
+          </div>
+          <!--判定-->
+          <div class="flex flex-col mb-3">
+            <label class="form-control">
+                <div class="flex justify-between items-center mt-2">
+                    <label class="flex items-center">
+                        <%= f.radio_button :squat_first_attempt_result, 'not_attempted', class: 'radio radio-primary', id: 'squat_first_attempt_not_attempted' %>
+                        <span class="ml-2"><%= f.label :squat_first_attempt_result, "未試行", for: 'squat_first_attempt_not_attempted' %></span>
+                    </label>
+                    <label class="flex items-center">
+                        <%= f.radio_button :squat_first_attempt_result, 'success', class: 'radio radio-primary', id: 'squat_first_attempt_success' %>
+                        <span class="ml-2"><%= f.label :squat_first_attempt_result, "成功", for: 'squat_first_attempt_success' %></span>
+                    </label>
+                    <label class="flex items-center">
+                        <%= f.radio_button :squat_first_attempt_result, 'failure', class: 'radio radio-primary', id: 'squat_first_attempt_failure' %>
+                        <span class="ml-2"><%= f.label :squat_first_attempt_result, "失敗", for: 'squat_first_attempt_failure' %></span>
+                    </label>
+                </div>
+            </label>
+            <%= render 'shared/error_messages', object: @competition_record, attribute: :squat_first_attempt_result %>
+          </div>
+        </div>
+        <!-- スクワット第2試技 -->
+        <div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+          <!-- 重量-->
+          <div class="flex flex-col mb-3">
+            <div class="flex justify-between">
+              <%= f.label :squat_second_attempt, class: 'text-xl font-semibold' %>
+              <label class="form-control flex flex-row">
+                <%= f.text_field :squat_second_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2 text-base', placeholder: "重量", inputmode: "decimal" %>
+                <span>kg</span>
+              </label>
+            </div>
+            <%= render 'shared/error_messages', object: @competition_record, attribute: :squat_second_attempt %>
+          </div>
+          <!--判定-->
+          <div class="flex flex-col mb-3">
+            <label class="form-control">
+                <div class="flex justify-between items-center mt-2">
+                    <label class="flex items-center">
+                        <%= f.radio_button :squat_second_attempt_result, 'not_attempted', class: 'radio radio-primary', id: 'squat_second_attempt_not_attempted' %>
+                        <span class="ml-2"><%= f.label :squat_second_attempt_result, "未試行", for: 'squat_second_attempt_not_attempted' %></span>
+                    </label>
+                    <label class="flex items-center">
+                        <%= f.radio_button :squat_second_attempt_result, 'success', class: 'radio radio-primary', id: 'squat_second_attempt_success' %>
+                        <span class="ml-2"><%= f.label :squat_second_attempt_result, "成功", for: 'squat_second_attempt_success' %></span>
+                    </label>
+                    <label class="flex items-center">
+                        <%= f.radio_button :squat_second_attempt_result, 'failure', class: 'radio radio-primary', id: 'squat_second_attempt_failure' %>
+                        <span class="ml-2"><%= f.label :squat_second_attempt_result, "失敗", for: 'squat_second_attempt_failure' %></span>
+                    </label>
+                </div>
+            </label>
+            <%= render 'shared/error_messages', object: @competition_record, attribute: :squat_second_attempt_result %>
+          </div>
+        </div>
+        <!-- スクワット第3試技 -->
+        <div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+          <!-- 重量-->
+          <div class="flex flex-col mb-3">
+            <div class="flex justify-between">
+              <%= f.label :squat_third_attempt, class: 'text-xl font-semibold' %>
+              <label class="form-control flex flex-row">
+                <%= f.text_field :squat_third_attempt, class: 'input input-bordered input-sm rounded w-32 mr-2 text-base', placeholder: "重量", inputmode: "decimal" %>
+                <span>kg</span>
+              </label>
+            </div>
+            <%= render 'shared/error_messages', object: @competition_record, attribute: :squat_third_attempt %>
+          </div>
+          <!--判定-->
+          <div class="flex flex-col mb-3">
+            <label class="form-control">
+                <div class="flex justify-between items-center mt-2">
+                    <label class="flex items-center">
+                        <%= f.radio_button :squat_third_attempt_result, 'not_attempted', class: 'radio radio-primary', id: 'squat_third_attempt_not_attempted' %>
+                        <span class="ml-2"><%= f.label :squat_third_attempt_result, "未試行", for: 'squat_third_attempt_not_attempted' %></span>
+                    </label>
+                    <label class="flex items-center">
+                        <%= f.radio_button :squat_third_attempt_result, 'success', class: 'radio radio-primary', id: 'squat_third_attempt_success' %>
+                        <span class="ml-2"><%= f.label :squat_third_attempt_result, "成功", for: 'squat_third_attempt_success' %></span>
+                    </label>
+                    <label class="flex items-center">
+                        <%= f.radio_button :squat_third_attempt_result, 'failure', class: 'radio radio-primary', id: 'squat_third_attempt_failure' %>
+                        <span class="ml-2"><%= f.label :squat_third_attempt_result, "失敗", for: 'squat_third_attempt_failure' %></span>
+                    </label>
+                </div>
+            </label>
+            <%= render 'shared/error_messages', object: @competition_record, attribute: :squat_third_attempt_result %>
+          </div>
+        </div>
+        <!-- ボタン -->
+        <div class="form-control mt-6 flex flex-row justify-center">
+          <div>
+            <%= f.submit "更新", class: 'btn btn-accent btn-sm w-24' %>
+          </div>
+        </div>
+      <% end %>
       <!-- ここまでform_withを使う形に修正 -->
     </div>
   </div>

@@ -35,12 +35,12 @@
     <div class="form-control mb-3">
       <div class="flex flex-col mt-2">
         <label class="flex items-center mb-3">
-          <%= f.radio_button :competition_type, 'official', class: 'radio radio-primary' %>
-          <span class="ml-2"><%= f.label :competition_type, Competition.competition_types_i18n["official"] %></span>
+          <%= f.radio_button :competition_type, 'official', class: 'radio radio-primary', id: 'official' %>
+          <span class="ml-2"><%= f.label :competition_type, Competition.competition_types_i18n["official"], for: 'official' %></span>
         </label>
         <label class="flex items-center">
-          <%= f.radio_button :competition_type, 'unofficial', class: 'radio radio-primary' %>
-          <span class="ml-2"><%= f.label :competition_type, Competition.competition_types_i18n["unofficial"] %></span>
+          <%= f.radio_button :competition_type, 'unofficial', class: 'radio radio-primary', id: 'unofficial' %>
+          <span class="ml-2"><%= f.label :competition_type, Competition.competition_types_i18n["unofficial"], for: 'unofficial' %></span>
         </label>
       </div>
       <%= render 'shared/error_messages', object: f.object, attribute: :competition_type %>
@@ -55,12 +55,12 @@
     <div class="form-control mb-3">
       <div class="flex flex-col mt-2">
         <label class="flex items-center mb-3">
-          <%= f.radio_button :gearcategory_type, 'raw', class: 'radio radio-primary' %>
-          <span class="ml-2"><%= f.label :gearcategory_type, Competition.gearcategory_types_i18n["raw"] %></span>
+          <%= f.radio_button :gearcategory_type, 'raw', class: 'radio radio-primary', id: 'raw' %>
+          <span class="ml-2"><%= f.label :gearcategory_type, Competition.gearcategory_types_i18n["raw"], for: 'raw' %></span>
         </label>
         <label class="flex items-center">
-          <%= f.radio_button :gearcategory_type, 'equipped', class: 'radio radio-primary' %>
-          <span class="ml-2"><%= f.label :gearcategory_type, Competition.gearcategory_types_i18n["equipped"] %></span>
+          <%= f.radio_button :gearcategory_type, 'equipped', class: 'radio radio-primary', id: 'equipped' %>
+          <span class="ml-2"><%= f.label :gearcategory_type, Competition.gearcategory_types_i18n["equipped"], for: 'equipped' %></span>
         </label>
       </div>
       <%= render 'shared/error_messages', object: f.object, attribute: :gearcategory_type %>
@@ -75,12 +75,12 @@
     <div class="form-control mb-3">
       <div class="flex flex-col mt-2">
         <label class="flex items-center mb-3">
-          <%= f.radio_button :category, "パワーリフティング", class: 'radio radio-primary', disabled: @competition_record.present? %>
-          <span class="ml-2"><%= f.label :category, "パワーリフティング" %></span>
+          <%= f.radio_button :category, "パワーリフティング", class: 'radio radio-primary', disabled: @competition_record.present?, id: 'powerlifting' %>
+          <span class="ml-2"><%= f.label :category, "パワーリフティング", for: 'powerlifting' %></span>
         </label>
         <label class="flex items-center">
-          <%= f.radio_button :category, "シングルベンチプレス", class: 'radio radio-primary', disabled: @competition_record.present? %>
-          <span class="ml-2"><%= f.label :category, "シングルベンチプレス" %></span>
+          <%= f.radio_button :category, "シングルベンチプレス", class: 'radio radio-primary', disabled: @competition_record.present?, id: 'single_benchpress' %>
+          <span class="ml-2"><%= f.label :category, "シングルベンチプレス", for: 'single_benchpress' %></span>
         </label>
       </div>
       <%= render 'shared/error_messages', object: f.object, attribute: :category %>
