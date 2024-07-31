@@ -34,16 +34,16 @@
 						<label class="form-control">
 								<div class="flex justify-between items-center mt-2">
 										<label class="flex items-center">
-												<%= f.radio_button :squat_first_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_first_attempt_result, "未試行" %></span>
+												<%= f.radio_button :squat_first_attempt_result, 'not_attempted', class: 'radio radio-primary', id: 'squat_first_attempt_not_attempted' %>
+												<span class="ml-2"><%= f.label :squat_first_attempt_result, "未試行", for: 'squat_first_attempt_not_attempted' %></span>
 										</label>
 										<label class="flex items-center">
-												<%= f.radio_button :squat_first_attempt_result, 'success', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_first_attempt_result, "成功" %></span>
+												<%= f.radio_button :squat_first_attempt_result, 'success', class: 'radio radio-primary', id: 'squat_first_attempt_success' %>
+												<span class="ml-2"><%= f.label :squat_first_attempt_result, "成功", for: 'squat_first_attempt_success' %></span>
 										</label>
 										<label class="flex items-center">
-												<%= f.radio_button :squat_first_attempt_result, 'failure', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_first_attempt_result, "失敗" %></span>
+												<%= f.radio_button :squat_first_attempt_result, 'failure', class: 'radio radio-primary', id: 'squat_first_attempt_failure' %>
+												<span class="ml-2"><%= f.label :squat_first_attempt_result, "失敗", for: 'squat_first_attempt_failure' %></span>
 										</label>
 								</div>
 						</label>
@@ -68,16 +68,16 @@
 						<label class="form-control">
 								<div class="flex justify-between items-center mt-2">
 										<label class="flex items-center">
-												<%= f.radio_button :squat_second_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_second_attempt_result, "未試行" %></span>
+												<%= f.radio_button :squat_second_attempt_result, 'not_attempted', class: 'radio radio-primary', id: 'squat_second_attempt_not_attempted' %>
+												<span class="ml-2"><%= f.label :squat_second_attempt_result, "未試行", for: 'squat_second_attempt_not_attempted' %></span>
 										</label>
 										<label class="flex items-center">
-												<%= f.radio_button :squat_second_attempt_result, 'success', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_second_attempt_result, "成功" %></span>
+												<%= f.radio_button :squat_second_attempt_result, 'success', class: 'radio radio-primary', id: 'squat_second_attempt_success' %>
+												<span class="ml-2"><%= f.label :squat_second_attempt_result, "成功", for: 'squat_second_attempt_success' %></span>
 										</label>
 										<label class="flex items-center">
-												<%= f.radio_button :squat_second_attempt_result, 'failure', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_second_attempt_result, "失敗" %></span>
+												<%= f.radio_button :squat_second_attempt_result, 'failure', class: 'radio radio-primary', id: 'squat_second_attempt_failure'  %>
+												<span class="ml-2"><%= f.label :squat_second_attempt_result, "失敗", for: 'squat_second_attempt_failure' %></span>
 										</label>
 								</div>
 						</label>
@@ -102,16 +102,16 @@
 						<label class="form-control">
 								<div class="flex justify-between items-center mt-2">
 										<label class="flex items-center">
-												<%= f.radio_button :squat_third_attempt_result, 'not_attempted', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_third_attempt_result, "未試行" %></span>
+												<%= f.radio_button :squat_third_attempt_result, 'not_attempted', class: 'radio radio-primary', id: 'squat_third_attempt_not_attempted' %>
+												<span class="ml-2"><%= f.label :squat_third_attempt_result, "未試行", for: 'squat_third_attempt_not_attempted' %></span>
 										</label>
 										<label class="flex items-center">
-												<%= f.radio_button :squat_third_attempt_result, 'success', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_third_attempt_result, "成功" %></span>
+												<%= f.radio_button :squat_third_attempt_result, 'success', class: 'radio radio-primary', id: 'squat_third_attempt_success' %>
+												<span class="ml-2"><%= f.label :squat_third_attempt_result, "成功", for: 'squat_third_attempt_success' %></span>
 										</label>
 										<label class="flex items-center">
-												<%= f.radio_button :squat_third_attempt_result, 'failure', class: 'radio radio-primary' %>
-												<span class="ml-2"><%= f.label :squat_third_attempt_result, "失敗" %></span>
+												<%= f.radio_button :squat_third_attempt_result, 'failure', class: 'radio radio-primary', id: 'squat_third_attempt_failure' %>
+												<span class="ml-2"><%= f.label :squat_third_attempt_result, "失敗", for: 'squat_third_attempt_failure' %></span>
 										</label>
 								</div>
 						</label>
