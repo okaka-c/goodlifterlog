@@ -1,31 +1,31 @@
 <% content_for :head do %>
-    <title><%= @competition.name %> | PowerLifter's Log</title>
+  <title><%= @competition.name %> | PowerLifter's Log</title>
 <% end %>
 <div class="hero min-h-screen bg-white">
   <div class="hero-content flex-col">
     <div class="items-center mx-auto max-w-80 min-w-80">
       <h1 class="text-2xl text-center mb-5 font-bold">検量体重 編集</h1>
-			<%= form_with model: @weigh_in, url: competition_weigh_in_path(@competition), method: "patch" do |f| %>
-				<div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
-					<div class="flex justify-between">
-						<div class="label p-0 flex justify-start items-center">
-							<%= f.label :weight, class: 'mr-2 font-semibold'%>
-							<p class="text-red-500">(必須)</p>
-						</div>
-						<label class="form-control flex flex-row">
-							<%= f.text_field :weight, class: 'input input-bordered input-sm rounded w-32 mr-2 text-base', placeholder:"検量体重", inputmode: "decimal"%>
-							<span>kg</span>
-						</label>
-					</div>
-					<%= render 'shared/error_messages', object: @competition_record, attribute: :weight %>
-				</div>
-			<!-- ボタン -->
-			<div class="form-control mt-6 flex flex-row justify-center">
-				<div>
-					<%= f.submit "更新", class: 'btn btn-accent btn-sm w-24' %>
-				</div>
-			</div>
-			<% end %>
+      <%= form_with model: @weigh_in, url: competition_weigh_in_path(@competition), method: "patch" do |f| %>
+        <div class="flex flex-col mb-5 border-dashed border-2 border-neutral-300 rounded-lg p-4">
+          <div class="flex justify-between">
+            <div class="label p-0 flex justify-start items-center">
+              <%= f.label :weight, class: 'mr-2 font-semibold'%>
+              <p class="text-red-500">(必須)</p>
+            </div>
+            <label class="form-control flex flex-row">
+              <%= f.text_field :weight, class: 'input input-bordered input-sm rounded w-32 mr-2 text-base', placeholder:"検量体重", inputmode: "decimal"%>
+              <span>kg</span>
+            </label>
+          </div>
+          <%= render 'shared/error_messages', object: @competition_record, attribute: :weight %>
+        </div>
+      <!-- ボタン -->
+      <div class="form-control mt-6 flex flex-row justify-center">
+        <div>
+          <%= f.submit "更新", class: 'btn btn-accent btn-sm w-24' %>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
