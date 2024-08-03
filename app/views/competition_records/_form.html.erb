@@ -3,16 +3,16 @@
   <p class="text-sm text-red-500">試技結果に重量を入力した場合、<br/>試技結果が成功か失敗か<br/>選択する必要があります。</p>
 </article>
 <%= form_with model: competition_record, url: competition_competition_record_path(competition)  do |f| %>
-	<label class="form-control w-full mb-6">
-		<div class="label p-0 flex justify-start items-center">
-			<%= f.label :weight, class: 'mr-2'%>
-			<p class="text-red-500">(必須)</p>
-		</div>
-		<%= f.text_field :weight, class: 'input input-bordered input-sm rounded w-full', placeholder:"検量体重"%>
+  <label class="form-control w-full mb-6">
+    <div class="label p-0 flex justify-start items-center">
+      <%= f.label :weight, class: 'mr-2'%>
+      <p class="text-red-500">(必須)</p>
+    </div>
+    <%= f.text_field :weight, class: 'input input-bordered input-sm rounded w-full', placeholder:"検量体重"%>
     <%= render 'shared/error_messages', object: f.object, attribute: :weight %>
-	</label>
-	<!-- スクワット試技結果 -->
-	<!-- スクワット第１試技 -->
+  </label>
+  <!-- スクワット試技結果 -->
+  <!-- スクワット第１試技 -->
   <div class="flex flex-col mb-6">
     <div class="flex justify-between">
       <label class="form-control flex-grow mr-2">
@@ -32,7 +32,7 @@
     <%= render 'shared/error_messages', object: f.object, attribute: :squat_first_attempt %>
     <%= render 'shared/error_messages', object: f.object, attribute: :squat_first_attempt_result %>
   </div>
-	<!-- スクワット第2試技 -->
+  <!-- スクワット第2試技 -->
   <div class="flex flex-col mb-6">
     <div class="flex justify-between">
       <label class="form-control flex-grow mr-2">
@@ -72,8 +72,8 @@
     <%= render 'shared/error_messages', object: f.object, attribute: :squat_third_attempt %>
     <%= render 'shared/error_messages', object: f.object, attribute: :squat_third_attempt_result %>
   </div>
-	<!-- ベンチプレス試技結果 -->
-	<!-- ベンチプレス第１試技 -->
+  <!-- ベンチプレス試技結果 -->
+  <!-- ベンチプレス第１試技 -->
   <div class="flex flex-col mb-6">
     <div class="flex justify-between">
       <label class="form-control flex-grow mr-2">
@@ -93,7 +93,7 @@
       <%= render 'shared/error_messages', object: f.object, attribute: :benchpress_first_attempt %>
       <%= render 'shared/error_messages', object: f.object, attribute: :benchpress_first_attempt_result %>
     </div>
-	<!-- ベンチプレス第2試技 -->
+  <!-- ベンチプレス第2試技 -->
   <div class="flex flex-col mb-6">
     <div class="flex justify-between">
       <label class="form-control flex-grow mr-2">
@@ -113,7 +113,7 @@
       <%= render 'shared/error_messages', object: f.object, attribute: :benchpress_second_attempt %>
       <%= render 'shared/error_messages', object: f.object, attribute: :benchpress_second_attempt_result %>
   </div>
-	<!-- ベンチプレス第3試技 -->
+  <!-- ベンチプレス第3試技 -->
   <div class="flex flex-col mb-6">
     <div class="flex justify-between">
       <label class="form-control flex-grow mr-2">
@@ -134,7 +134,7 @@
       <%= render 'shared/error_messages', object: f.object, attribute: :benchpress_third_attempt_result %>
   </div>
   <!-- デッドリフト試技結果 -->
-	<!-- デッドリフト第１試技 -->
+  <!-- デッドリフト第１試技 -->
   <div class="flex flex-col mb-6">
     <div class="flex justify-between">
       <label class="form-control flex-grow mr-2">
@@ -154,7 +154,7 @@
       <%= render 'shared/error_messages', object: f.object, attribute: :deadlift_first_attempt %>
       <%= render 'shared/error_messages', object: f.object, attribute: :deadlift_first_attempt_result %>
     </div>
-	<!-- デッドリフト第2試技 -->
+  <!-- デッドリフト第2試技 -->
   <div class="flex flex-col mb-6">
     <div class="flex justify-between">
       <label class="form-control flex-grow mr-2">
@@ -174,7 +174,7 @@
       <%= render 'shared/error_messages', object: f.object, attribute: :deadlift_second_attempt %>
       <%= render 'shared/error_messages', object: f.object, attribute: :deadlift_second_attempt_result %>
   </div>
-	<!-- デッドリフト第3試技 -->
+  <!-- デッドリフト第3試技 -->
   <div class="flex flex-col mb-6">
     <div class="flex justify-between">
       <label class="form-control flex-grow mr-2">
@@ -196,16 +196,16 @@
   </div>
 
 
-	<!-- 振り返りコメント -->
-	<label class="form-control mb-6">
+  <!-- 振り返りコメント -->
+  <label class="form-control mb-6">
     <div class="label p-0 flex justify-start items-center">
-			<%= f.label :comment, class: 'mr-2'%>
+      <%= f.label :comment, class: 'mr-2'%>
       <p class="text-slate-500">(任意)</p>
     </div>
-			<%= f.text_area :comment, class:"textarea textarea-bordered", placeholder:"振り返りコメント" %>
-	</label>
-	<!-- ボタン -->
-	<div class="form-control mt-6">
-			<%= f.submit class: 'btn btn-primary' %>
-	</div>
+      <%= f.text_area :comment, class:"textarea textarea-bordered", placeholder:"振り返りコメント" %>
+  </label>
+  <!-- ボタン -->
+  <div class="form-control mt-6">
+      <%= f.submit class: 'btn btn-primary' %>
+  </div>
     <% end %>

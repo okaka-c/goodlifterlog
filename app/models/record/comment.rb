@@ -1,5 +1,5 @@
 class Record::Comment
-	include ActiveModel::Model
-	include ActiveModel::Attributes
-	attribute :comment, :string, default: nil
+  include ActiveModel::Model
+  include ActiveModel::Attributes
+  attribute :comment, :string, default: nil
 end
