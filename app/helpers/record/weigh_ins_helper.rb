@@ -1,2 +1,0 @@
-module Record::WeighInsHelper
-end
