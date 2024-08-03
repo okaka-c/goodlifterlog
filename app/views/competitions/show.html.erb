@@ -59,7 +59,7 @@
     <!-- 大会試技結果詳細情報 -->
     <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4">
       <% if CompetitionRecord.exists?(competition_id: @competition.id) %>
-	      <%= render 'competition_records/competition_record', competition_record: @competition_record, competition: @competition%>
+        <%= render 'competition_records/competition_record', competition_record: @competition_record, competition: @competition%>
       <% else %>
         <div class="flex-col flex justify-center items-center w-full">
           <p>大会結果記録はまだ未登録です</p>
