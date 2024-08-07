@@ -1,69 +1,75 @@
 <% content_for :head do %>
     <title>PowerLifter's Log</title>
 <% end %>
-<%= image_tag asset_path("firstview.png"), class:"max-w-full max-h-full" %>
-<div class="mx-auto w-full max-w-screen-sm text-center">
-  <div class="items-center mx-auto max-w-80 min-w-80">
+<div class="flex justify-center">
+  <%= image_tag asset_path("firstview.png"), class:"max-w-full max-h-full md:w-5/6 md:h-auto" %>
+</div>
+<div class="mx-auto w-full text-center">
+  <div class="items-center mx-auto md:w-5/6">
     <article class="text-wrap text-center m-2">
-      <p class="py-2 font-bold text-base">パワーリフティング/<br/>シングルベンチプレス大会に出場後、<br/>
-        <span class="text-primary text-lg">試合結果を記録</span>
+      <p class="py-2 font-bold text-base md:text-lg">パワーリフティング/<br/>シングルベンチプレス大会に出場後、<br/>
+        <span class="text-primary text-lg md:text-xl">試合結果を記録</span>
         して
-        <span class="text-primary text-lg">管理</span>
+        <span class="text-primary text-lg md:text-xl">管理</span>
         ができる!
       </p>
-      <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md">
-        <ul class="list-disc pl-5 font-bold text-left text-sm text-primary-content">
-          <li>過去大会の成績をすぐに確認できる！</li>
-          <li>前回大会と比較して成績がどれくらい<br/>増減したかわかる！</li>
-          <li>成績をグラフ化して伸び率を見える化！</li>
-        </ul>
+      <div class="grid justify-items-center">
+        <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md md:w-2/3">
+          <ul class="list-disc pl-5 font-bold text-left text-sm md:text-lg text-primary-content">
+            <li>過去大会の成績をすぐに確認できる！</li>
+            <li>前回大会と比較して成績がどれくらい<br/>増減したかわかる！</li>
+            <li>成績をグラフ化して伸び率を見える化！</li>
+          </ul>
+        </div>
       </div>
       <div class="grid place-items-center mt-6">
-        <p class="font-bold">LINEで会員登録andログイン</p>
+        <p class="font-bold md:text-lg">LINEで会員登録andログイン</p>
         <%= render partial: 'shared/line_login_modal', locals: { modal_id: 'my_modal_1' } %>
         <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 my-2" do %>
           <%= image_tag asset_path("btn_login_base.png") %>
         <% end %>
-        <p class="font-bold">お試しでアプリを触ってみる</p>
+        <p class="font-bold md:text-lg">お試しでアプリを触ってみる</p>
         <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
       </div>
-      <div class="divider divider-info font-bold">機能紹介</div>
-      <div class="rounded-lg bg-white shadow-lg my-6 pt-4">
-        <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
-          <p class="font-bold text-primary-content">大会結果が一覧で見れる</p>
+      <div class="divider divider-info font-bold md:text-lg">機能紹介</div>
+      <div class="grid justify-items-center md:text-lg">
+        <div class="rounded-lg bg-white shadow-lg my-6 pt-4 md:w-2/3">
+          <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
+            <p class="font-bold text-primary-content">大会結果が一覧で見れる</p>
+          </div>
+          <div class="flex flex-col items-center mb-4">
+            <p class="font-bold text-base">記録した自分の大会結果が<br/>一覧で確認できます！</p>
+            <%= image_tag asset_path("compe_index.png"), class:"w-3/5" %>
+          </div>
         </div>
-        <div class="flex flex-col items-center mb-4">
-          <p class="font-bold text-base">記録した自分の大会結果が<br/>一覧で確認できます！</p>
-          <%= image_tag asset_path("compe_index.png"), class:"w-3/5" %>
+        <div class="rounded-lg bg-white shadow-lg my-6 pt-4 md:w-2/3">
+          <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
+            <p class="font-bold text-primary-content">TOTAL重量と<br/>IPF GL Pointsを自動計算</p>
+            <p class="font-bold text-primary-content">前大会からの増減がわかる</p>
+          </div>
+          <div class="flex flex-col items-center mb-4">
+            <p class="font-bold text-base">試技の重量と判定結果を<br/>入力するだけで自動計算します！</p>
+            <%= image_tag asset_path("total_ipf_point.png"), class:"w-3/5" %>
+          </div>
+        </div>
+        <div class="rounded-lg bg-white shadow-lg my-6 pt-4 md:w-2/3">
+          <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
+            <p class="font-bold text-primary-content">成績の成長をグラフで見える化！</p>
+          </div>
+          <div class="flex flex-col items-center mb-4">
+            <p class="font-bold text-base">グラフ種類どんどん拡張予定！</p>
+            <%= image_tag asset_path("gragh.png"), class:"w-3/5" %>
+          </div>
         </div>
       </div>
-      <div class="rounded-lg bg-white shadow-lg my-6 pt-4">
-        <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
-          <p class="font-bold text-primary-content">TOTAL重量と<br/>IPF GL Pointsを自動計算</p>
-          <p class="font-bold text-primary-content">前大会からの増減がわかる</p>
-        </div>
-        <div class="flex flex-col items-center mb-4">
-          <p class="font-bold text-base">試技の重量と判定結果を<br/>入力するだけで自動計算します！</p>
-          <%= image_tag asset_path("total_ipf_point.png"), class:"w-3/5" %>
-        </div>
-      </div>
-      <div class="rounded-lg bg-white shadow-lg my-6 pt-4">
-        <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
-          <p class="font-bold text-primary-content">成績の成長をグラフで見える化！</p>
-        </div>
-        <div class="flex flex-col items-center mb-4">
-          <p class="font-bold text-base">グラフ種類どんどん拡張予定！</p>
-          <%= image_tag asset_path("gragh.png"), class:"w-3/5" %>
-        </div>
-      </div>
-      <div class="divider divider-info font-bold mt-8">記録を開始してみる！</div>
+      <div class="divider divider-info font-bold mt-8 md:text-lg">記録を開始してみる！</div>
       <div class="grid place-items-center mt-6">
-        <p class="font-bold">LINEで会員登録andログイン</p>
+        <p class="font-bold md:text-lg">LINEで会員登録andログイン</p>
         <%= render partial: 'shared/line_login_modal', locals: { modal_id: 'my_modal_2' } %>
         <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 my-2" do %>
           <%= image_tag asset_path("btn_login_base.png") %>
         <% end %>
-        <p class="font-bold">お試しでアプリを触ってみる</p>
+        <p class="font-bold md:text-lg">お試しでアプリを触ってみる</p>
         <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
       </div>
     </article>
