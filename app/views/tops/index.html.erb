@@ -22,14 +22,15 @@
           </ul>
         </div>
       </div>
-      <div class="grid place-items-center mt-6">
-        <p class="font-bold md:text-lg">LINEで会員登録andログイン</p>
-        <%= render partial: 'shared/line_login_modal', locals: { modal_id: 'my_modal_1' } %>
-        <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 my-2" do %>
-          <%= image_tag asset_path("btn_login_base.png") %>
-        <% end %>
-        <p class="font-bold md:text-lg">お試しでアプリを触ってみる</p>
-        <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
+      <div class="grid place-items-center lg:flex lg:justify-center  mt-6">
+        <div>
+          <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 my-2" do %>
+            <%= image_tag asset_path("btn_login_base.png") %>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
+        </div>
       </div>
       <div class="divider divider-info font-bold md:text-lg">機能紹介</div>
       <div class="grid justify-items-center md:text-lg">
