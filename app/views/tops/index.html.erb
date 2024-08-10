@@ -13,26 +13,31 @@
         <span class="text-primary text-lg md:text-xl">管理</span>
         ができる!
       </p>
-      <div class="grid justify-items-center">
-        <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md md:w-2/3">
-          <ul class="list-disc pl-5 font-bold text-left text-sm md:text-lg text-primary-content">
+      <div class="grid justify-items-center my-6">
+        <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md md:w-2/3 lg:p-8">
+          <ul class="list-disc pl-5 font-bold text-left lg:text-center text-sm md:text-lg text-primary-content lg:list-none">
             <li>過去大会の成績をすぐに確認できる！</li>
             <li>前回大会と比較して成績がどれくらい<br/>増減したかわかる！</li>
             <li>成績をグラフ化して伸び率を見える化！</li>
           </ul>
         </div>
       </div>
-      <div class="grid place-items-center lg:flex lg:justify-center  mt-6">
-        <div>
-          <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 my-2" do %>
-            <%= image_tag asset_path("btn_login_base.png") %>
-          <% end %>
+      <%= render partial: 'shared/line_login_modal', locals: { modal_id: 'my_modal_1' } %>
+      <div class="grid place-items-center lg:flex lg:justify-center  my-6">
+        <div class="lg:max-w-52 lg:min-w-52 lg:max-h-32 lg:min-h-32 lg:mx-8 lg:rounded-lg lg:bg-white lg:shadow-lg lg:flex lg:flex-col lg:justify-end lg:items-center">
+          <div class="tooltip tooltip-open tooltip-accent " data-tip="LINEで会員登録andログイン">
+            <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 lg:mb-4 lg:mt-3" do %>
+              <%= image_tag asset_path("btn_login_base.png") %>
+            <% end %>
+          </div>
         </div>
-        <div>
-          <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 my-2" %>
+        <div class="lg:max-w-52 lg:min-w-52 lg:max-h-32 lg:min-h-32 lg:mx-8 lg:rounded-lg lg:bg-white lg:shadow-lg lg:flex lg:flex-col lg:justify-end lg:items-center">
+          <div class="tooltip tooltip-open tooltip-info" data-tip="お試しでアプリを触ってみる">
+            <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 lg:mb-4 lg:mt-2" %>
+          </div>
         </div>
       </div>
-      <div class="divider divider-info font-bold md:text-lg">機能紹介</div>
+      <div class="divider divider-info font-bold md:text-lg my-6">機能紹介</div>
       <div class="grid justify-items-center md:text-lg">
         <div class="rounded-lg bg-white shadow-lg my-6 pt-4 md:w-2/3">
           <div class="bg-gradient-to-t from-[#FC345C] to-[#fb8772] p-2 shadow-lg rounded-md m-4">
