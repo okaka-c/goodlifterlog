@@ -24,16 +24,16 @@
       </div>
       <%= render partial: 'shared/line_login_modal', locals: { modal_id: 'my_modal_1' } %>
       <div class="grid place-items-center lg:flex lg:justify-center  my-6">
-        <div class="lg:max-w-52 lg:min-w-52 lg:max-h-32 lg:min-h-32 lg:mx-8 lg:rounded-lg lg:bg-white lg:shadow-lg lg:flex lg:flex-col lg:justify-end lg:items-center">
+        <div class="max-lg:mt-10 lg:max-w-52 lg:min-w-52 lg:max-h-32 lg:min-h-32 lg:mx-8 lg:rounded-lg lg:bg-white lg:shadow-lg flex flex-col justify-end items-center">
           <div class="tooltip tooltip-open tooltip-accent " data-tip="LINEで会員登録andログイン">
-            <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 lg:mb-4 lg:mt-3" do %>
+            <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 mb-4 mt-3" do %>
               <%= image_tag asset_path("btn_login_base.png") %>
             <% end %>
           </div>
         </div>
-        <div class="lg:max-w-52 lg:min-w-52 lg:max-h-32 lg:min-h-32 lg:mx-8 lg:rounded-lg lg:bg-white lg:shadow-lg lg:flex lg:flex-col lg:justify-end lg:items-center">
+        <div class="max-lg:mt-10 lg:max-w-52 lg:min-w-52 lg:max-h-32 lg:min-h-32 lg:mx-8 lg:rounded-lg lg:bg-white lg:shadow-lg flex flex-col justify-end items-center">
           <div class="tooltip tooltip-open tooltip-info" data-tip="お試しでアプリを触ってみる">
-            <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 lg:mb-4 lg:mt-2" %>
+            <%= link_to "お試しログイン", guest_login_path, data: { turbo_method: :post }, class:"btn btn-outline btn-accent max-w-[151px] max-h-11 mb-4 mt-2" %>
           </div>
         </div>
       </div>
