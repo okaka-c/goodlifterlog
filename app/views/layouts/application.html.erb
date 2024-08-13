@@ -26,16 +26,18 @@
     <% if logged_in? %>
       <% if @show_header_nav %>
         <%= render "shared/header" %>
-        <% if current_user&.guest? %>
-          <%= render "shared/login_prompt" %>
-        <% end %>
       <% end %>
     <% else %>
       <%= render "shared/before_login_header" %>
     <% end %>
     <!-- ヘッダー -->
+    <div class="py-16">
+      <% if current_user&.guest? %>
+        <%= render "shared/login_prompt" %>
+      <% end %>
       <%= render "shared/flash_message" %>
       <%= yield %>
+    </div>
     <!-- フッターとボトムナビゲーション -->
     <% if logged_in? %>
       <% if @show_bottom_nav %>
