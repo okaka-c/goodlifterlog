@@ -1,4 +1,4 @@
-  <div class="mx-auto w-4/5  md:max-w-screen-md rounded-lg bg-white shadow my-4">
+  <div class="mx-auto w-4/5  md:max-w-screen-md rounded-lg bg-white shadow my-4 sm:p-4">
     <div class="p-4 border-b border-gray-200">
       <div class="flex items-center justify-left">
         <span class="text-sm font-medium text-primary mr-2"><%= competition.competition_type_i18n %></span>
@@ -15,19 +15,19 @@
       </div>
     </div>
     <div class="p-4 h-20">
-      <div class="flex items-center justify-between">
-      <% unless competition.competition_record.present? %>
-        <div class = "mr-1">
-          <div class="text-base  text-left font-bold">試技結果が未登録です</div>
-        </div>
-      <% else %>
-        <% if competition.category == "パワーリフティング" %>
-          <%= render 'powerlifting_result', competition: competition %>
+      <div class="flex items-center justify-between sm:justify-start">
+        <% unless competition.competition_record.present? %>
+          <div class = "mr-1">
+            <div class="text-base  text-left font-bold">試技結果が未登録です</div>
+          </div>
+        <% else %>
+          <% if competition.category == "パワーリフティング" %>
+            <%= render 'powerlifting_result', competition: competition %>
+          <% end %>
+          <% if competition.category == "シングルベンチプレス" %>
+            <%= render 'benchpress_result', competition: competition %>
+          <% end %>
         <% end %>
-        <% if competition.category == "シングルベンチプレス" %>
-          <%= render 'benchpress_result', competition: competition %>
-        <% end %>
-      <% end %>
       </div>
     </div>
   </div>
