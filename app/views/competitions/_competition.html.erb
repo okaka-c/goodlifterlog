@@ -1,16 +1,16 @@
   <div class="mx-auto w-4/5  md:max-w-screen-md rounded-lg bg-white shadow my-4 sm:p-4">
     <div class="p-4 border-b border-gray-200">
       <div class="flex items-center justify-left">
-        <span class="text-sm font-medium text-primary mr-2"><%= competition.competition_type_i18n %></span>
-        <span class="text-sm font-medium text-primary mr-auto"><%= competition.category %></span>
-        <%= link_to "詳細", competition_path(competition), class: "btn btn-sm btn-outline btn-accent" %>
+        <span class="text-sm sm:text-base font-medium text-primary mr-2"><%= competition.competition_type_i18n %></span>
+        <span class="text-sm sm:text-base font-medium text-primary mr-auto"><%= competition.category %></span>
+        <%= link_to "詳細", competition_path(competition), class: "btn btn-xs sm:btn-sm md:btn-md btn-outline btn-accent" %>
       </div>
       <div class="flex flex-col place-items-start">
-        <div class="mt-1 text-sm text-gray-500"><%= competition.date %></div>
-        <div class="mt-1 text-base  text-left font-bold truncate w-full"><%= competition.name %></div>
+        <div class="mt-1 text-sm sm:text-base text-gray-500"><%= competition.date %></div>
+        <div class="mt-1 text-base sm:text-lg  text-left font-bold truncate w-full"><%= competition.name %></div>
         <div class="mt-1 flex items-center justify-left">
-          <span class="text-sm text-gray-500 mr-2"><%= competition.weight_class %></span>
-          <span class="text-sm text-gray-500 "><%= competition.gearcategory_type_i18n %></span>
+          <span class="text-sm sm:text-base text-gray-500 mr-2"><%= competition.weight_class %></span>
+          <span class="text-sm sm:text-base text-gray-500 "><%= competition.gearcategory_type_i18n %></span>
         </div>
       </div>
     </div>
