@@ -3,7 +3,7 @@
 <% end %>
 <div class="container mx-auto">
   <div class="card items-center mx-auto w-4/5 md:max-w-screen-md bg-white shadow-md p-4 my-4">
-    <div class="card-body">
+    <div class="card-body max-sm:max-w-72 max-sm:min-w-72 sm:w-3/4">
       <div class="flex justify-center">
         <h1 class="card-title text-center">
           <%= @competition.name %>
@@ -15,27 +15,27 @@
       </div>
       <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
         <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:date) %>:</h2>
-        <p class="text-sm"> <%= @competition.date %> </p>
+        <p class="text-sm sm:text-base"> <%= @competition.date %> </p>
       </div>
       <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
         <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:competition_type) %>:</h2>
-        <p class="text-sm"> <%= @competition.competition_type_i18n %> </p>
+        <p class="text-sm sm:text-base"> <%= @competition.competition_type_i18n %> </p>
       </div>
       <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
         <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:gearcategory_type) %>:</h2>
-        <p class="text-sm"> <%= @competition.gearcategory_type_i18n %> </p>
+        <p class="text-sm sm:text-base"> <%= @competition.gearcategory_type_i18n %> </p>
       </div>
       <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
         <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:category) %>:</h2>
-        <p class="text-sm"> <%= @competition.category %> </p>
+        <p class="text-sm sm:text-base"> <%= @competition.category %> </p>
       </div>
       <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
         <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:age_group) %>:</h2>
-        <p class="text-sm"> <%= @competition.age_group %> </p>
+        <p class="text-sm sm:text-base"> <%= @competition.age_group %> </p>
       </div>
       <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
         <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:weight_class) %>:</h2>
-        <p class="text-sm"> <%= @competition.weight_class %> </p>
+        <p class="text-sm sm:text-base"> <%= @competition.weight_class %> </p>
       </div>
       <div class="grid grid-cols-3 items-center w-full">
         <div></div>
@@ -56,7 +56,7 @@
     <%= render 'competition_result', competition: @competition, competition_result: @competition_result, past_competition_result: @past_competition_result, past_competition: @past_competition %>
   <% end %>
   <!-- 大会試技結果詳細情報 -->
-  <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4">
+  <div class="card items-center mx-auto w-4/5 md:max-w-screen-md bg-white shadow-md p-4 my-4">
     <% if CompetitionRecord.exists?(competition_id: @competition.id) %>
       <%= render 'competition_records/competition_record', competition_record: @competition_record, competition: @competition%>
     <% else %>
