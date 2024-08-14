@@ -1,29 +1,25 @@
 <% content_for :head do %>
     <title>プロフィール詳細 | PowerLifter's Log</title>
 <% end %>
-<div class="hero min-h-screen">
-  <div class="hero-content flex-col">
-    <h1 class="text-2xl">プロフィール</h1>
-    <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-md p-4">
-      <div class="card-body max-w-72 min-w-72">
-        <div class="line-it-button" data-lang="ja" data-type="friend" data-env="REAL"   data-lineId="@539jumyl" style="display: none;"></div>
-        <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-        <div class="flex justify-center">
-          <h1 class="card-title text-center">
-            <%=  @user.name %>
-          </h1>
-        </div>
-        <div class="border-b-2 border-dashed py-2">
-          <h2 class="font-bold">性別:</h2>
-          <p class="text-sm"> <%= @profile.gender_i18n %> </p>
-        </div>
-        <div class="border-b-2 border-dashed py-2">
-          <h2 class="font-bold">誕生日:</h2>
-          <p class="text-sm"> <%= @profile.birthday %> </p>
-        </div>
-        <div class="flex justify-end w-full">
-          <%= link_to "編集", edit_profile_path, class: "btn btn-sm btn-outline btn-accent max-w-24 mx-2" %>
-        </div>
+<div class="container mx-auto my-auto">
+  <h1 class="text-2xl sm:text-3xl text-center mt-5">プロフィール</h1>
+  <div class="card items-center mx-auto w-4/5 md:max-w-screen-md bg-white shadow-md p-4 my-4">
+    <div class="card-body max-sm:max-w-72 max-sm:min-w-72 sm:w-3/4">
+      <div class="flex justify-center">
+        <h1 class="card-title text-center sm:text-xl">
+          <%=  @user.name %>
+        </h1>
+      </div>
+      <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
+        <h2 class="font-bold sm:mr-5">性別:</h2>
+        <p class="text-sm sm:text-base"> <%= @profile.gender_i18n %> </p>
+      </div>
+      <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
+        <h2 class="font-bold sm:mr-5">誕生日:</h2>
+        <p class="text-sm sm:text-base"> <%= @profile.birthday %> </p>
+      </div>
+      <div class="flex justify-end w-full">
+        <%= link_to "編集", edit_profile_path, class: "btn btn-xs sm:btn-sm md:btn-md btn-outline btn-accent max-w-24 mx-2" %>
       </div>
     </div>
   </div>
