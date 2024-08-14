@@ -32,11 +32,29 @@
     <% end %>
     <!-- ヘッダー -->
     <div class="py-16">
-      <% if current_user&.guest? %>
-        <%= render "shared/login_prompt" %>
-      <% end %>
-      <%= render "shared/flash_message" %>
-      <%= yield %>
+      <!-- サイドバー -->
+      <div class="drawer lg:drawer-open">
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col items-center justify-center">
+          <!-- Page content here -->
+          <% if current_user&.guest? %>
+            <%= render "shared/login_prompt" %>
+          <% end %>
+          <%= render "shared/flash_message" %>
+          <%= yield %>
+        </div>
+        <% if logged_in? %>
+          <div class="drawer-side">
+            <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+            <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+              <!-- Sidebar content here -->
+              <li><a>Sidebar Item 1</a></li>
+              <li><a>Sidebar Item 2</a></li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+      <!-- サイドバー -->
     </div>
     <!-- フッターとボトムナビゲーション -->
     <% if logged_in? %>
