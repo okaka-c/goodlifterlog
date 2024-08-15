@@ -1,8 +1,8 @@
 <% content_for :head do %>
     <title>大会情報の登録 | PowerLifter's Log</title>
 <% end %>
-<div class="hero min-h-screen bg-white">
-  <div class="hero-content flex-col">
+<div class="container mx-auto bg-white">
+  <div class="flex flex-col items-center mx-auto w-4/5 md:max-w-screen-md mt-5">
       <!-- ここからform_withを使う形に修正 -->
     <h1 class="text-2xl font-bold">大会情報の登録</h1>
     <%= render 'form', competition: @competition %>
