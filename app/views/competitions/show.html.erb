@@ -1,71 +1,69 @@
 <% content_for :head do %>
     <title><%= @competition.name %> | PowerLifter's Log</title>
 <% end %>
-<div class="hero min-h-screen pb-16">
-  <div class="hero-content flex-col">
-    <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-md p-4">
-      <div class="card-body max-w-72 min-w-72">
+<div class="container mx-auto">
+  <div class="card items-center mx-auto w-4/5 md:max-w-screen-md bg-white shadow-md p-4 my-4">
+    <div class="card-body max-sm:max-w-72 max-sm:min-w-72 sm:w-3/4">
+      <div class="flex justify-center">
+        <h1 class="card-title text-center">
+          <%= @competition.name %>
+        </h1>
+      </div>
+      <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
+        <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:venue) %>:</h2>
+        <p class="text-sm sm:text-base"> <%= @competition.venue %></p>
+      </div>
+      <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
+        <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:date) %>:</h2>
+        <p class="text-sm sm:text-base"> <%= @competition.date %> </p>
+      </div>
+      <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
+        <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:competition_type) %>:</h2>
+        <p class="text-sm sm:text-base"> <%= @competition.competition_type_i18n %> </p>
+      </div>
+      <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
+        <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:gearcategory_type) %>:</h2>
+        <p class="text-sm sm:text-base"> <%= @competition.gearcategory_type_i18n %> </p>
+      </div>
+      <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
+        <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:category) %>:</h2>
+        <p class="text-sm sm:text-base"> <%= @competition.category %> </p>
+      </div>
+      <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
+        <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:age_group) %>:</h2>
+        <p class="text-sm sm:text-base"> <%= @competition.age_group %> </p>
+      </div>
+      <div class="sm:flex sm:justify-start sm:items-center border-b-2 border-dashed py-2">
+        <h2 class="font-bold sm:mr-5"><%= Competition.human_attribute_name(:weight_class) %>:</h2>
+        <p class="text-sm sm:text-base"> <%= @competition.weight_class %> </p>
+      </div>
+      <div class="grid grid-cols-3 items-center w-full">
+        <div></div>
         <div class="flex justify-center">
-          <h1 class="card-title text-center">
-            <%= @competition.name %>
-          </h1>
+          <%= link_to "編集", edit_competition_path(@competition), class: "btn btn-xs sm:btn-sm md:btn-md btn-outline btn-accent max-w-24 mx-2" %>
         </div>
-        <div class="border-b-2 border-dashed py-2">
-          <h2 class="font-bold"><%= Competition.human_attribute_name(:venue) %>:</h2>
-          <p class="text-sm"> <%= @competition.venue %></p>
-        </div>
-        <div class="border-b-2 border-dashed py-2">
-          <h2 class="font-bold"><%= Competition.human_attribute_name(:date) %>:</h2>
-          <p class="text-sm"> <%= @competition.date %> </p>
-        </div>
-        <div class="border-b-2 border-dashed py-2">
-          <h2 class="font-bold"><%= Competition.human_attribute_name(:competition_type) %>:</h2>
-          <p class="text-sm"> <%= @competition.competition_type_i18n %> </p>
-        </div>
-        <div class="border-b-2 border-dashed py-2">
-          <h2 class="font-bold"><%= Competition.human_attribute_name(:gearcategory_type) %>:</h2>
-          <p class="text-sm"> <%= @competition.gearcategory_type_i18n %> </p>
-        </div>
-        <div class="border-b-2 border-dashed py-2">
-          <h2 class="font-bold"><%= Competition.human_attribute_name(:category) %>:</h2>
-          <p class="text-sm"> <%= @competition.category %> </p>
-        </div>
-        <div class="border-b-2 border-dashed py-2">
-          <h2 class="font-bold"><%= Competition.human_attribute_name(:age_group) %>:</h2>
-          <p class="text-sm"> <%= @competition.age_group %> </p>
-        </div>
-        <div class="border-b-2 border-dashed py-2">
-          <h2 class="font-bold"><%= Competition.human_attribute_name(:weight_class) %>:</h2>
-          <p class="text-sm"> <%= @competition.weight_class %> </p>
-        </div>
-        <div class="grid grid-cols-3 items-center w-full">
-          <div></div>
-          <div class="flex justify-center">
-            <%= link_to "編集", edit_competition_path(@competition), class: "btn btn-sm btn-outline btn-accent max-w-24 mx-2" %>
-          </div>
-          <div class="flex justify-end">
-            <%= link_to competition_path(@competition), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "link text-[#ef4444] max-w-24 flex items-center" do %>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 hover:text-white"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ef4444" d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
-              削除
-            <% end %>
-          </div>
+        <div class="flex justify-end">
+          <%= link_to competition_path(@competition), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "link text-[#ef4444] max-w-24 flex items-center" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 hover:text-white"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ef4444" d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/></svg>
+            削除
+          <% end %>
         </div>
       </div>
     </div>
-        <!-- 合計重量・各種目最高重量 -->
-    <% if @competition_result.present? %>
-      <%= render 'competition_result', competition: @competition, competition_result: @competition_result, past_competition_result: @past_competition_result, past_competition: @past_competition %>
+  </div>
+      <!-- 合計重量・各種目最高重量 -->
+  <% if @competition_result.present? %>
+    <%= render 'competition_result', competition: @competition, competition_result: @competition_result, past_competition_result: @past_competition_result, past_competition: @past_competition %>
+  <% end %>
+  <!-- 大会試技結果詳細情報 -->
+  <div class="card items-center mx-auto w-4/5 md:max-w-screen-md bg-white shadow-md p-4 my-4">
+    <% if CompetitionRecord.exists?(competition_id: @competition.id) %>
+      <%= render 'competition_records/competition_record', competition_record: @competition_record, competition: @competition%>
+    <% else %>
+      <div class="flex-col flex justify-center items-center w-full">
+        <p>大会結果記録はまだ未登録です</p>
+        <%= link_to "大会結果記録", new_competition_weigh_in_path(@competition), class: "btn btn-sm btn-accent" %>
+      </div>
     <% end %>
-    <!-- 大会試技結果詳細情報 -->
-    <div class="card items-center mx-auto max-w-80 min-w-80 bg-white shadow-xl p-4">
-      <% if CompetitionRecord.exists?(competition_id: @competition.id) %>
-        <%= render 'competition_records/competition_record', competition_record: @competition_record, competition: @competition%>
-      <% else %>
-        <div class="flex-col flex justify-center items-center w-full">
-          <p>大会結果記録はまだ未登録です</p>
-          <%= link_to "大会結果記録", new_competition_weigh_in_path(@competition), class: "btn btn-sm btn-accent" %>
-        </div>
-      <% end %>
-    </div>
   </div>
 </div>

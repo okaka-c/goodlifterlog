@@ -1,9 +1,9 @@
 <% content_for :head do %>
     <title>大会結果一覧 | PowerLifter's Log</title>
 <% end %>
-<div class="mx-auto w-full max-w-screen-sm text-center pb-16">
-  <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 p-2">
-    <h1 class="font-bold text-primary">パワーリフティング(ノーギア)<br/>合計重量</h1>
+<div class="container mx-auto">
+  <div class="mx-auto w-4/5  md:max-w-screen-md rounded-lg bg-white shadow my-4 sm:p-4">
+    <h1 class="font-bold text-primary text-center">パワーリフティング(ノーギア)<br/>合計重量</h1>
       <%= line_chart @classic_power_total_weights,
       xtitle: "開催日" ,
       ytitle: "重量(kg)",
@@ -11,8 +11,8 @@
       empty: "データがありません"
       %>
   </div>
-  <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 p-2">
-    <h1 class="font-bold text-primary">パワーリフティング(フルギア)<br/>合計重量</h1>
+  <div class="mx-auto w-4/5  md:max-w-screen-md rounded-lg bg-white shadow my-4 sm:p-4">
+    <h1 class="font-bold text-primary text-center">パワーリフティング(フルギア)<br/>合計重量</h1>
       <%= line_chart @equipped_power_total_weights,
       xtitle: "開催日" ,
       ytitle: "重量(kg)",
@@ -20,8 +20,8 @@
       empty: "データがありません"
       %>
   </div>
-  <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 p-2">
-    <h1 class="font-bold text-primary">シングルベンチプレス(ノーギア)<br/>重量</h1>
+  <div class="mx-auto w-4/5  md:max-w-screen-md rounded-lg bg-white shadow my-4 sm:p-4">
+    <h1 class="font-bold text-primary text-center">シングルベンチプレス(ノーギア)<br/>重量</h1>
       <%= line_chart @classic_single_benchpress_weights,
       xtitle: "開催日" ,
       ytitle: "重量(kg)",
@@ -29,8 +29,8 @@
       empty: "データがありません"
       %>
   </div>
-  <div class="mx-auto max-w-80 min-w-80 rounded-lg bg-white shadow my-4 p-2">
-    <h1 class="font-bold text-primary">シングルベンチプレス(フルギア)<br/>重量</h1>
+  <div class="mx-auto w-4/5  md:max-w-screen-md rounded-lg bg-white shadow my-4 sm:p-4">
+    <h1 class="font-bold text-primary text-center">シングルベンチプレス(フルギア)<br/>重量</h1>
       <%= line_chart @equipped_single_benchpress_weights,
       xtitle: "開催日" ,
       ytitle: "重量(kg)",
