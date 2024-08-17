@@ -5,6 +5,9 @@ FactoryBot.define do
     password {'12345678'}
     password_confirmation {'12345678'}
     role {"user"}
-    association :profile
+
+    after(:create) do |user|
+      create(:profile, user: user)
+    end
   end
 end
