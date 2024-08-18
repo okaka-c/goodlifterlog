@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :require_login
   before_action :set_header_navi
   before_action :set_bottom_navi
-  add_flash_types :success, :danger
+  add_flash_types :success, :danger, :warning
   before_action :restrict_guest_user_actions
 
   private
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def not_authenticated
-    redirect_to login_path
+    redirect_to root_path, warning: 'ログインしてください'
   end
 
   def set_bottom_navi

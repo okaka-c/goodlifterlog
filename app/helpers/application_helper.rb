@@ -3,6 +3,7 @@ module ApplicationHelper
     case type.to_sym
     when :success then "bg-success text-success-content"
     when :danger  then "bg-error text-error-content"
+    when :warning  then "bg-warning text-warning-content"
     else "bg-gray-500 text-black"
     end
   end
