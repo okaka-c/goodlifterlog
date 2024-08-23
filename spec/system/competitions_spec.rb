@@ -124,7 +124,43 @@ RSpec.describe "Competitions", type: :system do
           expect(page).to have_content(create_competition.gearcategory_type_i18n), 'ノーギアかフルギアか表示されていません'
         end
 
-        context '大会情報が1件もない場合' do
+        context '大会名が未入力の場合' do
+          it '大会情報の作成に失敗すること' do
+
+          end
+        end
+
+        context '開催日が未入力の場合' do
+          it '大会情報の作成に失敗すること' do
+
+          end
+        end
+
+        context '大会種別が未選択の場合' do
+          it '大会情報の作成に失敗すること' do
+
+          end
+        end
+
+        context 'ギア種別が未選択の場合' do
+          it '大会情報の作成に失敗すること' do
+
+          end
+        end
+
+        context '競技種別が未選択の場合' do
+          it '大会情報の作成に失敗すること' do
+
+          end
+        end
+
+        context '年齢別区分が未選択の場合' do
+          it '大会情報の作成に失敗すること' do
+
+          end
+        end
+
+        context '階級別区分が未選択の場合' do
           it '大会情報の作成に失敗すること' do
 
           end
