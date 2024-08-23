@@ -89,14 +89,45 @@ RSpec.describe "Competitions", type: :system do
       end
 
       context 'ログインしている場合' do
+        before do
+          login(user)
+          click_on('記録する', match: :first)
+        end
+
         it '正しいタイトルが表示されていること' do
-          # titleタグの中身を検証
+          expect(page).to have_title("大会情報の登録 | PowerLifter's Log"), "タイトルに「大会情報の登録 | PowerLifter's Log」が含まれていません。"
         end
 
         it '大会情報が作成できること' do
+          fill_in '大会名', with: 'テスト大会'
+          fill_in '会場名', with: 'テスト設備'
+          fill_in '開催日', with: '2023-10-01'
+          choose '公式大会'
+          choose 'ノーギア'
+          choose 'パワーリフティング'
+          select '一般', from: '年齢別区分'
+          select '女子47㎏級', from: '階級別区分'
+          click_button '登録'
+          create_competition = Competition.last
+          expect(current_path).to eq(new_competition_weigh_in_path(create_competition)), '登録した大会の検量体重入力ページに遷移していません'
+          expect(page).to have_content('大会情報を登録しました'), 'フラッシュメッセージ「大会情報を登録しました」が表示されていません'
+          visit '/competitions'
+          click_on '詳細'
+          expect(current_path).to eq(competition_path(create_competition)), '登録した大会の詳細ページがありません'
+          expect(page).to have_content(create_competition.name), '大会名が表示されていません'
+          expect(page).to have_content(create_competition.venue), '施設名が表示されていません'
+          expect(page).to have_content(create_competition.competition_type_i18n), '公式大会or非公式大会が表示されていません'
+          expect(page).to have_content(create_competition.category), 'パワーリフティングorベンチプレスが表示されていません'
+          expect(page).to have_content(create_competition.date), '開催日が表示されていません'
+          expect(page).to have_content(create_competition.weight_class), '階級区分が表示されていません'
+          expect(page).to have_content(create_competition.age_group), '年齢区分が表示されていません'
+          expect(page).to have_content(create_competition.gearcategory_type_i18n), 'ノーギアかフルギアか表示されていません'
         end
 
-        it '大会情報の作成に失敗すること' do
+        context '大会情報が1件もない場合' do
+          it '大会情報の作成に失敗すること' do
+
+          end
         end
       end
     end
