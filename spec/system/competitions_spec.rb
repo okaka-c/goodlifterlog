@@ -126,7 +126,16 @@ RSpec.describe "Competitions", type: :system do
 
         context '大会名が未入力の場合' do
           it '大会情報の作成に失敗すること' do
-
+            fill_in '会場名', with: 'テスト設備'
+            fill_in '開催日', with: '2023-10-01'
+            choose '公式大会'
+            choose 'ノーギア'
+            choose 'パワーリフティング'
+            select '一般', from: '年齢別区分'
+            select '女子47㎏級', from: '階級別区分'
+            click_button '登録'
+            expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
+            expect(page).to have_content('大会名を入力してください'), 'エラーメッセージ「大会名を入力してください」が表示されていません'
           end
         end
 
