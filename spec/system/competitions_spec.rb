@@ -241,10 +241,36 @@ RSpec.describe "Competitions", type: :system do
       end
 
       context 'ログインしている場合' do
+        before do
+          login(user)
+          competition
+        end
+
         it '大会情報の詳細が表示されること' do
+          visit '/competitions'
+          within "#competition-id-#{competition.id}" do
+            click_on('詳細')
+          end
+          Capybara.assert_current_path("/competitions/#{competition.id}", ignore_query: true)
+          expect(current_path).to eq("/competitions/#{competition.id}"), '大会情報一覧の詳細ボタンから詳細画面へ遷移できません'
+          expect(page).to have_content(competition.name), '大会名が表示されていません'
+          expect(page).to have_content(competition.venue), '施設名が表示されていません'
+          expect(page).to have_content(competition.competition_type_i18n), '公式大会or非公式大会が表示されていません'
+          expect(page).to have_content(competition.category), 'パワーリフティングorベンチプレスが表示されていません'
+          expect(page).to have_content(competition.date), '開催日が表示されていません'
+          expect(page).to have_content(competition.weight_class), '階級区分が表示されていません'
+          expect(page).to have_content(competition.age_group), '年齢区分が表示されていません'
+          expect(page).to have_content(competition.gearcategory_type_i18n), 'ノーギアかフルギアか表示されていません'
         end
 
         it '正しいタイトルが表示されていること' do
+          visit '/competitions'
+          within "#competition-id-#{competition.id}" do
+            click_on('詳細')
+          end
+          Capybara.assert_current_path("/competitions/#{competition.id}", ignore_query: true)
+          expect(current_path).to eq("/competitions/#{competition.id}"), '大会情報一覧の詳細ボタンから詳細画面へ遷移できません'
+          expect(page).to have_title("#{competition.name} | PowerLifter's Log"), "タイトルに「#{competition.name} | PowerLifter's Log」が含まれていません。"
         end
       end
     end
