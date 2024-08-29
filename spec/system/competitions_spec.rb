@@ -141,37 +141,91 @@ RSpec.describe "Competitions", type: :system do
 
         context '開催日が未入力の場合' do
           it '大会情報の作成に失敗すること' do
-
+            fill_in '大会名', with: 'テスト大会'
+            fill_in '会場名', with: 'テスト設備'
+            choose '公式大会'
+            choose 'ノーギア'
+            choose 'パワーリフティング'
+            select '一般', from: '年齢別区分'
+            select '女子47㎏級', from: '階級別区分'
+            click_button '登録'
+            expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
+            expect(page).to have_content('開催日を入力してください'), 'エラーメッセージ「開催日を入力してください」が表示されていません'
           end
         end
 
         context '大会種別が未選択の場合' do
           it '大会情報の作成に失敗すること' do
-
+            fill_in '大会名', with: 'テスト大会'
+            fill_in '会場名', with: 'テスト設備'
+            fill_in '開催日', with: '2023-10-01'
+            choose 'ノーギア'
+            choose 'パワーリフティング'
+            select '一般', from: '年齢別区分'
+            select '女子47㎏級', from: '階級別区分'
+            click_button '登録'
+            expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
+            expect(page).to have_content('大会種別を入力してください'), 'エラーメッセージ「大会種別を入力してください」が表示されていません'
           end
         end
 
         context 'ギア種別が未選択の場合' do
           it '大会情報の作成に失敗すること' do
-
+            fill_in '大会名', with: 'テスト大会'
+            fill_in '会場名', with: 'テスト設備'
+            fill_in '開催日', with: '2023-10-01'
+            choose '公式大会'
+            choose 'パワーリフティング'
+            select '一般', from: '年齢別区分'
+            select '女子47㎏級', from: '階級別区分'
+            click_button '登録'
+            expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
+            expect(page).to have_content('ギア種別を入力してください'), 'エラーメッセージ「ギア種別を入力してください」が表示されていません'
           end
         end
 
         context '競技種別が未選択の場合' do
           it '大会情報の作成に失敗すること' do
-
+            fill_in '大会名', with: 'テスト大会'
+            fill_in '会場名', with: 'テスト設備'
+            fill_in '開催日', with: '2023-10-01'
+            choose '公式大会'
+            choose 'ノーギア'
+            select '一般', from: '年齢別区分'
+            select '女子47㎏級', from: '階級別区分'
+            click_button '登録'
+            expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
+            expect(page).to have_content('競技種別を入力してください'), 'エラーメッセージ「競技種別を入力してください」が表示されていません'
           end
         end
 
         context '年齢別区分が未選択の場合' do
           it '大会情報の作成に失敗すること' do
-
+            fill_in '大会名', with: 'テスト大会'
+            fill_in '会場名', with: 'テスト設備'
+            fill_in '開催日', with: '2023-10-01'
+            choose '公式大会'
+            choose 'ノーギア'
+            choose 'パワーリフティング'
+            select '女子47㎏級', from: '階級別区分'
+            click_button '登録'
+            expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
+            expect(page).to have_content('年齢別区分を入力してください'), 'エラーメッセージ「年齢別区分を入力してください」が表示されていません'
           end
         end
 
         context '階級別区分が未選択の場合' do
           it '大会情報の作成に失敗すること' do
-
+            fill_in '大会名', with: 'テスト大会'
+            fill_in '会場名', with: 'テスト設備'
+            fill_in '開催日', with: '2023-10-01'
+            choose '公式大会'
+            choose 'ノーギア'
+            choose 'パワーリフティング'
+            select '一般', from: '年齢別区分'
+            click_button '登録'
+            expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
+            expect(page).to have_content('階級別区分を入力してください'), 'エラーメッセージ「階級別区分を入力してください」が表示されていません'
           end
         end
       end
