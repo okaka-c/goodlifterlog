@@ -285,10 +285,46 @@ RSpec.describe "Competitions", type: :system do
       end
 
       context 'ログインしている場合' do
+        before do
+          login(user)
+          competition
+          visit '/competitions'
+          within "#competition-id-#{competition.id}" do
+            click_on('詳細')
+          end
+          within "#competition-show-id-#{competition.id}" do
+            click_on('編集')
+          end
+        end
+
         it '大会情報が更新できること' do
+          Capybara.assert_current_path("/competitions/#{competition.id}/edit", ignore_query: true)
+          expect(current_path).to eq("/competitions/#{competition.id}/edit"), '編集ボタンから編集画面へ遷移できません'
+          fill_in '大会名', with: 'テスト更新大会'
+          fill_in '会場名', with: 'テスト更新設備'
+          fill_in '開催日', with: '2023-10-01'
+          choose '公式大会'
+          choose 'ノーギア'
+          choose 'パワーリフティング'
+          select '一般', from: '年齢別区分'
+          select '女子47㎏級', from: '階級別区分'
+          click_button '更新'
+          Capybara.assert_current_path("/competitions/#{competition.id}", ignore_query: true)
+          expect(current_path).to eq("/competitions/#{competition.id}"), '詳細画面へ遷移できません'
+          expect(page).to have_content('大会情報を更新しました'), 'フラッシュメッセージ「大会情報を更新しました」が表示されていません'
         end
 
         it '大会情報の更新に失敗すること' do
+          fill_in '大会名', with: ''
+          fill_in '会場名', with: 'テスト更新設備'
+          fill_in '開催日', with: '2023-10-01'
+          choose '公式大会'
+          choose 'ノーギア'
+          choose 'パワーリフティング'
+          select '一般', from: '年齢別区分'
+          select '女子47㎏級', from: '階級別区分'
+          click_button '更新'
+          expect(page).to have_content('大会情報の更新に失敗しました'), 'フラッシュメッセージ「大会情報の更新に失敗しました」が表示されていません'
         end
       end
     end
