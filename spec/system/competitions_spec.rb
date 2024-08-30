@@ -331,7 +331,22 @@ RSpec.describe "Competitions", type: :system do
 
     describe '大会情報 削除ページ' do
       context 'ログインしている場合' do
+        before do
+          login(user)
+          competition
+          visit '/competitions'
+          within "#competition-id-#{competition.id}" do
+            click_on('詳細')
+          end
+        end
+
         it '大会情報が削除できること' do
+          within "#competition-show-id-#{competition.id}" do
+            click_on('削除')
+          end
+          expect(page).to have_content('大会情報を削除しました'), 'フラッシュメッセージ「大会情報を削除しました」が表示されていません'
+          Capybara.assert_current_path("/competitions", ignore_query: true)
+          expect(current_path).to eq("/competitions"), '大会一覧ページへ遷移できません'
         end
       end
     end
