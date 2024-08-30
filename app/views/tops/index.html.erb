@@ -27,7 +27,7 @@
         <div class="max-lg:mt-10 lg:max-w-52 lg:min-w-52 lg:max-h-32 lg:min-h-32 lg:mx-8 lg:rounded-lg lg:bg-white lg:shadow-lg flex flex-col justify-end items-center">
           <div class="tooltip tooltip-open tooltip-accent " data-tip="LINEで会員登録andログイン">
             <%= link_to auth_at_provider_path(:provider => :line), class:"flex items-center justify-center hover:brightness-75 mb-4 mt-3" do %>
-              <%= image_tag asset_path("btn_login_base.png") %>
+              <%= image_tag asset_path("btn_login_base.png"), alt: 'LINEログイン' %>
             <% end %>
           </div>
         </div>
