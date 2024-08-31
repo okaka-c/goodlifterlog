@@ -4,3 +4,6 @@ require:
   - rubocop-rspec
   - rubocop-capybara
   - rubocop-factory_bot
+
+AllCops:
+  NewCops: enable
