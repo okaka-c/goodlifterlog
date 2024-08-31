@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :competition do
     name { 'テスト大会' }
@@ -9,6 +11,6 @@ FactoryBot.define do
     age_group { '一般' }
     weight_class { '女子47㎏級' }
     participation_status { 'participated' }
-    association :user
+    user
   end
 end

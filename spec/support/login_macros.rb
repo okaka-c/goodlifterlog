@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LoginMacros
   def login(user)
     setup_oauth_stubs(user)
