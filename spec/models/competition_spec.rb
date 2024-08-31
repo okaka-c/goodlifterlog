@@ -21,7 +21,7 @@ RSpec.describe Competition, type: :model do
     context '大会名が225文字以上のとき' do
       it '無効であること' do
         competition = build(:competition)
-        competition.name = 'a'*256
+        competition.name = 'a' * 256
         expect(competition).to be_invalid
         expect(competition.errors[:name]).to include('は255文字以内で入力してください')
       end
@@ -30,7 +30,7 @@ RSpec.describe Competition, type: :model do
     context '施設名が225文字以上のとき' do
       it '無効であること' do
         competition = build(:competition)
-        competition.venue = 'a'*256
+        competition.venue = 'a' * 256
         expect(competition).to be_invalid
         expect(competition.errors[:venue]).to include('は255文字以内で入力してください')
       end

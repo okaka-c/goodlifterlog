@@ -1,9 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Competitions", type: :system do
+RSpec.describe 'Competitions', type: :system do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
-  let(:competition) { create(:competition, user: user) }
+  let(:competition) { create(:competition, user:) }
+
   before do
     driven_by(:rack_test)
   end
@@ -13,7 +14,7 @@ RSpec.describe "Competitions", type: :system do
       it 'ログイン処理が成功する' do
         login(user)
         expect(page).to have_content 'LINEログインしました'
-        expect(current_path).to eq competitions_path
+        expect(page).to have_current_path competitions_path, ignore_query: true
       end
     end
   end
@@ -29,19 +30,20 @@ RSpec.describe "Competitions", type: :system do
       end
 
       context 'ログインしている場合' do
-        context "自分のアカウント" do
+        context '自分のアカウント' do
           before do
             login(user)
           end
 
           it '正しいタイトルが表示されていること' do
-            expect(current_path).to eq(competitions_path), "大会結果一覧ページにいません"
-            expect(page).to have_title("大会結果一覧 | PowerLifter's Log"), "大会一覧ページのタイトルに「大会結果一覧 | PowerLifter's Log」が含まれていません。"
+            expect(current_path).to eq(competitions_path), '大会結果一覧ページにいません'
+            expect(page).to have_title("大会結果一覧 | PowerLifter's Log"),
+                            "大会一覧ページのタイトルに「大会結果一覧 | PowerLifter's Log」が含まれていません。"
           end
 
           context '大会情報が1件もない場合' do
             it '何もない旨のメッセージが表示されること' do
-              expect(current_path).to eq(competitions_path), "大会結果一覧ページにいません"
+              expect(current_path).to eq(competitions_path), '大会結果一覧ページにいません'
               expect(page).to have_content('出場済の大会情報がありません'), '大会情報が一件もない場合、「出場済の大会情報がありません」というメッセージが表示されていません'
             end
           end
@@ -51,7 +53,7 @@ RSpec.describe "Competitions", type: :system do
               it '大会情報の一覧が表示されること' do
                 competition
                 visit '/competitions'
-                expect(page).to have_selector("#competition-id-#{competition.id}"), '大会結果が表示されていません'
+                expect(page).to have_css("#competition-id-#{competition.id}"), '大会結果が表示されていません'
                 expect(page).to have_content(competition.name), '大会名が表示されていません'
                 expect(page).to have_content(competition.competition_type_i18n), '公式大会or非公式大会が表示されていません'
                 expect(page).to have_content(competition.category), 'パワーリフティングorベンチプレスが表示されていません'
@@ -63,7 +65,7 @@ RSpec.describe "Competitions", type: :system do
           end
         end
 
-        context "他人のアカウント" do
+        context '他人のアカウント' do
           context '他人の大会情報' do
             before do
               login(another_user)
@@ -72,7 +74,7 @@ RSpec.describe "Competitions", type: :system do
             it '他人のユーザーの大会情報の一覧が表示されていないこと' do
               competition
               visit '/competitions'
-              expect(page).not_to have_selector("#competition-id-#{competition.id}"), '他人の大会情報が表示されています'
+              expect(page).not_to have_css("#competition-id-#{competition.id}"), '他人の大会情報が表示されています'
             end
           end
         end
@@ -270,7 +272,8 @@ RSpec.describe "Competitions", type: :system do
           end
           Capybara.assert_current_path("/competitions/#{competition.id}", ignore_query: true)
           expect(current_path).to eq("/competitions/#{competition.id}"), '大会情報一覧の詳細ボタンから詳細画面へ遷移できません'
-          expect(page).to have_title("#{competition.name} | PowerLifter's Log"), "タイトルに「#{competition.name} | PowerLifter's Log」が含まれていません。"
+          expect(page).to have_title("#{competition.name} | PowerLifter's Log"),
+                          "タイトルに「#{competition.name} | PowerLifter's Log」が含まれていません。"
         end
       end
     end
@@ -345,8 +348,8 @@ RSpec.describe "Competitions", type: :system do
             click_on('削除')
           end
           expect(page).to have_content('大会情報を削除しました'), 'フラッシュメッセージ「大会情報を削除しました」が表示されていません'
-          Capybara.assert_current_path("/competitions", ignore_query: true)
-          expect(current_path).to eq("/competitions"), '大会一覧ページへ遷移できません'
+          Capybara.assert_current_path('/competitions', ignore_query: true)
+          expect(current_path).to eq('/competitions'), '大会一覧ページへ遷移できません'
         end
       end
     end
