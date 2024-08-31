@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Competition, type: :model do
-  describe 'バリデーションチェック' do
+  describe 'バリデーションチェック', :aggregate_failures do
     context '全てのフィールドが有効な場合' do
       it '有効であること' do
         competition = build(:competition)

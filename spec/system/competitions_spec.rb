@@ -11,7 +11,7 @@ RSpec.describe 'Competitions', type: :system do
     driven_by(:rack_test)
   end
 
-  describe 'ログインができるかどうかテスト' do
+  describe 'ログインができるかどうかテスト', :aggregate_failures do
     context 'LINEログインをクリック' do
       it 'ログイン処理が成功する' do
         login(user)
@@ -21,7 +21,7 @@ RSpec.describe 'Competitions', type: :system do
     end
   end
 
-  describe '大会情報のCRUD機能' do
+  describe '大会情報のCRUD機能', :aggregate_failures do
     describe '大会情報一覧' do
       context 'ログインしていない場合' do
         it 'ログイン前トップページにリダイレクトされること' do
