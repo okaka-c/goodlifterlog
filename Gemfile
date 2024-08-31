@@ -74,6 +74,14 @@ group :development, :test do
   gem 'letter_opener_web', '~> 2.0'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rubocop', require: false
+  gem 'rubocop-ast'
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-capybara', require: false
+  gem 'rubocop-factory_bot', require: false
+  gem 'erb_lint', require: false
 end
 
 group :development do
