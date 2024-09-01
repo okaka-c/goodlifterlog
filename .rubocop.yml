@@ -7,3 +7,12 @@ require:
 
 AllCops:
   NewCops: enable
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 8
+
+RSpec/ExampleLength:
+  Enabled: false

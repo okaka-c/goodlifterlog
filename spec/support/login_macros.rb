@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LoginMacros
   def login(user)
     setup_oauth_stubs(user)
@@ -8,15 +10,17 @@ module LoginMacros
   private
 
   def setup_oauth_stubs(user)
+    # rubocop:disable RSpec/AnyInstance
     # OauthsControllerのoauthアクションをスタブしてLINEプラットフォームへの認証処理をスキップ
     allow_any_instance_of(OauthsController).to receive(:oauth) do |object|
-      object.redirect_to(object.url_for(controller:'oauths', action: 'callback', provider: 'line'))
+      object.redirect_to(object.url_for(controller: 'oauths', action: 'callback', provider: 'line'))
     end
 
     # OauthsControllerのcallbackアクション内をスタブしてLINEプラットフォームへの認証処理をスキップ
     allow_any_instance_of(OauthsController).to receive(:callback) do |object|
       object.auto_login(user)
-      object.redirect_to(object.url_for(controller:'profiles', action: 'existence'), success: 'LINEログインしました')
+      object.redirect_to(object.url_for(controller: 'profiles', action: 'existence'), success: 'LINEログインしました')
     end
+    # rubocop:enable RSpec/AnyInstance
   end
 end
