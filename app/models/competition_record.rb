@@ -215,6 +215,7 @@ class CompetitionRecord < ApplicationRecord
     end
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
   def result_save(competition_record, competition, gender)
     ActiveRecord::Base.transaction do
       # ステップ1 @competition_recordの内容をテーブルに保存/更新
@@ -309,7 +310,9 @@ class CompetitionRecord < ApplicationRecord
       @competition_result.save!
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/BlockLength
 
+  # rubocop:disable Metrics/AbcSize
   def ipf_points_update(competition_record, competition, gender)
     # IPFポイントの計算をする
     # 係数a,b,cの決定
@@ -325,5 +328,6 @@ class CompetitionRecord < ApplicationRecord
     total_lifted_weight * 100 / (a - b * Math.exp(-c * body_weight))
     # rubocop:enable Lint/AmbiguousOperatorPrecedence
   end
+  # rubocop:enable Metrics/AbcSize
 end
 # rubocop:enable Metrics/ClassLength
