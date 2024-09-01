@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class CompetitionRecord < ApplicationRecord
   belongs_to :competition
   has_one :competition_result, dependent: :destroy
@@ -298,3 +299,4 @@ class CompetitionRecord < ApplicationRecord
     # rubocop:enable Lint/AmbiguousOperatorPrecedence
   end
 end
+# rubocop:enable Metrics/ClassLength
