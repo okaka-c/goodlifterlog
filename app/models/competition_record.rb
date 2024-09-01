@@ -202,7 +202,7 @@ class CompetitionRecord < ApplicationRecord
       squat_attempts = []
       # 成功試技のみ、配列に格納していく
       squat_attempt.each do |key, value|
-        result_key = "#{key.to_s}_result".to_sym
+        result_key = :"#{key}_result"
         squat_attempts << value if competition_record[result_key] == "success"
       end
       # 成功試技の中で、最高重量を変数に代入
@@ -217,7 +217,7 @@ class CompetitionRecord < ApplicationRecord
       benchpress_attempts = []
       # 成功試技のみ、配列に格納していく
       benchpress_attempt.each do |key, value|
-        result_key = "#{key.to_s}_result".to_sym
+        result_key = :"#{key}_result"
         benchpress_attempts << value if competition_record[result_key] == "success"
       end
       # 成功試技の中で、最高重量を変数に代入
@@ -232,7 +232,7 @@ class CompetitionRecord < ApplicationRecord
       deadlift_attempts = []
       # 成功試技のみ、配列に格納していく
       deadlift_attempt.each do |key, value|
-        result_key = "#{key.to_s}_result".to_sym
+        result_key = :"#{key}_result"
         deadlift_attempts << value if competition_record[result_key] == "success"
       end
       # 成功試技の中で、最高重量を変数に代入
@@ -256,7 +256,9 @@ class CompetitionRecord < ApplicationRecord
       # 検量体重
       body_weight = competition_record.weight
       # IPFポイント計算式
+      # rubocop:disable Lint/AmbiguousOperatorPrecedence
       ipf_gl_points = total_lifted_weight * 100 / (a - b * Math.exp(-c * body_weight))
+      # rubocop:enable Lint/AmbiguousOperatorPrecedence
       # CompetitionResultのインスタンス生成し、いままでの計算結果を代入する
       results_params = {
         competition_record_id: competition_record.id,
@@ -290,7 +292,8 @@ class CompetitionRecord < ApplicationRecord
     body_weight = competition_record.weight
     total_lifted_weight = competition_record.competition_result.total_lifted_weight
     # IPFポイント計算式
-    ipf_gl_points = total_lifted_weight * 100 / (a - b * Math.exp(-c * body_weight))
-    return ipf_gl_points
+    # rubocop:disable Lint/AmbiguousOperatorPrecedence
+    total_lifted_weight * 100 / (a - b * Math.exp(-c * body_weight))
+    # rubocop:enable Lint/AmbiguousOperatorPrecedence
   end
 end
