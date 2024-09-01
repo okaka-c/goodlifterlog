@@ -25,7 +25,7 @@ module Record
     validates :squat_first_attempt, numericality: { allow_nil: true },
                                     if: :should_validate_squat_first_attempt_numericality?
     validates :squat_second_attempt, numericality: { allow_nil: true },
-                                     if: :should_validate_squat_second_attempt_numericality?
+                                    if: :should_validate_squat_second_attempt_numericality?
     validates :squat_third_attempt, numericality: { allow_nil: true },
                                     if: :should_validate_squat_third_attempt_numericality?
 
@@ -93,21 +93,27 @@ module Record
     # カスタムバリデータ 成功か失敗選択時に重量が入力されていない
     # 第一試技
     def squat_first_attempt_is_not_be_blank
-      if (squat_first_attempt_result == 'success' || squat_first_attempt_result == 'failure') && squat_first_attempt.blank?
+      if (squat_first_attempt_result == 'success' ||
+          squat_first_attempt_result == 'failure') &&
+         squat_first_attempt.blank?
         errors.add(:squat_first_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
       end
     end
 
     # 第二試技
     def squat_second_attempt_is_not_be_blank
-      if (squat_second_attempt_result == 'success' || squat_second_attempt_result == 'failure') && squat_second_attempt.blank?
+      if (squat_second_attempt_result == 'success' ||
+          squat_second_attempt_result == 'failure') &&
+         squat_second_attempt.blank?
         errors.add(:squat_second_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
       end
     end
 
     # 第三試技
     def squat_third_attempt_is_not_be_blank
-      if (squat_third_attempt_result == 'success' || squat_third_attempt_result == 'failure') && squat_third_attempt.blank?
+      if (squat_third_attempt_result == 'success' ||
+          squat_third_attempt_result == 'failure') &&
+         squat_third_attempt.blank?
         errors.add(:squat_third_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
       end
     end
