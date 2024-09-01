@@ -222,53 +222,51 @@ class CompetitionRecord < ApplicationRecord
       competition_record.save!
 
       # ステップ2 ここからCompetitionResultテーブルのレコード保存/更新のため計算開始
-      # スクワットの最高重量を算出
-      # 試技結果の重量を保存に成功したインスタンスから抽出
       squat_attempt = {
         squat_first_attempt: competition_record.squat_first_attempt,
         squat_second_attempt: competition_record.squat_second_attempt,
         squat_third_attempt: competition_record.squat_third_attempt
       }
+
       squat_attempts = []
-      # 成功試技のみ、配列に格納していく
+
       squat_attempt.each do |key, value|
         result_key = :"#{key}_result"
         squat_attempts << value if competition_record[result_key] == 'success'
       end
-      # 成功試技の中で、最高重量を変数に代入
+
       best_squat_weight = squat_attempts.empty? ? 0 : squat_attempts.max
 
-      # ベンチプレスの最高重量を算出
       benchpress_attempt = {
         benchpress_first_attempt: competition_record.benchpress_first_attempt,
         benchpress_second_attempt: competition_record.benchpress_second_attempt,
         benchpress_third_attempt: competition_record.benchpress_third_attempt
       }
+
       benchpress_attempts = []
-      # 成功試技のみ、配列に格納していく
+
       benchpress_attempt.each do |key, value|
         result_key = :"#{key}_result"
         benchpress_attempts << value if competition_record[result_key] == 'success'
       end
-      # 成功試技の中で、最高重量を変数に代入
+
       best_benchpress_weight = benchpress_attempts.empty? ? 0 : benchpress_attempts.max
 
-      # デッドリフトの最高重量を算出
       deadlift_attempt = {
         deadlift_first_attempt: competition_record.deadlift_first_attempt,
         deadlift_second_attempt: competition_record.deadlift_second_attempt,
         deadlift_third_attempt: competition_record.deadlift_third_attempt
       }
+
       deadlift_attempts = []
-      # 成功試技のみ、配列に格納していく
+
       deadlift_attempt.each do |key, value|
         result_key = :"#{key}_result"
         deadlift_attempts << value if competition_record[result_key] == 'success'
       end
-      # 成功試技の中で、最高重量を変数に代入
+
       best_deadlift_weight = deadlift_attempts.empty? ? 0 : deadlift_attempts.max
 
-      # トータル重量を出す
       total_lifted_weight =
         case competition.category
         when 'パワーリフティング'
@@ -278,18 +276,17 @@ class CompetitionRecord < ApplicationRecord
         end
 
       # IPFポイントの計算をする
-      # 係数a,b,cの決定
       coefficients = CompetitionResult::COEFFICIENTS[gender][competition.gearcategory_type][competition.category]
       a = coefficients[:a]
       b = coefficients[:b]
       c = coefficients[:c]
-      # 検量体重
+
       body_weight = competition_record.weight
-      # IPFポイント計算式
+
       # rubocop:disable Lint/AmbiguousOperatorPrecedence
       ipf_gl_points = total_lifted_weight * 100 / (a - b * Math.exp(-c * body_weight))
       # rubocop:enable Lint/AmbiguousOperatorPrecedence
-      # CompetitionResultのインスタンス生成し、いままでの計算結果を代入する
+
       results_params = {
         competition_record_id: competition_record.id,
         best_squat_weight:,
@@ -298,15 +295,14 @@ class CompetitionRecord < ApplicationRecord
         total_lifted_weight:,
         ipf_points: ipf_gl_points
       }
+
       if competition_record.competition_result.nil?
-        # 結果がなければ、新しいCompetitionResultインスタンスを作成
         @competition_result = CompetitionResult.new(results_params)
       else
-        # 結果登録済ならば、新しいCompetitionResultインスタンスを作成
         @competition_result = competition_record.competition_result
         @competition_result.assign_attributes(results_params)
       end
-      # 保存
+
       @competition_result.save!
     end
   end
@@ -314,16 +310,12 @@ class CompetitionRecord < ApplicationRecord
 
   # rubocop:disable Metrics/AbcSize
   def ipf_points_update(competition_record, competition, gender)
-    # IPFポイントの計算をする
-    # 係数a,b,cの決定
     coefficients = CompetitionResult::COEFFICIENTS[gender][competition.gearcategory_type][competition.category]
     a = coefficients[:a]
     b = coefficients[:b]
     c = coefficients[:c]
-    # 検量体重
     body_weight = competition_record.weight
     total_lifted_weight = competition_record.competition_result.total_lifted_weight
-    # IPFポイント計算式
     # rubocop:disable Lint/AmbiguousOperatorPrecedence
     total_lifted_weight * 100 / (a - b * Math.exp(-c * body_weight))
     # rubocop:enable Lint/AmbiguousOperatorPrecedence
