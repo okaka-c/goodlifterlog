@@ -6,5 +6,4 @@ class Profile < ApplicationRecord
 
   # enum定義
   enum :gender, { man: 0, women: 1 }
-
 end

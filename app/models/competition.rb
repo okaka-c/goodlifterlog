@@ -20,8 +20,8 @@ class Competition < ApplicationRecord
   enum :participation_status, { participated: 0, scheduled: 1 } # 出場予定: 出場済、出場予定。本リリース後の大会出場予定記録で使う定義
 
   # 定数定義
-  CATEGORIES = [ 'パワーリフティング','シングルベンチプレス' ].freeze
-  AGE_GROUPS = [ '一般', 'サブジュニア', 'ジュニア', 'マスターズ1', 'マスターズ2', 'マスターズ3', 'マスターズ4', 'マスターズ5' ].freeze
+  CATEGORIES = %w[パワーリフティング シングルベンチプレス].freeze
+  AGE_GROUPS = %w[一般 サブジュニア ジュニア マスターズ1 マスターズ2 マスターズ3 マスターズ4 マスターズ5].freeze
   WEIGHT_CLASSES = {
     '男子' => [
       '男子59㎏級', '男子66㎏級', '男子74㎏級', '男子83㎏級', '男子93㎏級', '男子105㎏級',
@@ -35,14 +35,13 @@ class Competition < ApplicationRecord
 
   # scopeの定義
   scope :past_competitions, ->(gearcategory_type, category, date) {
-    where(
-      competition_type: :official,
-      participation_status: :participated,
-      gearcategory_type: gearcategory_type,
-      category: category
-      ).where('date < ?', date)
-    }
-
+                              where(
+                                competition_type: :official,
+                                participation_status: :participated,
+                                gearcategory_type:,
+                                category:
+                              ).where(date: ...date)
+                            }
 
   def best_squat_weight_result(competition)
     competition&.competition_record&.competition_result&.best_squat_weight
@@ -77,22 +76,22 @@ class Competition < ApplicationRecord
   end
 
   def benchpress_first_attempt_failure?(competition)
-    competition&.competition_record&.benchpress_first_attempt_result == "failure"
+    competition&.competition_record&.benchpress_first_attempt_result == 'failure'
   end
 
   def benchpress_second_attempt_failure?(competition)
-    competition&.competition_record&.benchpress_second_attempt_result == "failure"
+    competition&.competition_record&.benchpress_second_attempt_result == 'failure'
   end
 
   def benchpress_third_attempt_failure?(competition)
-    competition&.competition_record&.benchpress_third_attempt_result == "failure"
+    competition&.competition_record&.benchpress_third_attempt_result == 'failure'
   end
 
   private
 
   def date_is_not_future
-    if date.present? && date > Date.today
-      errors.add(:date, "は本日含む過去の日付を入力してください") 
-    end
+    return unless date.present? && date > Time.zone.today
+
+    errors.add(:date, 'は本日含む過去の日付を入力してください')
   end
 end
