@@ -71,8 +71,8 @@ module Record
     # カスタムバリデータ　スクワット判定結果
     # 第一試技
     def benchpress_first_attempt_is_not_be_not_attempted
-      if benchpress_first_attempt.present? && Float(benchpress_first_attempt,
-                                                    exception: false) >= 0 &&
+      if benchpress_first_attempt.present? &&
+         Float(benchpress_first_attempt, exception: false) >= 0 &&
          benchpress_first_attempt_result == 'not_attempted'
         errors.add(:benchpress_first_attempt_result, 'は成功か失敗かを選んでください')
       end
@@ -80,8 +80,8 @@ module Record
 
     # 第一試技
     def benchpress_second_attempt_is_not_be_not_attempted
-      if benchpress_second_attempt.present? && Float(benchpress_second_attempt,
-                                                     exception: false) >= 0 &&
+      if benchpress_second_attempt.present? &&
+         Float(benchpress_second_attempt, exception: false) >= 0 &&
          benchpress_second_attempt_result == 'not_attempted'
         errors.add(:benchpress_second_attempt_result, 'は成功か失敗かを選んでください')
       end
@@ -89,8 +89,8 @@ module Record
 
     # 第二試技
     def benchpress_third_attempt_is_not_be_not_attempted
-      if benchpress_third_attempt.present? && Float(benchpress_third_attempt,
-                                                    exception: false) >= 0 &&
+      if benchpress_third_attempt.present? &&
+         Float(benchpress_third_attempt, exception: false) >= 0 &&
          benchpress_third_attempt_result == 'not_attempted'
         errors.add(:benchpress_third_attempt_result, 'は成功か失敗かを選んでください')
       end
