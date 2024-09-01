@@ -25,7 +25,7 @@ module Record
     validates :squat_first_attempt, numericality: { allow_nil: true },
                                     if: :should_validate_squat_first_attempt_numericality?
     validates :squat_second_attempt, numericality: { allow_nil: true },
-                                    if: :should_validate_squat_second_attempt_numericality?
+                                     if: :should_validate_squat_second_attempt_numericality?
     validates :squat_third_attempt, numericality: { allow_nil: true },
                                     if: :should_validate_squat_third_attempt_numericality?
 
