@@ -15,7 +15,6 @@ class CompetitionRecord < ApplicationRecord
   enum :deadlift_second_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :deadlift_second
   enum :deadlift_third_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :deadlift_third
 
-
   validates :competition_id, uniqueness: true
   validates :weight, presence: true, numericality: true
   # スクワット各試技のバリテーション設定
@@ -73,116 +72,118 @@ class CompetitionRecord < ApplicationRecord
 
   # カスタムバリデータ　スクワット判定結果
   def squat_first_attempt_is_not_be_not_attempted
-    if squat_first_attempt.present? && squat_first_attempt >= 0 && squat_first_attempt_result == "not_attempted"
-      errors.add(:squat_first_attempt_result, "は成功か失敗かを選んでください")
+    if squat_first_attempt.present? && squat_first_attempt >= 0 && squat_first_attempt_result == 'not_attempted'
+      errors.add(:squat_first_attempt_result, 'は成功か失敗かを選んでください')
     end
   end
 
   def squat_second_attempt_is_not_be_not_attempted
-    if squat_second_attempt.present? && squat_second_attempt >= 0 && squat_second_attempt_result == "not_attempted"
-      errors.add(:squat_second_attempt_result, "は成功か失敗かを選んでください")
+    if squat_second_attempt.present? && squat_second_attempt >= 0 && squat_second_attempt_result == 'not_attempted'
+      errors.add(:squat_second_attempt_result, 'は成功か失敗かを選んでください')
     end
   end
 
   def squat_third_attempt_is_not_be_not_attempted
-    if squat_third_attempt.present? && squat_third_attempt >= 0 && squat_third_attempt_result == "not_attempted"
-      errors.add(:squat_third_attempt_result, "は成功か失敗かを選んでください")
+    if squat_third_attempt.present? && squat_third_attempt >= 0 && squat_third_attempt_result == 'not_attempted'
+      errors.add(:squat_third_attempt_result, 'は成功か失敗かを選んでください')
     end
   end
 
   # カスタムバリデータ　ベンチプレス判定結果
   def benchpress_first_attempt_is_not_be_not_attempted
-    if benchpress_first_attempt.present? && benchpress_first_attempt >= 0 && benchpress_first_attempt_result == "not_attempted"
-      errors.add(:benchpress_first_attempt_result, "は成功か失敗かを選んでください")
+    if benchpress_first_attempt.present? && benchpress_first_attempt >= 0 && benchpress_first_attempt_result == 'not_attempted'
+      errors.add(:benchpress_first_attempt_result, 'は成功か失敗かを選んでください')
     end
   end
 
   def benchpress_second_attempt_is_not_be_not_attempted
-    if benchpress_second_attempt.present? && benchpress_second_attempt >= 0 && benchpress_second_attempt_result == "not_attempted"
-      errors.add(:benchpress_second_attempt_result, "は成功か失敗かを選んでください")
+    if benchpress_second_attempt.present? && benchpress_second_attempt >= 0 && benchpress_second_attempt_result == 'not_attempted'
+      errors.add(:benchpress_second_attempt_result, 'は成功か失敗かを選んでください')
     end
   end
 
   def benchpress_third_attempt_is_not_be_not_attempted
-    if benchpress_third_attempt.present? && benchpress_third_attempt >= 0 && benchpress_third_attempt_result == "not_attempted"
-      errors.add(:benchpress_third_attempt_result, "は成功か失敗かを選んでください")
+    if benchpress_third_attempt.present? && benchpress_third_attempt >= 0 && benchpress_third_attempt_result == 'not_attempted'
+      errors.add(:benchpress_third_attempt_result, 'は成功か失敗かを選んでください')
     end
   end
 
   # カスタムバリデータ　デッドリフト判定結果
   def deadlift_first_attempt_is_not_be_not_attempted
-    if deadlift_first_attempt.present? && deadlift_first_attempt >= 0 && deadlift_first_attempt_result == "not_attempted"
-      errors.add(:deadlift_first_attempt_result, "は成功か失敗かを選んでください")
+    if deadlift_first_attempt.present? && deadlift_first_attempt >= 0 && deadlift_first_attempt_result == 'not_attempted'
+      errors.add(:deadlift_first_attempt_result, 'は成功か失敗かを選んでください')
     end
   end
 
   def deadlift_second_attempt_is_not_be_not_attempted
-    if deadlift_second_attempt.present? && deadlift_second_attempt >= 0 && deadlift_second_attempt_result == "not_attempted"
-      errors.add(:deadlift_second_attempt_result, "は成功か失敗かを選んでください")
+    if deadlift_second_attempt.present? && deadlift_second_attempt >= 0 && deadlift_second_attempt_result == 'not_attempted'
+      errors.add(:deadlift_second_attempt_result, 'は成功か失敗かを選んでください')
     end
   end
 
   def deadlift_third_attempt_is_not_be_not_attempted
-    if deadlift_third_attempt.present? && deadlift_third_attempt >= 0 && deadlift_third_attempt_result == "not_attempted"
-      errors.add(:deadlift_third_attempt_result, "は成功か失敗かを選んでください")
+    if deadlift_third_attempt.present? && deadlift_third_attempt >= 0 && deadlift_third_attempt_result == 'not_attempted'
+      errors.add(:deadlift_third_attempt_result, 'は成功か失敗かを選んでください')
     end
   end
+
   # 成功か失敗選択時に重量が入力されていない
   # スクワット
   def squat_first_attempt_is_not_be_blank
-    if (squat_first_attempt_result == "success" || squat_first_attempt_result == "failure") && squat_first_attempt.blank?
-      errors.add(:squat_first_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+    if (squat_first_attempt_result == 'success' || squat_first_attempt_result == 'failure') && squat_first_attempt.blank?
+      errors.add(:squat_first_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
     end
   end
 
   def squat_second_attempt_is_not_be_blank
-    if (squat_second_attempt_result == "success" || squat_second_attempt_result == "failure") && squat_second_attempt.blank?
-      errors.add(:squat_second_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+    if (squat_second_attempt_result == 'success' || squat_second_attempt_result == 'failure') && squat_second_attempt.blank?
+      errors.add(:squat_second_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
     end
   end
 
   def squat_third_attempt_is_not_be_blank
-    if (squat_third_attempt_result == "success" || squat_third_attempt_result == "failure") && squat_third_attempt.blank?
-      errors.add(:squat_third_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+    if (squat_third_attempt_result == 'success' || squat_third_attempt_result == 'failure') && squat_third_attempt.blank?
+      errors.add(:squat_third_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
     end
   end
+
   # 成功か失敗選択時に重量が入力されていない
   # ベンチプレス
   def benchpress_first_attempt_is_not_be_blank
-    if (benchpress_first_attempt_result == "success" || benchpress_first_attempt_result == "failure") && benchpress_first_attempt.blank?
-      errors.add(:benchpress_first_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+    if (benchpress_first_attempt_result == 'success' || benchpress_first_attempt_result == 'failure') && benchpress_first_attempt.blank?
+      errors.add(:benchpress_first_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
     end
   end
 
   def benchpress_second_attempt_is_not_be_blank
-    if (benchpress_second_attempt_result == "success" || benchpress_second_attempt_result == "failure") && benchpress_second_attempt.blank?
-      errors.add(:benchpress_second_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+    if (benchpress_second_attempt_result == 'success' || benchpress_second_attempt_result == 'failure') && benchpress_second_attempt.blank?
+      errors.add(:benchpress_second_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
     end
   end
 
   def benchpress_third_attempt_is_not_be_blank
-    if (benchpress_third_attempt_result == "success" || benchpress_third_attempt_result == "failure") && benchpress_third_attempt.blank?
-      errors.add(:benchpress_third_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+    if (benchpress_third_attempt_result == 'success' || benchpress_third_attempt_result == 'failure') && benchpress_third_attempt.blank?
+      errors.add(:benchpress_third_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
     end
   end
 
   # 成功か失敗選択時に重量が入力されていない
   # デッドリフト
   def deadlift_first_attempt_is_not_be_blank
-    if (deadlift_first_attempt_result == "success" || deadlift_first_attempt_result == "failure") && deadlift_first_attempt.blank?
-      errors.add(:deadlift_first_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+    if (deadlift_first_attempt_result == 'success' || deadlift_first_attempt_result == 'failure') && deadlift_first_attempt.blank?
+      errors.add(:deadlift_first_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
     end
   end
 
   def deadlift_second_attempt_is_not_be_blank
-    if (deadlift_second_attempt_result == "success" || deadlift_second_attempt_result == "failure") && deadlift_second_attempt.blank?
-      errors.add(:deadlift_second_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+    if (deadlift_second_attempt_result == 'success' || deadlift_second_attempt_result == 'failure') && deadlift_second_attempt.blank?
+      errors.add(:deadlift_second_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
     end
   end
 
   def deadlift_third_attempt_is_not_be_blank
-    if (deadlift_third_attempt_result == "success" || deadlift_third_attempt_result == "failure") && deadlift_third_attempt.blank?
-      errors.add(:deadlift_third_attempt, "は成功か失敗を選択したときは重量を入力して下さい。")
+    if (deadlift_third_attempt_result == 'success' || deadlift_third_attempt_result == 'failure') && deadlift_third_attempt.blank?
+      errors.add(:deadlift_third_attempt, 'は成功か失敗を選択したときは重量を入力して下さい。')
     end
   end
 
@@ -203,7 +204,7 @@ class CompetitionRecord < ApplicationRecord
       # 成功試技のみ、配列に格納していく
       squat_attempt.each do |key, value|
         result_key = :"#{key}_result"
-        squat_attempts << value if competition_record[result_key] == "success"
+        squat_attempts << value if competition_record[result_key] == 'success'
       end
       # 成功試技の中で、最高重量を変数に代入
       best_squat_weight = squat_attempts.empty? ? 0 : squat_attempts.max
@@ -218,7 +219,7 @@ class CompetitionRecord < ApplicationRecord
       # 成功試技のみ、配列に格納していく
       benchpress_attempt.each do |key, value|
         result_key = :"#{key}_result"
-        benchpress_attempts << value if competition_record[result_key] == "success"
+        benchpress_attempts << value if competition_record[result_key] == 'success'
       end
       # 成功試技の中で、最高重量を変数に代入
       best_benchpress_weight = benchpress_attempts.empty? ? 0 : benchpress_attempts.max
@@ -233,7 +234,7 @@ class CompetitionRecord < ApplicationRecord
       # 成功試技のみ、配列に格納していく
       deadlift_attempt.each do |key, value|
         result_key = :"#{key}_result"
-        deadlift_attempts << value if competition_record[result_key] == "success"
+        deadlift_attempts << value if competition_record[result_key] == 'success'
       end
       # 成功試技の中で、最高重量を変数に代入
       best_deadlift_weight = deadlift_attempts.empty? ? 0 : deadlift_attempts.max
@@ -241,9 +242,9 @@ class CompetitionRecord < ApplicationRecord
       # トータル重量を出す
       total_lifted_weight =
         case competition.category
-        when "パワーリフティング"
+        when 'パワーリフティング'
           best_squat_weight + best_benchpress_weight + best_deadlift_weight
-        when "シングルベンチプレス"
+        when 'シングルベンチプレス'
           best_benchpress_weight
         end
 
@@ -262,11 +263,11 @@ class CompetitionRecord < ApplicationRecord
       # CompetitionResultのインスタンス生成し、いままでの計算結果を代入する
       results_params = {
         competition_record_id: competition_record.id,
-        best_squat_weight: best_squat_weight,
-        best_benchpress_weight: best_benchpress_weight,
-        best_deadlift_weight: best_deadlift_weight,
-        total_lifted_weight: total_lifted_weight,
-        ipf_points: ipf_gl_points,
+        best_squat_weight:,
+        best_benchpress_weight:,
+        best_deadlift_weight:,
+        total_lifted_weight:,
+        ipf_points: ipf_gl_points
       }
       if competition_record.competition_result.nil?
         # 結果がなければ、新しいCompetitionResultインスタンスを作成
