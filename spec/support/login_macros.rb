@@ -10,6 +10,7 @@ module LoginMacros
   private
 
   def setup_oauth_stubs(user)
+    # rubocop:disable RSpec/AnyInstance
     # OauthsControllerのoauthアクションをスタブしてLINEプラットフォームへの認証処理をスキップ
     allow_any_instance_of(OauthsController).to receive(:oauth) do |object|
       object.redirect_to(object.url_for(controller: 'oauths', action: 'callback', provider: 'line'))
@@ -20,5 +21,6 @@ module LoginMacros
       object.auto_login(user)
       object.redirect_to(object.url_for(controller: 'profiles', action: 'existence'), success: 'LINEログインしました')
     end
+    # rubocop:enable RSpec/AnyInstance
   end
 end
