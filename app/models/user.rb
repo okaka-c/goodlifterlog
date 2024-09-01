@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
   validates :reset_password_token, uniqueness: true, allow_nil: true
 
-  enum role: { user: 0, guest: 1}
+  enum :role, { user: 0, guest: 1}
 
   def guest?
     role == 'guest'

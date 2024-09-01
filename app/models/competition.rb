@@ -15,9 +15,9 @@ class Competition < ApplicationRecord
   validate  :date_is_not_future
 
   # enum定義
-  enum competition_type: { official: 0, unofficial: 1 } # 大会種別：公式大会、非公式大会
-  enum gearcategory_type: { raw: 0, equipped: 1 } # ギア有無: ギア無し(raw), ギア有(equipped)
-  enum participation_status: { participated: 0, scheduled: 1 } # 出場予定: 出場済、出場予定。本リリース後の大会出場予定記録で使う定義
+  enum :competition_type, { official: 0, unofficial: 1 } # 大会種別：公式大会、非公式大会
+  enum :gearcategory_type, { raw: 0, equipped: 1 } # ギア有無: ギア無し(raw), ギア有(equipped)
+  enum :participation_status, { participated: 0, scheduled: 1 } # 出場予定: 出場済、出場予定。本リリース後の大会出場予定記録で使う定義
 
   # 定数定義
   CATEGORIES = [ 'パワーリフティング','シングルベンチプレス' ].freeze

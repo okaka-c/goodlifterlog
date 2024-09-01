@@ -3,17 +3,17 @@ class CompetitionRecord < ApplicationRecord
   has_one :competition_result, dependent: :destroy
 
   # スクワット 判定結果定義
-  enum squat_first_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :squat_first
-  enum squat_second_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :squat_second
-  enum squat_third_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :squat_third
+  enum :squat_first_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :squat_first
+  enum :squat_second_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :squat_second
+  enum :squat_third_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :squat_third
   # ベンチプレス 判定結果定義
-  enum benchpress_first_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :benchpress_first
-  enum benchpress_second_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :benchpress_second
-  enum benchpress_third_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :benchpress_third
+  enum :benchpress_first_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :benchpress_first
+  enum :benchpress_second_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :benchpress_second
+  enum :benchpress_third_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :benchpress_third
   # デッドリフト　判定結果定義
-  enum deadlift_first_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :deadlift_first
-  enum deadlift_second_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :deadlift_second
-  enum deadlift_third_attempt_result: { not_attempted: 0, success: 1, failure: 2 }, _prefix: :deadlift_third
+  enum :deadlift_first_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :deadlift_first
+  enum :deadlift_second_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :deadlift_second
+  enum :deadlift_third_attempt_result, { not_attempted: 0, success: 1, failure: 2 }, prefix: :deadlift_third
 
 
   validates :competition_id, uniqueness: true

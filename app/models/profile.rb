@@ -5,6 +5,6 @@ class Profile < ApplicationRecord
   validates :birthday, presence: true
 
   # enum定義
-  enum gender: { man: 0, women: 1 }
+  enum :gender, { man: 0, women: 1 }
 
 end
