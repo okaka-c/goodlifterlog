@@ -1,7 +1,7 @@
 class LineBotController < ApplicationController
   skip_before_action :require_login
   require 'line/bot'
-  protect_from_forgery :except => [:callback]
+  protect_from_forgery except: [:callback]
   def callback
     body = request.body.read
     # リクエストのボディ部分全体を文字列として読み取り、body変数にいれる
@@ -11,7 +11,9 @@ class LineBotController < ApplicationController
     # LINEから送信されたWebhookリクエストが正当なものであるかを検証
     # 著名が無効なものだったら、HTTPステータスコード400（Bad Request）を返す
     unless client.validate_signature(body, signature)
-      error 400 do 'Bad Request' end
+      error 400 do
+        'Bad Request'
+      end
     end
     # 有効なものだった場合以下の処理が続行される
     # イベントオブジェクトのリストを生成する
@@ -38,10 +40,10 @@ class LineBotController < ApplicationController
   private
 
   def client
-    @client ||= Line::Bot::Client.new { |config|
+    @client ||= Line::Bot::Client.new do |config|
       config.channel_id = Rails.application.credentials.dig(:linebot, :channel_id)
       config.channel_secret = Rails.application.credentials.dig(:linebot, :channel_secret)
       config.channel_token = Rails.application.credentials.dig(:linebot, :channel_token)
-    }
+    end
   end
 end
