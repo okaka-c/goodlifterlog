@@ -15,6 +15,7 @@ class PasswordResetsController < ApplicationController
     redirect_to login_path, success: t('.success')
   end
 
+  # rubocop:disable Metrics/AbcSize
   def update
     @token = params[:id]
     @user = User.load_from_reset_password_token(@token)
@@ -28,4 +29,5 @@ class PasswordResetsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end
