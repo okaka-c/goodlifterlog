@@ -14,42 +14,42 @@ module Record
       @weigh_in = Record::WeighIn.new(weight: @competition_record.weight)
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def create
       @weigh_in = Record::WeighIn.new(weigh_in_params)
-      if @weigh_in.valid? # 手動でバリデーションの検証をする
+      if @weigh_in.valid?
         session[:record] = {
           competition_id: @weigh_in.competition_id,
           weight: @weigh_in.weight
         }
         case @competition.category
         when 'パワーリフティング'
-          redirect_to new_competition_squat_path, success: t('.success') # スクワットへ
+          redirect_to new_competition_squat_path, success: t('.success')
         when 'シングルベンチプレス'
-          redirect_to new_competition_bench_presse_path, success: t('.success') # ベンチプレスへ
+          redirect_to new_competition_bench_presse_path, success: t('.success')
         end
       else
         flash.now[:danger] = t('.danger')
         render :new, status: :unprocessable_entity
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def update
-      # ユーザーが入力した値を取得
       @weigh_in = Record::WeighIn.new(weigh_in_params)
       weigh_in_uptate_params = { weight: @weigh_in.weight }
-      # 取得したレコードの属性の値を入力フォームから受け取った値に変更する
       @competition_record.assign_attributes(weigh_in_uptate_params)
-      # バリデーション実行
       if @competition_record.valid?
         gender = current_user.profile.gender
-        # メソッド内でtransaction実行し、competition_recordとcompetition_result更新
         @competition_record.result_save(@competition_record, @competition, gender)
-        redirect_to competition_path(@competition), success: t('.success') # 成功したら詳細ページへ遷移する
+        redirect_to competition_path(@competition), success: t('.success')
       else
         flash.now[:danger] = t('.danger')
         render :edit, status: :unprocessable_entity
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     private
 
