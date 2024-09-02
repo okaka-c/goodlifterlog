@@ -21,9 +21,10 @@ module Record
       )
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def create
       @bench_press = Record::BenchPress.new(bench_press_params)
-      if @bench_press.valid? # 手動でバリデーションの検証をする
+      if @bench_press.valid?
         session[:record].merge!({
                                   benchpress_first_attempt: @bench_press.benchpress_first_attempt,
                                   benchpress_second_attempt: @bench_press.benchpress_second_attempt,
@@ -34,18 +35,19 @@ module Record
                                 })
         case @competition.category
         when 'パワーリフティング'
-          redirect_to new_competition_deadlift_path, success: t('.success') # デッドリフトへ
+          redirect_to new_competition_deadlift_path, success: t('.success')
         when 'シングルベンチプレス'
-          redirect_to new_competition_comment_path, success: t('.success') # コメントへ
+          redirect_to new_competition_comment_path, success: t('.success')
         end
       else
         flash.now[:danger] = t('.danger')
         render :new, status: :unprocessable_entity
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def update
-      # ユーザーが入力した値を取得
       @bench_press = Record::BenchPress.new(bench_press_params)
       bench_press_update_params = {
         benchpress_first_attempt: @bench_press.benchpress_first_attempt,
@@ -55,19 +57,17 @@ module Record
         benchpress_second_attempt_result: @bench_press.benchpress_second_attempt_result,
         benchpress_third_attempt_result: @bench_press.benchpress_third_attempt_result
       }
-      # 取得したレコードの属性の値を入力フォームから受け取った値に変更する
       @competition_record.assign_attributes(bench_press_update_params)
-      # バリデーション実行
       if @competition_record.valid?
         gender = current_user.profile.gender
-        # メソッド内でtransaction実行し、competition_recordとcompetition_result更新
         @competition_record.result_save(@competition_record, @competition, gender)
-        redirect_to competition_path(@competition), success: t('.success') # 成功したら詳細ページへ遷移する
+        redirect_to competition_path(@competition), success: t('.success')
       else
         flash.now[:danger] = t('.danger')
         render :edit, status: :unprocessable_entity
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     private
 
