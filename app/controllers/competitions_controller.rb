@@ -10,8 +10,14 @@ class CompetitionsController < ApplicationController
   end
 
   def show
-    @past_competition = current_user.competitions.past_competitions(@competition.gearcategory_type,
-                                                                    @competition.category, @competition.date).order(date: :desc).first
+    @past_competition = current_user.competitions
+                                    .past_competitions(
+                                      @competition.gearcategory_type,
+                                      @competition.category,
+                                      @competition.date
+                                    )
+                                    .order(date: :desc)
+                                    .first
     @past_competition_result = @past_competition.competition_result if @past_competition.present?
   end
 
@@ -31,6 +37,7 @@ class CompetitionsController < ApplicationController
     end
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def update
     @competition.assign_attributes(competition_params)
     if @competition.valid?
@@ -50,6 +57,7 @@ class CompetitionsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def destroy
     @competition.destroy!
