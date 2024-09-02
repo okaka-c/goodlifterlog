@@ -21,9 +21,10 @@ module Record
       )
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def create
       @squat = Record::Squat.new(squat_params)
-      if @squat.valid? # 手動でバリデーションの検証をする
+      if @squat.valid?
         session[:record].merge!({
                                   squat_first_attempt: @squat.squat_first_attempt,
                                   squat_second_attempt: @squat.squat_second_attempt,
@@ -32,15 +33,16 @@ module Record
                                   squat_second_attempt_result: @squat.squat_second_attempt_result,
                                   squat_third_attempt_result: @squat.squat_third_attempt_result
                                 })
-        redirect_to new_competition_bench_presse_path, success: t('.success') # 次のステップへ遷移
+        redirect_to new_competition_bench_presse_path, success: t('.success')
       else
         flash.now[:danger] = t('.danger')
         render :new, status: :unprocessable_entity
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def update
-      # ユーザーが入力した値を取得
       @squat = Record::Squat.new(squat_params)
       squat_update_params = {
         squat_first_attempt: @squat.squat_first_attempt,
@@ -50,19 +52,17 @@ module Record
         squat_second_attempt_result: @squat.squat_second_attempt_result,
         squat_third_attempt_result: @squat.squat_third_attempt_result
       }
-      # 取得したレコードの属性の値を入力フォームから受け取った値に変更する
       @competition_record.assign_attributes(squat_update_params)
-      # バリデーション実行
       if @competition_record.valid?
         gender = current_user.profile.gender
-        # メソッド内でtransaction実行し、competition_recordとcompetition_result更新
         @competition_record.result_save(@competition_record, @competition, gender)
-        redirect_to competition_path(@competition), success: t('.success') # 成功したら詳細ページへ遷移する
+        redirect_to competition_path(@competition), success: t('.success')
       else
         flash.now[:danger] = t('.danger')
         render :edit, status: :unprocessable_entity
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     private
 
