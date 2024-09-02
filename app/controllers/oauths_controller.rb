@@ -4,9 +4,10 @@ class OauthsController < ApplicationController
     login_at(params[:provider])
   end
 
+  # rubocop:disable Metrics/MethodLength
   def callback
-    provider = auth_params[:provider] #ストロングパラメータで受け取り
-    if @user = login_from(provider)
+    provider = auth_params[:provider] # ストロングパラメータで受け取り
+    if (@user = login_from(provider))
       redirect_to profile_existence_path, success: t('.success')
     else
       begin
@@ -14,11 +15,12 @@ class OauthsController < ApplicationController
         reset_session # protect from session fixation attack
         auto_login(@user)
         redirect_to profile_existence_path, success: t('.success')
-      rescue
+      rescue # rubocop:disable Style/RescueStandardError
         redirect_to root_path, danger: t('.danger')
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   private
 
