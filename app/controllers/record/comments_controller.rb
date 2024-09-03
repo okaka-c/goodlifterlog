@@ -1,64 +1,58 @@
-class Record::CommentsController < ApplicationController
-  before_action :set_competition
-  before_action :set_competition_record, only: %i[ edit update ]
-  skip_before_action :set_bottom_navi, only: %i[ new edit ]
-  before_action :hide_bottom_navi, only: %i[ create update ]
+module Record
+  class CommentsController < ApplicationController
+    before_action :set_competition
+    before_action :set_competition_record, only: %i[edit update]
+    skip_before_action :set_bottom_navi, only: %i[new edit]
+    before_action :hide_bottom_navi, only: %i[create update]
 
-  def new
-    @comment = Record::Comment.new
-  end
-
-  def create
-    @comment = Record::Comment.new(comment_params)
-    if @comment.valid? # 手動でバリデーションの検証をする
-      # @commentを、sessionに保存
-      session[:record].merge!({
-        comment: @comment.comment
-      })
-      # セッションからデータを、キーと値のペアで取り出す
-      @competition_record_params = session[:record]
-      # レコードを保存する
-      @competition_record = CompetitionRecord.new(@competition_record_params)
-      # transaction開始
-      gender = current_user.profile.gender
-      @competition_record.result_save(@competition_record, @competition, gender)
-      # セッションをクリアにする
-      session.delete(:record)
-      # 大会結果詳細ページへ遷移
-      redirect_to competition_path(@competition), success: t('.success')
-    else
-      flash.now[:danger] = t('.danger')
-      render :new, status: :unprocessable_entity
+    def new
+      @comment = Record::Comment.new
     end
-  end
 
-  def edit
-    @comment = Record::Comment.new(comment: @competition_record.comment)
-  end
-
-  def update
-    # ユーザーが入力した値を取得
-    @comment = Record::Comment.new(comment_params)
-    # 取得したレコードのweightの値を、@weigh_in.weightに上書きしてupdateする
-    if @competition_record.update(comment: @comment.comment)
-      redirect_to competition_path(@competition), success: t('.success') # 成功したら詳細ページへ遷移する
-    else
-      flash.now[:danger] = t('.danger')
-      render :edit, status: :unprocessable_entity
+    def edit
+      @comment = Record::Comment.new(comment: @competition_record.comment)
     end
-  end
 
-  private
+    def create
+      @comment = Record::Comment.new(comment_params)
+      if @comment.valid?
+        # rubocop:disable Performance/RedundantMerge
+        session[:record].merge!({ comment: @comment.comment })
+        # rubocop:enable Performance/RedundantMerge
+        @competition_record_params = session[:record]
+        @competition_record = CompetitionRecord.new(@competition_record_params)
+        gender = current_user.profile.gender
+        @competition_record.result_save(@competition_record, @competition, gender)
+        session.delete(:record)
+        redirect_to competition_path(@competition), success: t('.success')
+      else
+        flash.now[:danger] = t('.danger')
+        render :new, status: :unprocessable_entity
+      end
+    end
 
-  def comment_params
-    params.require(:record_comment).permit(:comment)
-  end
+    def update
+      @comment = Record::Comment.new(comment_params)
+      if @competition_record.update(comment: @comment.comment)
+        redirect_to competition_path(@competition), success: t('.success')
+      else
+        flash.now[:danger] = t('.danger')
+        render :edit, status: :unprocessable_entity
+      end
+    end
 
-  def set_competition
-    @competition = current_user.competitions.find(params[:competition_id])
-  end
+    private
 
-  def set_competition_record
-    @competition_record = @competition.competition_record
+    def comment_params
+      params.require(:record_comment).permit(:comment)
+    end
+
+    def set_competition
+      @competition = current_user.competitions.find(params[:competition_id])
+    end
+
+    def set_competition_record
+      @competition_record = @competition.competition_record
+    end
   end
 end
