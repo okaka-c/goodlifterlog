@@ -13,6 +13,7 @@ module Record
       @comment = Record::Comment.new(comment: @competition_record.comment)
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def create
       @comment = Record::Comment.new(comment_params)
       if @comment.valid?
@@ -30,6 +31,7 @@ module Record
         render :new, status: :unprocessable_entity
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def update
       @comment = Record::Comment.new(comment_params)
