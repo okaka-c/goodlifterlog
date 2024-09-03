@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   private
 
   def restrict_guest_user_actions
-    if current_user&.guest? && action_name.in?(%w[new create edit update destroy])
-      redirect_to competitions_path, danger: "ゲストユーザーは新規登録・編集・削除機能を実行できません。"
-    end
+    return unless current_user&.guest? && action_name.in?(%w[new create edit update destroy])
+
+    redirect_to competitions_path, danger: 'ゲストユーザーは新規登録・編集・削除機能を実行できません。'
   end
 
   def not_authenticated

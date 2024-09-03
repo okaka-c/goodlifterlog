@@ -1,17 +1,31 @@
 class CompetitionsController < ApplicationController
-  before_action :set_competition, only: %i[ show edit update destroy ]
-  before_action :set_competition_record, only: %i[ show edit update ]
-  before_action :set_competition_result, only: %i[ show update ]
-  skip_before_action :set_bottom_navi, only: %i[ new edit ]
-  before_action :hide_bottom_navi, only: %i[ create update ]
+  before_action :set_competition, only: %i[show edit update destroy]
+  before_action :set_competition_record, only: %i[show edit update]
+  before_action :set_competition_result, only: %i[show update]
+  skip_before_action :set_bottom_navi, only: %i[new edit]
+  before_action :hide_bottom_navi, only: %i[create update]
 
   def index
     @competitions = current_user.competitions.order(date: :desc)
   end
 
+  def show
+    @past_competition = current_user.competitions
+                                    .past_competitions(
+                                      @competition.gearcategory_type,
+                                      @competition.category,
+                                      @competition.date
+                                    )
+                                    .order(date: :desc)
+                                    .first
+    @past_competition_result = @past_competition.competition_result if @past_competition.present?
+  end
+
   def new
     @competition = Competition.new
   end
+
+  def edit; end
 
   def create
     @competition = current_user.competitions.build(competition_params)
@@ -23,13 +37,7 @@ class CompetitionsController < ApplicationController
     end
   end
 
-  def show
-    @past_competition = current_user.competitions.past_competitions(@competition.gearcategory_type, @competition.category, @competition.date ).order(date: :desc).first
-    @past_competition_result = @past_competition.competition_result if @past_competition.present?
-  end
-
-  def edit; end
-
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def update
     @competition.assign_attributes(competition_params)
     if @competition.valid?
@@ -49,16 +57,18 @@ class CompetitionsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def destroy
     @competition.destroy!
     redirect_to competitions_path, success: t('.success')
   end
 
-private
+  private
 
   def competition_params
-    params.require(:competition).permit(:name, :venue, :date, :competition_type, :gearcategory_type, :category, :age_group, :weight_class)
+    params.require(:competition).permit(:name, :venue, :date, :competition_type, :gearcategory_type, :category,
+                                        :age_group, :weight_class)
   end
 
   def set_competition

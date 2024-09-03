@@ -1,8 +1,8 @@
 class ProfilesController < ApplicationController
-  skip_before_action :set_header_navi, only: %i[ new ]
-  before_action :hide_header_navi, only: %i[ create ]
-  skip_before_action :set_bottom_navi, only: %i[ new edit ]
-  before_action :hide_bottom_navi, only: %i[ create update ]
+  skip_before_action :set_header_navi, only: %i[new]
+  before_action :hide_header_navi, only: %i[create]
+  skip_before_action :set_bottom_navi, only: %i[new edit]
+  before_action :hide_bottom_navi, only: %i[create update]
   def existence
     if current_user.profile.present?
       # プロフィールが存在する場合,大会結果一覧へ
@@ -13,8 +13,17 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def show
+    @profile = current_user.profile
+    @user = current_user
+  end
+
   def new
     @profile = Profile.new
+  end
+
+  def edit
+    @user = current_user
   end
 
   def create
@@ -25,15 +34,6 @@ class ProfilesController < ApplicationController
       flash.now[:danger] = t('.danger')
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @profile = current_user.profile
-    @user = current_user
-  end
-
-  def edit
-    @user = current_user
   end
 
   def update
@@ -53,6 +53,6 @@ class ProfilesController < ApplicationController
   end
 
   def update_user_params
-    params.require(:user).permit(:name, profile_attributes: [:gender, :birthday, :id])
+    params.require(:user).permit(:name, profile_attributes: %i[gender birthday id])
   end
 end

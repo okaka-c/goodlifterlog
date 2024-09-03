@@ -1,6 +1,6 @@
 class CompetitionRecordsController < ApplicationController
   before_action :set_competition
-  before_action :set_competition_record, only: %i[ destroy ]
+  before_action :set_competition_record, only: %i[destroy]
 
   def destroy
     @competition_record.destroy!
