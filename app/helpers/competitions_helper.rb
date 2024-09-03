@@ -13,6 +13,7 @@ module CompetitionsHelper
     end
   end
 
+  # rubocop:disable Layout/LineLength, Metrics/MethodLength
   def subtraction_result_allow(number)
     if number.positive?
 
@@ -31,4 +32,5 @@ module CompetitionsHelper
       </svg>'
     end
   end
+  # rubocop:enable Layout/LineLength, Metrics/MethodLength
 end
