@@ -21,6 +21,7 @@ module Record
       )
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def create
       @deadlift = Record::Deadlift.new(deadlift_params)
       if @deadlift.valid? # 手動でバリデーションの検証をする
@@ -38,7 +39,9 @@ module Record
         render :new, status: :unprocessable_entity
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def update
       # ユーザーが入力した値を取得
       @deadlift = Record::Deadlift.new(deadlift_params)
@@ -63,6 +66,7 @@ module Record
         render :edit, status: :unprocessable_entity
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     private
 
