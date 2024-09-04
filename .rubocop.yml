@@ -20,6 +20,14 @@ AllCops:
     - "lib/tasks/auto_annotate_models.rake"
     - "config/environments/*"
     - "config/puma.rb"
+    - "Rakefile"
+    - "config.ru"
+    - "config/application.rb"
+    - "config/boot.rb"
+    - "config/environment.rb"
+    - "config/initializers/assets.rb"
+    - "config/initializers/filter_parameter_logging.rb"
+    - "config/initializers/sorcery.rb"
 
 RSpec/ContextWording:
   Enabled: false
