@@ -39,3 +39,6 @@ Style/Documentation:
 Style/Lambda:
   Enabled: false
 
+Lint/MissingSuper:
+  Exclude:
+    - 'app/queries/*'
