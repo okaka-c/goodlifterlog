@@ -31,8 +31,8 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
       # Add or replace test runners here
-      - name: Run tests
-        run: bin/rake
+      - name: Run RSpec tests
+        run: bin/rspec
 
   lint:
     runs-on: ubuntu-latest
