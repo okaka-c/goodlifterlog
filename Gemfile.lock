@@ -197,6 +197,8 @@ GEM
     nio4r (2.7.1)
     nokogiri (1.16.3-aarch64-linux)
       racc (~> 1.4)
+    nokogiri (1.16.3-x86_64-linux)
+      racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
       snaky_hash (~> 2.0)
@@ -365,6 +367,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  x86_64-linux
 
 DEPENDENCIES
   better_errors
