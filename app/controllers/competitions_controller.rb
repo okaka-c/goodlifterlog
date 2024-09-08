@@ -37,7 +37,7 @@ class CompetitionsController < ApplicationController
     end
   end
 
-
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def update
     @competition.assign_attributes(competition_params)
     if @competition.valid?
@@ -57,7 +57,7 @@ class CompetitionsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def destroy
     @competition.destroy!
