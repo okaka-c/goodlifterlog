@@ -4,6 +4,7 @@ module LoginMacros
   def login(user)
     setup_oauth_stubs(user)
     visit root_path
+    expect(page).to have_selector('a[href="/oauth/line"]', wait: 10)
     click_on 'LINEログイン'
   end
 
