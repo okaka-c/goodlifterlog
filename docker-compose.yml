@@ -63,6 +63,7 @@ services:
     environment:
       TZ: Asia/Tokyo
       SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
+      CODEBUILD_BUILD_ID: true
     ports:
       - "3000:3000"
     depends_on:
