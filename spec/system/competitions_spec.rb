@@ -110,13 +110,13 @@ RSpec.describe 'Competitions', type: :system do
         it '大会情報が作成できること' do
           fill_in '大会名', with: 'テスト大会'
           fill_in '会場名', with: 'テスト設備'
-          fill_in '開催日', with: Date.today
+          fill_in '開催日', with: Time.zone.today
           choose '公式大会'
           choose 'ノーギア'
           choose 'パワーリフティング'
           select '一般', from: '年齢別区分'
           select '女子47㎏級', from: '階級別区分'
-          click_button '登録'
+          click_on '登録'
           expect(page).to have_content('大会情報を登録しました'), 'フラッシュメッセージ「大会情報を登録しました」が表示されていません'
           visit '/competitions'
           click_on '詳細'
@@ -124,7 +124,7 @@ RSpec.describe 'Competitions', type: :system do
           expect(page).to have_content('テスト設備'), '施設名が表示されていません'
           expect(page).to have_content('公式大会'), '公式大会or非公式大会が表示されていません'
           expect(page).to have_content('パワーリフティング'), 'パワーリフティングorベンチプレスが表示されていません'
-          expect(page).to have_content(Date.today), '開催日が表示されていません'
+          expect(page).to have_content(Time.zone.today), '開催日が表示されていません'
           expect(page).to have_content('女子47㎏級'), '階級区分が表示されていません'
           expect(page).to have_content('一般'), '年齢区分が表示されていません'
           expect(page).to have_content('ノーギア'), 'ノーギアかフルギアか表示されていません'
@@ -144,7 +144,7 @@ RSpec.describe 'Competitions', type: :system do
             choose 'パワーリフティング'
             select '一般', from: '年齢別区分'
             select '女子47㎏級', from: '階級別区分'
-            click_button '登録'
+            click_on '登録'
             expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
             expect(page).to have_content('大会名を入力してください'), 'エラーメッセージ「大会名を入力してください」が表示されていません'
           end
@@ -164,7 +164,7 @@ RSpec.describe 'Competitions', type: :system do
             choose 'パワーリフティング'
             select '一般', from: '年齢別区分'
             select '女子47㎏級', from: '階級別区分'
-            click_button '登録'
+            click_on '登録'
             expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
             expect(page).to have_content('開催日を入力してください'), 'エラーメッセージ「開催日を入力してください」が表示されていません'
           end
@@ -184,7 +184,7 @@ RSpec.describe 'Competitions', type: :system do
             choose 'パワーリフティング'
             select '一般', from: '年齢別区分'
             select '女子47㎏級', from: '階級別区分'
-            click_button '登録'
+            click_on '登録'
             expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
             expect(page).to have_content('大会種別を入力してください'), 'エラーメッセージ「大会種別を入力してください」が表示されていません'
           end
@@ -204,7 +204,7 @@ RSpec.describe 'Competitions', type: :system do
             choose 'パワーリフティング'
             select '一般', from: '年齢別区分'
             select '女子47㎏級', from: '階級別区分'
-            click_button '登録'
+            click_on '登録'
             expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
             expect(page).to have_content('ギア種別を入力してください'), 'エラーメッセージ「ギア種別を入力してください」が表示されていません'
           end
@@ -224,7 +224,7 @@ RSpec.describe 'Competitions', type: :system do
             choose 'ノーギア'
             select '一般', from: '年齢別区分'
             select '女子47㎏級', from: '階級別区分'
-            click_button '登録'
+            click_on '登録'
             expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
             expect(page).to have_content('競技種別を入力してください'), 'エラーメッセージ「競技種別を入力してください」が表示されていません'
           end
@@ -244,7 +244,7 @@ RSpec.describe 'Competitions', type: :system do
             choose 'ノーギア'
             choose 'パワーリフティング'
             select '女子47㎏級', from: '階級別区分'
-            click_button '登録'
+            click_on '登録'
             expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
             expect(page).to have_content('年齢別区分を入力してください'), 'エラーメッセージ「年齢別区分を入力してください」が表示されていません'
           end
@@ -264,7 +264,7 @@ RSpec.describe 'Competitions', type: :system do
             choose 'ノーギア'
             choose 'パワーリフティング'
             select '一般', from: '年齢別区分'
-            click_button '登録'
+            click_on '登録'
             expect(page).to have_content('大会情報の登録に失敗しました'), 'フラッシュメッセージ「大会情報の登録に失敗しました」が表示されていません'
             expect(page).to have_content('階級別区分を入力してください'), 'エラーメッセージ「階級別区分を入力してください」が表示されていません'
           end
@@ -345,7 +345,7 @@ RSpec.describe 'Competitions', type: :system do
           choose 'パワーリフティング'
           select '一般', from: '年齢別区分'
           select '女子47㎏級', from: '階級別区分'
-          click_button '更新'
+          click_on '更新'
           expect(page).to have_current_path("/competitions/#{competition.id}", ignore_query: true), '詳細画面へ遷移できません'
           expect(page).to have_content('大会情報を更新しました'), 'フラッシュメッセージ「大会情報を更新しました」が表示されていません'
         end
@@ -359,7 +359,7 @@ RSpec.describe 'Competitions', type: :system do
           choose 'パワーリフティング'
           select '一般', from: '年齢別区分'
           select '女子47㎏級', from: '階級別区分'
-          click_button '更新'
+          click_on '更新'
           expect(page).to have_content('大会情報の更新に失敗しました'), 'フラッシュメッセージ「大会情報の更新に失敗しました」が表示されていません'
         end
       end
