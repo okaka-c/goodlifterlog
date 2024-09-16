@@ -16,6 +16,11 @@ jobs:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+      chrome:
+        image: seleniarm/standalone-chromium:latest
+        shm_size: 2g
+        ports:
+          - 4445:4444
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
