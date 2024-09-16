@@ -18,7 +18,7 @@ jobs:
           POSTGRES_PASSWORD: password
       chrome:
         image: seleniarm/standalone-chromium:latest
-        shm_size: 2g
+        options: --shm-size=2g
         ports:
           - 4445:4444
     env:
