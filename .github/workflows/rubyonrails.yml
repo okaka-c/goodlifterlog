@@ -25,7 +25,7 @@ jobs:
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: 120
+          chrome-version: 128
           install-chromedriver: true
       # Add or replace dependency steps here
       - name: Install Ruby and gems
