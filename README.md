@@ -37,16 +37,43 @@
 | <a href="https://gyazo.com/8b9abf5db8a267d8e280317609cb1ea8"><img src="https://i.gyazo.com/8b9abf5db8a267d8e280317609cb1ea8.png" alt="Image from Gyazo" width="364" height="200"/></a> |
 | 成績をグラフ化して、成長の推移を視覚的に確認することができます。 |
 
+### ◾️サービスを作成した背景
+私は5年間、パワーリフティング競技に取り組み、毎年大会に出場しています。
+このサービスを作った背景には、**成績を記録する専用ツールが無い**という課題がありました。
 
+私自身も含め、選手たちは大会結果をSNS、紙のノート、携帯のメモ帳などに記録しています。
+しかし、過去の記録を振り返ったり、前回大会からどれくらい成績が増減したかどうか確認したい時に、
+検索がしにくいと感じることが多々ありました。
+また、今大会の成績と前大会の成績を比較し、
+何kg上がったか、下がったかを毎回手動で計算して確認していたため、時間がかかっていました。
+
+上記の課題から、大会の成績を管理し、簡単に比較できるツールがあれば便利だと考え、このツールを開発しました。
+
+### ◾️ユーザー層について
+パワーリフティング、シングルベンチプレスの競技者
+
+### ■ 使用技術
 | カテゴリ | 技術 |
 | --- | --- |
 | 開発環境 | Docker |
-| フロントエンド | Bootstrap または TailwindCSS, Hotwire |
+| フロントエンド |TailwindCSS, DaisyUI|
 | バックエンド | Ruby 3.2.2 / Ruby on Rails 7系 |
-| データベース | PostgreSQL,  |
+| データベース | PostgreSQL |
 | インフラ | Render |
 | Web API | LINE Messaging API |
-| その他 | AWS S3 (動画投稿機能追加時に使用検討） |
+| 認証 | Sorcery, LINE認証 |
+| CI | GitHub Actions (Rubocop, RSpec)|
+| その他 | Chart.js, Rubocop, RSpec|
+
+### ◾️インフラ構成図
+<a href="https://gyazo.com/4500886a72bd5e243afa4c85df8f8d9a">
+  <img src="https://i.gyazo.com/4500886a72bd5e243afa4c85df8f8d9a.png" alt="Image from Gyazo" style="width: 55%; height: auto;"/>
+</a>
+
+- GitHub Actions(CI)
+GitHub Actionsを使って、CI環境で自動的にRubocopとRSpecを実行しています。main ブランチにコードがプッシュされた際やプルリクエストが送信された際に、このワークフローがトリガーされ、指定されたチェックが自動で行われます。
+RSpecを用いることで、テストを通じてプログラムの動作を確認し、品質を向上させます。一方、Rubocopを使用することで、コードスタイルを統一し、コードの品質や可読性を保ちます。
+このプロセスを継続的に実行することで、Webサービスの全体的な品質を常に高い状態に維持することができます。
 
 ### ■ 画面遷移図
 [Figma: 画面遷移図](https://www.figma.com/file/pGxlFmkWvjxv384P6Ymi9x/Good-Lifter-log?type=design&node-id=0%3A1&mode=design&t=7WateIMFCpHj8mR9-1)
