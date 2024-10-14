@@ -81,25 +81,20 @@ RSpecを用いることで、テストを通じてプログラムの動作を確
 ### ■ ER図
 
 ```mermaid
-
- 
 erDiagram
     users ||--|| profiles : "1対1"
     users ||--o{ competitions : "1対多"
+    users ||--o{ authentications : "1対多"
     competitions ||--|| competition_records : "1対1"
-    users ||--o{ template_names : "1対多"
-    template_names ||--|| template_categories : "1対1"
-    template_categories ||--o{ template_items : "1対多"
-    users ||--o{ itemlist_names : "1対多"
-    itemlist_names ||--o{ competitions : "1対多"
-    itemlist_names ||--o{ itemlist_categories : "1対多"
-    itemlist_categories ||--o{ itemlist_items : "1対多"
-    
+    competition_records ||--|| competition_results : "1対1"
+
     users {
         int id PK "ID"
+        string name "名前"
         string email "メールアドレス"
         string crypted_password "暗号化されたパスワード"
         string salt "ソルト"
+        int role  "ユーザー権限"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
     }
@@ -107,22 +102,28 @@ erDiagram
     profiles {
         int id PK "ID"
         int user_id FK "ユーザーID"
-        string name "名前"
         int gender "性別"
+        date birthday "生年月日"
         datetime created_at "作成日時"
         datetime updated_at "更新日時"
+    }
+
+    authentications {
+        int id PK "ID"
+        int user_id FK "ユーザーID"
+        string provider "外部プロバイダー"
+        string uid "外部プロバイダーのユーザーID"
     }
 
     competitions {
         int id PK "ID"
         int user_id FK "ユーザーID"
-        int itemlist_name_id FK "アイテムリスト名ID"
         string name "大会名"
-        string location "開催場所名"
+        string venue "開催場所名"
         date date "開催日"
-        int type "大会種別(公式/非公式)"
+        int competition_type "大会種別(公式/非公式)"
         int gearcategory_type "競技種別(クラシック/エクイップ)"
-        int category "競技種別(3種か1種か)"
+        int category "競技種別(パワーリフティングかシングルベンチプレスか)"
         int age_group "年齢別区分"
         int weight_class "体重別区分"
         int participation_status "出場予定か済みかステータス"
@@ -157,52 +158,13 @@ erDiagram
         datetime updated_at "更新日時"
     }
 
-    template_names {
+    competition_results {
         int id PK "ID"
-        int user_id FK "ユーザーID"
-        string name "テンプレート名"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
+        int competition_record_id FK "試技結果ID"
+        float best_squat_weight "最大挙上スクワット重量"
+        float best_benchpress_weight "最大挙上ベンチプレス重量"
+        float best_deadlift_weight "最大挙上デッドリフト重量"
+        float total_lifted_weight "合計重量"
+        float ipf_points "IPFポイント"
     }
-
-    template_categories {
-        int id PK "ID"
-        int template_name_id FK "テンプレートID"
-        string name "テンプレートカテゴリ名"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
-    }
-
-    template_items {
-        int id PK "ID"
-        int template_category_id FK "テンプレートカテゴリID"
-        string name "テンプレートカテゴリ用アイテム名"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
-    }
-
-    itemlist_names {
-        int id PK "ID"
-        int user_id FK "ユーザーID"
-        string name "持ち物リスト名"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
-    }
-
-    itemlist_categories {
-        int id PK "ID"
-        int itemlist_name_id FK "アイテムリスト名ID"
-        string name "アイテムリストカテゴリ名"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
-    }
-
-    itemlist_items {
-        int id PK "ID"
-        int itemlist_category_id FK "アイテムリストカテゴリID"
-        string name "アイテムリストカテゴリ用アイテム名"
-        datetime created_at "作成日時"
-        datetime updated_at "更新日時"
-    }
-
 ```
